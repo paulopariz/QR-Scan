@@ -1,5 +1,5 @@
 <template>
-  <div>fef</div>
+  <div></div>
 </template>
 
 <script>
