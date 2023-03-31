@@ -1,14 +1,21 @@
 <template>
-  <div>
-    <LoaderPage />
+  <div class="bg-light h-screen">
+    <LoaderPage class="hidden" />
+
+    <BarBottom class="" id="BarBottom" />
+    <router-view />
   </div>
-  <router-view />
 </template>
 
 <script>
+import BarBottom from "./components/barBottom.vue";
 import LoaderPage from "./components/LoaderPage.vue";
 export default {
-  components: { LoaderPage },
+  components: { LoaderPage, BarBottom },
+
+  data() {
+    return {};
+  },
 };
 </script>
 

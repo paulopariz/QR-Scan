@@ -1,5 +1,5 @@
 <template>
-  <div></div>
+  <div class="bg-zinc-500 h-screen w-screen"></div>
 </template>
 
 <script>
