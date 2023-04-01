@@ -3,6 +3,8 @@
     <StreamBarcodeReader
       @decode="onDecode"
       @loaded="onLoaded"
+      :video-constraints="{ aspectRatio: 16 / 9 }"
+      :capture-image="true"
       class=""
     ></StreamBarcodeReader>
   </div>
