@@ -1,14 +1,14 @@
 <template>
   <div class="bg-dark h-screen w-screen">
-    <qr-code />
+    <qrCodeScan />
   </div>
 </template>
 
 <script>
-import qrCode from "@/components/qrCode.vue";
+import qrCodeScan from "@/components/qrCodeScan.vue";
 
 export default {
-  components: { qrCode },
+  components: { qrCodeScan },
 };
 </script>
 

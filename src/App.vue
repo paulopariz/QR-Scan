@@ -1,6 +1,6 @@
 <template>
   <div class="bg-light h-screen">
-    <LoaderPage class="hidden" />
+    <LoaderPage class="" />
 
     <BarBottom class="" id="BarBottom" />
     <router-view />

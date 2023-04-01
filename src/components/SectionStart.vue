@@ -1,13 +1,12 @@
 <template>
-  <div class="fixed z-40 bottom-36 w-screen">
+  <div class="fixed z-40 bottom-10 w-screen">
     <div class="flex justify-center flex-col items-center gap-11 w-screen">
-      <h1 class="font-normal tracking-wide">
+      <h1 class="font-normal tracking-wide w-11/12 text-center">
         Vá e aproveite nossos recursos gratuitamente e facilite sua vida conosco.
       </h1>
       <button
         @click="startClick"
-        class="bg-dark flex items-center justify-between w-1/4 px-7 h-14 select-none rounded-lg transition-all hover:opacity-95"
-        id="btnStart"
+        class="bg-dark flex items-center justify-between w-4/5 px-7 h-14 select-none rounded-lg transition-all active:scale-95 hover:scale-95"
       >
         <span class="text-transparent text-[0px]">.</span>
         <h1 class="text-white font-bold tracking-wide text-lg">{{ startText }}</h1>

@@ -1,16 +1,10 @@
 <template>
   <div class="">
-    <div
-      class="fixed z-40 w-screen h-screen top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black/40"
-    >
-      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-        <StreamBarcodeReader
-          @decode="onDecode"
-          @loaded="onLoaded"
-          class=""
-        ></StreamBarcodeReader>
-      </div>
-    </div>
+    <StreamBarcodeReader
+      @decode="onDecode"
+      @loaded="onLoaded"
+      class="w-screen h-screen"
+    ></StreamBarcodeReader>
   </div>
 </template>
 
