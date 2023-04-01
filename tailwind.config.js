@@ -9,9 +9,13 @@ module.exports = {
       colors: {
         'light': '#FDB623',
         'dark': '#333333',
-        'white-2': '#D9D9D9'
+        'white-2': '#D9D9D9',
+
+      
       }
     },
   },
   plugins: [],
+
+  darkMode: 'class'
 }

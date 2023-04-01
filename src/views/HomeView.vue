@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-dark h-screen w-screen">
+  <div class="bg-neutral-800 h-screen w-screen">
     <qrCodeScan />
   </div>
 </template>

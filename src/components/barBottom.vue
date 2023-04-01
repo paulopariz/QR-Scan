@@ -13,7 +13,7 @@
           <img src="@/assets/img/logoLight.svg" class="w-[30px]" alt="icon" />
         </li>
 
-        <li class="flex items-center flex-col gap-1">
+        <li class="flex items-center flex-col gap-1" @click="$darkMode.toggle()">
           <img
             src="@/assets/img/iconSettings.svg"
             alt="icon"
@@ -29,7 +29,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  computed: {
+    isDarkMode() {
+      return this.$darkMode.isActive;
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -39,5 +45,6 @@ export default {};
 
 li {
   cursor: pointer;
+  user-select: none;
 }
 </style>
