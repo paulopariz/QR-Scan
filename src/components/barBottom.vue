@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-1/3 h-20 rounded-2xl fixed left-1/2 -translate-x-1/2 py-4 px-24 bottom-5 bg-dark border-2 border-x-0 border-b-0 border-light"
+    class="w-1/3 h-20 rounded-2xl fixed z-50 left-1/2 -translate-x-1/2 py-4 px-24 bottom-5 bg-dark border-2 border-x-0 border-b-0 border-light"
   >
     <div>
       <ul class="flex items-center justify-between">

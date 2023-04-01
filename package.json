@@ -10,7 +10,9 @@
   "dependencies": {
     "animate.css": "^4.1.1",
     "core-js": "^3.8.3",
+    "qrcode-reader-vue3": "^3.1.2",
     "vue": "^3.2.13",
+    "vue-barcode-reader": "^1.0.3",
     "vue-router": "^4.0.3"
   },
   "devDependencies": {
