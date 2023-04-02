@@ -3,7 +3,7 @@
     <StreamBarcodeReader
       @decode="onDecode"
       @loaded="onLoaded"
-      class="w-screen h-[120vh]"
+      class=""
     ></StreamBarcodeReader>
   </div>
 </template>
