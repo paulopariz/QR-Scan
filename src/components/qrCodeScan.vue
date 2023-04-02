@@ -1,9 +1,9 @@
 <template>
-  <div class="">
+  <div class="fixed top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2">
     <StreamBarcodeReader
       @decode="onDecode"
       @loaded="onLoaded"
-      class="fixed top-1/2 -translate-x-1/2 left-1/2"
+      class="w-screen"
     ></StreamBarcodeReader>
   </div>
 </template>
@@ -30,10 +30,5 @@ export default {
 .laser {
   background-color: #fdb623 !important;
   box-shadow: 0 0 4px #fdb623 !important;
-}
-
-.scanner-container {
-  height: 100vh;
-  width: 100vh;
 }
 </style>
