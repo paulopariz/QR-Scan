@@ -25,3 +25,15 @@ export default {
   },
 };
 </script>
+
+<style>
+.laser {
+  background-color: #fdb623 !important;
+  box-shadow: 0 0 4px #fdb623 !important;
+}
+
+.scanner-container {
+  height: 100vh;
+  width: 100vh;
+}
+</style>
