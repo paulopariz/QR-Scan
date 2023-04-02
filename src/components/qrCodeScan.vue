@@ -3,7 +3,7 @@
     <StreamBarcodeReader
       @decode="onDecode"
       @loaded="onLoaded"
-      class="w-screen"
+      class="w-screen scale-150"
     ></StreamBarcodeReader>
   </div>
 </template>
@@ -30,5 +30,9 @@ export default {
 .laser {
   background-color: #fdb623 !important;
   box-shadow: 0 0 4px #fdb623 !important;
+}
+
+video {
+  height: 10px;
 }
 </style>
