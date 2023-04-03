@@ -4,12 +4,11 @@
       <h1 class="text-xl text-white-2 font-semibold tracking-wider">Gerar QR</h1>
     </nav>
 
-    <div
-      class="w-screen fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-10 grid grid-cols-3 place-items-end gap-x-5 gap-y-8"
-    >
+    <div class="px-10 pt-16 pb-28 grid grid-cols-3 place-items-center gap-x-28 gap-y-8">
       <div v-for="option in Options" :key="option.id">
         <div
-          class="bg-dark rounded-lg w-24 h-24 flex items-center justify-center drop-shadow-2xl shadow-lg"
+          @click="openModal"
+          class="bg-dark rounded-lg w-24 h-24 flex items-center justify-center transition-all drop-shadow-2xl shadow-lg border-2 border-transparent hover:border-light cursor-pointer"
         >
           <div class="flex items-center flex-col gap-3">
             <img :src="option.icon" :alt="option.name" />
@@ -17,14 +16,20 @@
           </div>
         </div>
       </div>
+
+      <ModalGenerateQR v-show="viewModal" :closeModal="closeModal" />
     </div>
   </div>
 </template>
 
 <script>
+import ModalGenerateQR from "./ModalGenerateQR.vue";
 export default {
+  components: { ModalGenerateQR },
   data() {
     return {
+      viewModal: false,
+
       Options: [
         {
           id: 1,
@@ -48,6 +53,15 @@ export default {
         },
       ],
     };
+  },
+
+  methods: {
+    openModal() {
+      this.viewModal = true;
+    },
+    closeModal() {
+      this.viewModal = false;
+    },
   },
 };
 </script>
