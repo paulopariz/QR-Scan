@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-light h-screen">
+  <div class="h-screen">
     <LoaderPage class="" />
 
     <BarBottom class="" id="BarBottom" />
@@ -21,6 +21,7 @@ export default {
 
 <style>
 body {
-  font-family: "Inter", sans-serif;
+  font-family: "Itim", cursive;
+  background-color: #333333;
 }
 </style>

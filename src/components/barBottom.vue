@@ -4,16 +4,16 @@
   >
     <div>
       <ul class="flex items-center justify-between">
-        <li class="flex items-center flex-col gap-1">
+        <li class="flex items-center flex-col gap-1" @click="generateQr">
           <img src="@/assets/img/iconGenerate.svg" alt="icon" />
           <span class="text-white-2 text-[13px] tracking-wide font-semibold">Gerar</span>
         </li>
 
-        <li class="p-4 bg-light rounded-full -mt-20 scan">
+        <li class="p-4 bg-light rounded-full -mt-20 scan" @click="openScan">
           <img src="@/assets/img/logoLight.svg" class="w-[30px]" alt="icon" />
         </li>
 
-        <li class="flex items-center flex-col gap-1" @click="$darkMode.toggle()">
+        <li class="flex items-center flex-col gap-1">
           <img
             src="@/assets/img/iconSettings.svg"
             alt="icon"
@@ -30,9 +30,14 @@
 
 <script>
 export default {
-  computed: {
-    isDarkMode() {
-      return this.$darkMode.isActive;
+  computed: {},
+
+  methods: {
+    generateQr() {
+      this.$router.push("/generate-qr");
+    },
+    openScan() {
+      this.$router.push("/");
     },
   },
 };

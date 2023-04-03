@@ -35,7 +35,7 @@ export default {
       setTimeout(() => {
         this.Loader = false;
         document.getElementById("BarBottom").style.display = "block";
-      }, 2000);
+      }, 100);
     },
   },
 
