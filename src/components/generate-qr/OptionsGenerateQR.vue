@@ -58,9 +58,11 @@ export default {
   methods: {
     openModal() {
       this.viewModal = true;
+      document.getElementById("BarBottom").style.display = "none";
     },
     closeModal() {
       this.viewModal = false;
+      document.getElementById("BarBottom").style.display = "block";
     },
   },
 };
