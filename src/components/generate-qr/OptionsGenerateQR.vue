@@ -1,14 +1,16 @@
 <template>
   <div class="px-10 py-6 m-auto">
     <nav>
-      <h1 class="text-xl text-white-2 font-semibold tracking-wider">Gerar QR</h1>
+      <h1 class="text-xl text-white-2 font-semibold tracking-wider select-none">
+        Gerar QR
+      </h1>
     </nav>
 
     <div class="px-10 pt-16 pb-28 grid grid-cols-3 place-items-center gap-x-28 gap-y-8">
       <div v-for="option in Options" :key="option.id">
         <div
           @click="openModal(option.id)"
-          class="bg-dark rounded-lg w-24 h-24 flex items-center justify-center transition-all drop-shadow-2xl shadow-lg border-2 border-transparent cursor-pointer"
+          class="bg-dark rounded-lg w-24 h-24 flex items-center justify-center transition-all drop-shadow-2xl shadow-lg border-2 border-transparent cursor-pointer select-none"
           id="modal"
         >
           <div class="flex items-center flex-col gap-3">
@@ -64,6 +66,41 @@ export default {
         },
         {
           id: 4,
+          name: "Facebook",
+          icon: require("@/assets/img/iconFacebook.svg"),
+          placeholder: "Digite o numero",
+          type: "text",
+        },
+        {
+          id: 5,
+          name: "LinkedIn",
+          icon: require("@/assets/img/iconLinkedIn.svg"),
+          placeholder: "Digite o numero",
+          type: "text",
+        },
+        {
+          id: 6,
+          name: "Github",
+          icon: require("@/assets/img/iconGithub.svg"),
+          placeholder: "Digite o numero",
+          type: "text",
+        },
+        {
+          id: 7,
+          name: "Gmail",
+          icon: require("@/assets/img/iconGmail.svg"),
+          placeholder: "Digite o numero",
+          type: "text",
+        },
+        {
+          id: 8,
+          name: "Dribble",
+          icon: require("@/assets/img/iconDribble.svg"),
+          placeholder: "Digite o numero",
+          type: "text",
+        },
+        {
+          id: 9,
           name: "Web Site",
           icon: require("@/assets/img/iconWebSite.svg"),
           placeholder: "Digite o nome do usuário",
@@ -76,9 +113,14 @@ export default {
   methods: {
     openModal(optionId) {
       this.viewModal = this.Options.find((option) => option.id === optionId);
+      window.history.pushState(null, null, `/generate-qr/${this.viewModal.name}`);
+
+      document.getElementById("BarBottom").style.display = "none";
     },
     closeModal() {
       this.viewModal = false;
+      window.history.pushState(null, null, "/generate-qr");
+
       document.getElementById("BarBottom").style.display = "block";
     },
   },

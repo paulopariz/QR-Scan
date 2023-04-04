@@ -5,7 +5,7 @@
     <EclipseInGenerate class="-right-[45%] -top-[15%]" />
     <EclipseInGenerate class="bottom-0 -left-2/3 -scale-95" />
 
-    <nav class="flex items-center gap-6 absolute top-6">
+    <nav class="flex items-center gap-6 mt-9">
       <button
         id="btnBack"
         @click="closeModal"
