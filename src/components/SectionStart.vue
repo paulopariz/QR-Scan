@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed z-40 bottom-10 w-screen">
+  <div class="fixed z-40 bottom-20 w-screen">
     <div class="flex justify-center flex-col items-center gap-11 w-screen">
       <h1 class="font-normal tracking-wide w-11/12 text-center">
         Vá e aproveite nossos recursos gratuitamente e facilite sua vida conosco.
@@ -12,6 +12,10 @@
         <h1 class="text-white font-bold tracking-wide text-lg">{{ startText }}</h1>
         <img src="@/assets/img/arrow.svg" alt="Arrow" />
       </button>
+    </div>
+    <div class="fixed bottom-4 right-6 flex gap-2 items-center">
+      <div class="w-2.5 h-2.5 rounded-full bg-dark"></div>
+      <div class="w-2.5 h-2.5 rounded-full bg-dark/40"></div>
     </div>
   </div>
 </template>

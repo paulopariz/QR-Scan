@@ -7,17 +7,24 @@
     <div class="px-10 pt-16 pb-28 grid grid-cols-3 place-items-center gap-x-28 gap-y-8">
       <div v-for="option in Options" :key="option.id">
         <div
-          @click="openModal"
+          @click="openModal(option.id)"
           class="bg-dark rounded-lg w-24 h-24 flex items-center justify-center transition-all drop-shadow-2xl shadow-lg border-2 border-transparent hover:border-light cursor-pointer"
+          id="modal"
         >
           <div class="flex items-center flex-col gap-3">
-            <img :src="option.icon" :alt="option.name" />
-            <h2 class="text-white-2 text-xs">{{ option.name }}</h2>
+            <img :src="option.icon" :alt="option.name" class="transition-all" />
+            <h2 class="text-white-2 text-xs transition-all">{{ option.name }}</h2>
           </div>
         </div>
       </div>
 
-      <ModalGenerateQR v-show="viewModal" :closeModal="closeModal" />
+      <div v-if="viewModal">
+        <ModalGenerateQR
+          :closeModal="closeModal"
+          :title="viewModal.name"
+          :img="viewModal.icon"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -28,7 +35,8 @@ export default {
   components: { ModalGenerateQR },
   data() {
     return {
-      viewModal: false,
+      viewModal: null,
+      img: require("@/assets/img/iconInstagram.svg"),
 
       Options: [
         {
@@ -56,9 +64,11 @@ export default {
   },
 
   methods: {
-    openModal() {
-      this.viewModal = true;
-      document.getElementById("BarBottom").style.display = "none";
+    openModal(optionId) {
+      // this.viewModal = true;
+      // document.getElementById("BarBottom").style.display = "none";
+
+      this.viewModal = this.Options.find((option) => option.id === optionId);
     },
     closeModal() {
       this.viewModal = false;
@@ -68,4 +78,14 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped lang="scss">
+#modal:hover {
+  background-color: #fdb623;
+  img {
+    filter: invert(100%);
+  }
+  h2 {
+    filter: invert(100%);
+  }
+}
+</style>
