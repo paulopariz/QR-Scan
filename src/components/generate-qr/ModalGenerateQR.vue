@@ -5,7 +5,7 @@
     <EclipseInGenerate class="-right-[45%] -top-[15%]" />
     <EclipseInGenerate class="bottom-0 -left-2/3 -scale-95" />
 
-    <nav class="flex items-center gap-6 mt-6">
+    <nav class="flex items-center gap-6 absolute top-6">
       <button
         id="btnBack"
         @click="closeModal"
@@ -29,8 +29,8 @@
       <div class="flex flex-col gap-3 w-full">
         <label for="Username" class="text-white-2 tracking-wide">Username</label>
         <input
-          type="text"
-          placeholder="Digite o nome do usuário"
+          :type="typeInput"
+          :placeholder="placeholder"
           v-model="username"
           class="px-4 py-2 bg-[#222121] border border-white-2/70 rounded-md drop-shadow-2xl shadow-lg text-white-2/40 outline-none transition-all focus:border-light"
         />
@@ -53,7 +53,7 @@ import EclipseInGenerate from "../EclipseInGenerate.vue";
 
 export default {
   components: { EclipseInGenerate },
-  props: ["closeModal", "title", "img"],
+  props: ["closeModal", "title", "img", "placeholder", "typeInput"],
 
   data() {
     return {
@@ -75,4 +75,10 @@ export default {
 };
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+</style>

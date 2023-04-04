@@ -8,7 +8,7 @@
       <div v-for="option in Options" :key="option.id">
         <div
           @click="openModal(option.id)"
-          class="bg-dark rounded-lg w-24 h-24 flex items-center justify-center transition-all drop-shadow-2xl shadow-lg border-2 border-transparent hover:border-light cursor-pointer"
+          class="bg-dark rounded-lg w-24 h-24 flex items-center justify-center transition-all drop-shadow-2xl shadow-lg border-2 border-transparent cursor-pointer"
           id="modal"
         >
           <div class="flex items-center flex-col gap-3">
@@ -23,6 +23,8 @@
           :closeModal="closeModal"
           :title="viewModal.name"
           :img="viewModal.icon"
+          :placeholder="viewModal.placeholder"
+          :typeInput="viewModal.type"
         />
       </div>
     </div>
@@ -43,21 +45,29 @@ export default {
           id: 1,
           name: "Twitter",
           icon: require("@/assets/img/iconTwitter.svg"),
+          placeholder: "Digite o nome do usuário",
+          type: "text",
         },
         {
           id: 2,
           name: "Instagram",
           icon: require("@/assets/img/iconInstagram.svg"),
+          placeholder: "Digite o nome do usuário",
+          type: "text",
         },
         {
           id: 3,
           name: "WhatsApp",
           icon: require("@/assets/img/iconWhatsapp.svg"),
+          placeholder: "Digite o numero",
+          type: "number",
         },
         {
           id: 4,
           name: "Web Site",
           icon: require("@/assets/img/iconWebSite.svg"),
+          placeholder: "Digite o nome do usuário",
+          type: "text",
         },
       ],
     };
@@ -65,9 +75,6 @@ export default {
 
   methods: {
     openModal(optionId) {
-      // this.viewModal = true;
-      // document.getElementById("BarBottom").style.display = "none";
-
       this.viewModal = this.Options.find((option) => option.id === optionId);
     },
     closeModal() {
@@ -87,5 +94,8 @@ export default {
   h2 {
     filter: invert(100%);
   }
+}
+#modal:active {
+  background-color: #fdb623;
 }
 </style>
