@@ -1,11 +1,11 @@
 <template>
   <div
-    class="px-10 mt-6 pb-6 m-auto h-screen w-screen bg-[#333333] fixed z-30 top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2"
+    class="px-10 pb-6 m-auto h-screen w-screen bg-[#333333] fixed z-30 top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2"
   >
-    <EclipseInGenerate class="-right-[35%] -top-[15%]" />
+    <EclipseInGenerate class="-right-[45%] -top-[15%]" />
     <EclipseInGenerate class="bottom-0 -left-2/3 -scale-95" />
 
-    <nav class="flex items-center gap-6">
+    <nav class="flex items-center gap-6 mt-6">
       <button
         id="btnBack"
         @click="closeModal"
