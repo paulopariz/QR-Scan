@@ -101,7 +101,7 @@ export default {
         },
         {
           id: 9,
-          name: "Web Site",
+          name: "Web-Site",
           icon: require("@/assets/img/iconWebSite.svg"),
           placeholder: "Digite o nome do usuário",
           type: "text",
