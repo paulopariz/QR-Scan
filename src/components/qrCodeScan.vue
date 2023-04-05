@@ -12,7 +12,7 @@
 
     <div v-show="ShowQrCodeRead">
       <BackgroundForModals :closeModal="closeModal" title="Resultado" />
-      <qr-code-read />
+      <QrCodeRead :link="linkQrCode" :clickCopy="copy" :copyTextBtn="copyTextBtn" />
     </div>
   </section>
 </template>
@@ -35,6 +35,9 @@ export default {
       ShowScan: false,
       ShowQrCodeRead: true,
       linkQrCode: "",
+
+      textToCopy: "https://github.io",
+      copyTextBtn: "Copiar",
     };
   },
   methods: {
@@ -51,6 +54,22 @@ export default {
     closeModal() {
       this.ShowQrCodeRead = false;
       this.ShowScan = true;
+    },
+
+    async copy() {
+      try {
+        await navigator.clipboard.writeText(this.textToCopy);
+        this.copyTextBtn = "Copiado!";
+
+        document.getElementById("iconCheck").style.display = "block";
+        document.getElementById("iconError").style.display = "none";
+      } catch (err) {
+        this.copyTextBtn = "Erro!";
+
+        document.getElementById("iconCheck").style.display = "none";
+        document.getElementById("iconError").style.display = "block";
+        console.error(err);
+      }
     },
   },
 };
