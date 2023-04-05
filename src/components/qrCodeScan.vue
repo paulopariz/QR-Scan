@@ -1,26 +1,32 @@
 <template>
-  <div class="fixed top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2">
-    <div v-show="ShowScan">
-      <StreamBarcodeReader
-        @decode="onDecode"
-        @loaded="onLoaded"
-        class="w-screen scale-150"
-      ></StreamBarcodeReader>
+  <section>
+    <div class="fixed top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2">
+      <div v-show="ShowScan">
+        <StreamBarcodeReader
+          @decode="onDecode"
+          @loaded="onLoaded"
+          class="w-screen scale-150"
+        ></StreamBarcodeReader>
+      </div>
     </div>
 
     <div v-show="ShowQrCodeRead">
-      <QrCodeRead />
+      <BackgroundForModals :closeModal="closeModal" title="Resultado" />
+      <qr-code-read />
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
 import { StreamBarcodeReader } from "vue-barcode-reader";
-import QrCodeRead from "./QrCodeRead.vue";
+
+import BackgroundForModals from "./BackgroundForModals.vue";
+import QrCodeRead from "./read-qr/QrCodeRead.vue";
 
 export default {
   components: {
     StreamBarcodeReader,
+    BackgroundForModals,
     QrCodeRead,
   },
 
@@ -40,6 +46,11 @@ export default {
     },
     onLoaded() {
       console.log(`Ready to start scanning barcodes`);
+    },
+
+    closeModal() {
+      this.ShowQrCodeRead = false;
+      this.ShowScan = true;
     },
   },
 };
