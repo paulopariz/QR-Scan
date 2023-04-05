@@ -21,9 +21,9 @@
       </div>
 
       <div v-if="viewModal">
+        <BackgroundForModals :closeModal="closeModal" :title="viewModal.name" />
+
         <ModalGenerateQR
-          :closeModal="closeModal"
-          :title="viewModal.name"
           :img="viewModal.icon"
           :placeholder="viewModal.placeholder"
           :typeInput="viewModal.type"
@@ -34,9 +34,10 @@
 </template>
 
 <script>
+import BackgroundForModals from "../BackgroundForModals.vue";
 import ModalGenerateQR from "./ModalGenerateQR.vue";
 export default {
-  components: { ModalGenerateQR },
+  components: { BackgroundForModals, ModalGenerateQR },
   data() {
     return {
       viewModal: null,
