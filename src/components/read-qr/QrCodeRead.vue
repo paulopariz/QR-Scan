@@ -3,7 +3,7 @@
     <div
       class="w-5/6 drop-shadow-2xl shadow-lg fixed z-50 top-[17%] left-1/2 -translate-x-1/2 bg-dark rounded-lg border-2 border-transparent px-5 py-5"
     >
-      <section class="flex flex-col justify-between gap-5">
+      <section class="flex flex-col justify-between h-32">
         <div class="flex items-center gap-5">
           <img src="../../assets/img/logoDark.svg" class="w-14" alt="Logo" />
           <div class="flex flex-col gap-1 items-start">
@@ -13,18 +13,21 @@
         </div>
         <div class="w-full h-[0.3px] bg-white/10"></div>
         <p
-          class="text-base w-full text-white-2 tracking-wide select-none overflow-hidden flex"
+          class="w-full text-base text-white-2 tracking-wide select-none whitespace-nowrap overflow-auto px-1 py-0.5"
         >
           {{ link }}
+          <span class="x right-0 absolute mt-0.5 rounded-xl px-3.5 py-2.5"></span>
         </p>
       </section>
     </div>
 
     <div
-      class="absolute z-50 top-[45%] left-1/2 -translate-x-1/2 flex items-center justify-center gap-10"
+      class="absolute z-50 top-[47%] left-1/2 -translate-x-1/2 flex items-center justify-center gap-10"
     >
       <div class="flex flex-col gap-2 items-center">
-        <button class="bg-light rounded-md px-5 py-4">
+        <button
+          class="bg-light rounded-md px-5 py-4 transition-all hover:scale-95 active:scale-95"
+        >
           <img
             src="@/assets/img/iconShare.svg"
             class="flex items-center justify-center"
@@ -36,7 +39,10 @@
       </div>
 
       <div class="flex flex-col gap-2 items-center">
-        <button class="bg-light rounded-md px-5 py-4" @click="clickCopy">
+        <button
+          class="bg-light rounded-md px-5 py-4 transition-all hover:scale-95 active:scale-95"
+          @click="clickCopy"
+        >
           <img
             src="@/assets/img/iconCopy.svg"
             class="flex items-center justify-center"
@@ -78,4 +84,9 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.x {
+  background: rgb(38, 38, 38);
+  background: linear-gradient(90deg, rgba(38, 38, 38, 0) 0%, rgba(38, 38, 38, 0.767) 19%);
+}
+</style>
