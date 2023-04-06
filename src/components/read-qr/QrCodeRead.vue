@@ -13,7 +13,8 @@
         </div>
         <div class="w-full h-[0.3px] bg-white/10"></div>
         <p
-          class="w-full text-base text-white-2 tracking-wide select-none whitespace-nowrap overflow-auto px-1 py-0.5"
+          class="w-full text-base text-white-2 tracking-wide select-none whitespace-nowrap overflow-auto px-1 py-0.5 transition-all"
+          id="textCopy"
         >
           {{ link }}
           <span class="x right-0 absolute mt-0.5 rounded-xl px-3.5 py-2.5"></span>
@@ -25,17 +26,19 @@
       class="absolute z-50 top-[47%] left-1/2 -translate-x-1/2 flex items-center justify-center gap-10"
     >
       <div class="flex flex-col gap-2 items-center">
-        <button
-          class="bg-light rounded-md px-5 py-4 transition-all hover:scale-95 active:scale-95"
+        <a
+          :href="link"
+          target="_blank"
+          class="bg-light rounded-md px-5 py-4 transition-all hover:scale-95 active:scale-95 cursor-pointer"
         >
           <img
-            src="@/assets/img/iconShare.svg"
+            src="@/assets/img/iconAccess.svg"
             class="flex items-center justify-center"
             alt="Copy"
           />
-        </button>
+        </a>
 
-        <span class="text-sm text-white-2 tracking-wide">Compartilhar</span>
+        <span class="text-sm text-white-2 tracking-wide">Acessar</span>
       </div>
 
       <div class="flex flex-col gap-2 items-center">

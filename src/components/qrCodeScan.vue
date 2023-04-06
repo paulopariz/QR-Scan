@@ -40,8 +40,8 @@ export default {
     return {
       currentDateTime: "",
 
-      ShowScan: false,
-      ShowQrCodeRead: true,
+      ShowScan: true,
+      ShowQrCodeRead: false,
 
       textToCopy: "",
       copyTextBtn: "Copiar",
@@ -52,8 +52,11 @@ export default {
       this.ShowQrCodeRead = true;
       this.ShowScan = false;
       this.textToCopy = contentQrCode;
-
       this.currentDateTime = moment().locale("pt-br").format("D MMM YYYY, h:mm a");
+
+      if (this.textToCopy == "") {
+        this.textToCopy = "Sem conteúdo!";
+      }
     },
     onLoaded() {
       console.log(`Ready to start scanning barcodes`);
@@ -71,12 +74,14 @@ export default {
 
         document.getElementById("iconCheck").style.display = "block";
         document.getElementById("iconError").style.display = "none";
+        document.getElementById("textCopy").style.color = "white";
 
         setTimeout(() => {
           this.copyTextBtn = "Copiar";
 
           document.getElementById("iconError").style.display = "none";
           document.getElementById("iconCheck").style.display = "none";
+          document.getElementById("textCopy").style.color = "#D9D9D9";
         }, 3000);
       } catch (err) {
         this.copyTextBtn = "Erro!";
