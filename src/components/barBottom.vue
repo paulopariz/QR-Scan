@@ -48,17 +48,23 @@ export default {
 
   methods: {
     generateQr(route) {
+      navigator.vibrate([50]);
       this.$router.push("/generate-qr");
 
       this.activeRoute = route;
     },
 
     openScan(route) {
+      navigator.vibrate([50]);
       this.$router.push("/");
       this.activeRoute = route;
+
+      document.getElementById("ShowQrCodeRead").style.display = "none";
+      document.getElementById("ShowScan").style.display = "block";
     },
 
     configs(route) {
+      navigator.vibrate([50]);
       this.$router.push("/settings");
       this.activeRoute = route;
     },

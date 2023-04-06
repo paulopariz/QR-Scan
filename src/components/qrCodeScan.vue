@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="fixed top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2">
-      <div v-show="ShowScan">
+      <div v-show="ShowScan" id="ShowScan">
         <StreamBarcodeReader
           @decode="onDecode"
           @loaded="onLoaded"
@@ -10,7 +10,7 @@
       </div>
     </div>
 
-    <div v-show="ShowQrCodeRead">
+    <div v-show="ShowQrCodeRead" id="ShowQrCodeRead">
       <BackgroundForModals :closeModal="closeModal" title="Resultado" />
       <QrCodeRead
         :link="textToCopy"
@@ -49,6 +49,8 @@ export default {
   },
   methods: {
     onDecode(contentQrCode) {
+      navigator.vibrate([50]);
+
       this.ShowQrCodeRead = true;
       this.ShowScan = false;
       this.textToCopy = contentQrCode;
@@ -63,6 +65,8 @@ export default {
     },
 
     closeModal() {
+      navigator.vibrate([50]);
+
       this.ShowQrCodeRead = false;
       this.ShowScan = true;
     },
@@ -85,6 +89,7 @@ export default {
         }, 3000);
       } catch (err) {
         this.copyTextBtn = "Erro!";
+        navigator.vibrate([200]);
 
         document.getElementById("iconCheck").style.display = "none";
         document.getElementById("iconError").style.display = "block";
