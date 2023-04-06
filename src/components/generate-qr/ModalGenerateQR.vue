@@ -5,7 +5,7 @@
     <img :src="img" class="w-16 select-none" />
 
     <div class="flex flex-col gap-3 w-full">
-      <label for="Username" class="text-white-2 tracking-wide">Username</label>
+      <label for="Username" class="text-white-2 tracking-wide">{{ label }}</label>
       <input
         :type="typeInput"
         :placeholder="placeholder"
@@ -13,7 +13,7 @@
         class="px-4 py-2 bg-[#222121] border border-white-2/70 rounded-md drop-shadow-2xl shadow-lg text-white-2/40 outline-none transition-all focus:border-light"
       />
 
-      <input type="text" id="twitter-url" class="hidden" :value="twitterUrl" readonly />
+      <input type="text" id="twitter-url" class="" :value="url" readonly />
     </div>
 
     <button
@@ -27,11 +27,10 @@
 
 <script>
 export default {
-  props: ["closeModal", "title", "img", "placeholder", "typeInput"],
+  props: ["closeModal", "title", "img", "placeholder", "typeInput", "label", "url"],
 
   data() {
     return {
-      link: "https://twitter.com/",
       username: "",
     };
   },

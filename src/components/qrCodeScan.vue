@@ -5,7 +5,7 @@
         <StreamBarcodeReader
           @decode="onDecode"
           @loaded="onLoaded"
-          class="w-screen scale-110"
+          class="w-screen scale-150"
         ></StreamBarcodeReader>
       </div>
     </div>
