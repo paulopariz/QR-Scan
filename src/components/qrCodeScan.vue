@@ -5,7 +5,7 @@
         <StreamBarcodeReader
           @decode="onDecode"
           @loaded="onLoaded"
-          class="w-screen scale-150"
+          class="w-screen scale-110"
         ></StreamBarcodeReader>
       </div>
     </div>
@@ -49,7 +49,7 @@ export default {
   },
   methods: {
     onDecode(contentQrCode) {
-      navigator.vibrate([50]);
+      navigator.vibrate([200]);
 
       this.ShowQrCodeRead = true;
       this.ShowScan = false;

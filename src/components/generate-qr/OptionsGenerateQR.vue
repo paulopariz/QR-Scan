@@ -119,6 +119,8 @@ export default {
       document.getElementById("BarBottom").style.display = "none";
     },
     closeModal() {
+      navigator.vibrate([50]);
+
       this.viewModal = false;
       window.history.pushState(null, null, "/generate-qr");
 
