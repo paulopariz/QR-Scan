@@ -12,13 +12,19 @@
 
     <div v-show="ShowQrCodeRead">
       <BackgroundForModals :closeModal="closeModal" title="Resultado" />
-      <QrCodeRead :link="linkQrCode" :clickCopy="copy" :copyTextBtn="copyTextBtn" />
+      <QrCodeRead
+        :link="textToCopy"
+        :clickCopy="copy"
+        :copyTextBtn="copyTextBtn"
+        :date="currentDateTime"
+      />
     </div>
   </section>
 </template>
 
 <script>
 import { StreamBarcodeReader } from "vue-barcode-reader";
+import moment from "moment";
 
 import BackgroundForModals from "./BackgroundForModals.vue";
 import QrCodeRead from "./read-qr/QrCodeRead.vue";
@@ -32,20 +38,22 @@ export default {
 
   data() {
     return {
+      currentDateTime: "",
+
       ShowScan: false,
       ShowQrCodeRead: true,
-      linkQrCode: "",
 
-      textToCopy: "https://github.io",
+      textToCopy: "",
       copyTextBtn: "Copiar",
     };
   },
   methods: {
-    onDecode(text) {
-      console.log(`Decode text from QR code is ${text}`);
+    onDecode(contentQrCode) {
       this.ShowQrCodeRead = true;
       this.ShowScan = false;
-      this.linkQrCode = text;
+      this.textToCopy = contentQrCode;
+
+      this.currentDateTime = moment().locale("pt-br").format("D MMM YYYY, h:mm a");
     },
     onLoaded() {
       console.log(`Ready to start scanning barcodes`);
@@ -63,11 +71,25 @@ export default {
 
         document.getElementById("iconCheck").style.display = "block";
         document.getElementById("iconError").style.display = "none";
+
+        setTimeout(() => {
+          this.copyTextBtn = "Copiar";
+
+          document.getElementById("iconError").style.display = "none";
+          document.getElementById("iconCheck").style.display = "none";
+        }, 3000);
       } catch (err) {
         this.copyTextBtn = "Erro!";
 
         document.getElementById("iconCheck").style.display = "none";
         document.getElementById("iconError").style.display = "block";
+
+        setTimeout(() => {
+          this.copyTextBtn = "Copiar";
+
+          document.getElementById("iconCheck").style.display = "none";
+          document.getElementById("iconError").style.display = "none";
+        });
         console.error(err);
       }
     },
