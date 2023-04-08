@@ -35,7 +35,7 @@
               viewModal.label
             }}</label>
             <input
-              type="viewModal.typeInput"
+              :type="viewModal.type"
               :placeholder="viewModal.placeholder"
               v-model="username"
               class="px-4 py-2 bg-[#222121] border border-white-2/70 rounded-md drop-shadow-2xl shadow-lg text-white-2/40 outline-none transition-all focus:border-light"
