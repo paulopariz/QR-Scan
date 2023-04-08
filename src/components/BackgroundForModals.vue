@@ -1,11 +1,11 @@
 <template>
   <div
-    class="px-10 pb-6 m-auto h-screen w-screen bg-[#333333] fixed z-30 top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2"
+    class="px-10 pb-6 m-auto h-screen w-screen bg-[#333333] overflow-hidden absolute z-30 top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2"
   >
     <EclipseBackground class="-right-[45%] -top-[15%]" />
     <EclipseBackground class="bottom-0 -left-2/3 -scale-95" />
 
-    <nav class="flex items-center gap-6 mt-9">
+    <nav class="flex items-center gap-6 mt-14">
       <button
         id="btnBack"
         @click="closeModal"

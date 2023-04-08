@@ -4,7 +4,7 @@
       <!--BOTÃO DE ATIVAR SCAN!-->
       <button
         @click="ShowScan = true"
-        class="px-9 py-2 rounded-lg text-white-2 border border-white-2/5 transition-all hover:scale-95 active:scale-95"
+        class="px-9 py-2 rounded-lg text-white-2 border border-white-2/5 transition-all hover:scale-95 active:scale-95 button"
         :class="{ hidden: ShowScan === true }"
       >
         Abrir Scan
@@ -46,7 +46,6 @@ export default {
 
   data() {
     return {
-      loading: false,
       currentDateTime: "",
 
       ShowQrCodeRead: false,
@@ -116,7 +115,7 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style>
 .laser {
   background-color: #fdb623 !important;
   box-shadow: 0 0 4px #fdb623 !important;
@@ -126,7 +125,7 @@ video {
   height: 10px;
 }
 
-button {
+.button {
   background: #303030;
   box-shadow: 8px 8px 16px #2a2a2a, -8px -8px 16px #383838;
 }

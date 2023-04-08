@@ -6,7 +6,7 @@
       </h1>
       <button
         @click="startClick"
-        class="bg-dark flex items-center justify-between w-4/5 px-7 h-14 select-none rounded-lg transition-all active:scale-95 hover:scale-95"
+        class="bg-dark flex items-center justify-between border border-white-2/5 w-4/5 px-7 h-14 select-none rounded-lg transition-all active:scale-95 hover:scale-95"
       >
         <span class="text-transparent text-[0px]">.</span>
         <h1 class="text-white font-bold tracking-wide text-base">{{ startText }}</h1>
