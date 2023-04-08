@@ -9,7 +9,7 @@
       <button
         id="btnBack"
         @click="closeModal"
-        class="px-4 py-3 rounded-lg bg-dark drop-shadow-2xl border-2 border-transparent shadow-lg transition-all hover:scale-95"
+        class="px-4 py-3 rounded-lg border-none transition-all hover:scale-95"
       >
         <img
           src="@/assets/img/iconBack.svg"
@@ -41,5 +41,10 @@ input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+button {
+  background: #303030;
+  box-shadow: 8px 8px 16px #2a2a2a, -8px -8px 16px #383838;
 }
 </style>

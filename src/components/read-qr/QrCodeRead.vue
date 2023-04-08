@@ -87,9 +87,14 @@ export default {
 };
 </script>
 
-<style>
+<style scoped lang="scss">
 .x {
   background: rgb(38, 38, 38);
   background: linear-gradient(90deg, rgba(38, 38, 38, 0) 0%, rgba(38, 38, 38, 0.767) 19%);
+}
+button,
+a {
+  background: #303030;
+  box-shadow: 8px 8px 16px #2a2a2a, -8px -8px 16px #383838;
 }
 </style>

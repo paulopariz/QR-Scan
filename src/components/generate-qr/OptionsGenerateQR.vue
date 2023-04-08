@@ -10,12 +10,14 @@
       <div v-for="option in Options" :key="option.id">
         <div
           @click="openModal(option.id)"
-          class="bg-dark rounded-lg w-24 h-24 flex items-center justify-center transition-all drop-shadow-2xl shadow-lg border-2 border-transparent cursor-pointer select-none"
+          class="rounded-lg w-24 h-24 flex items-center justify-center transition-all border-2 border-transparent cursor-pointer select-none"
           id="modal"
         >
           <div class="flex items-center flex-col gap-3">
             <img :src="option.icon" :alt="option.name" class="transition-all" />
-            <h2 class="text-white-2 text-xs transition-all">{{ option.name }}</h2>
+            <h2 class="text-white-2 text-xs transition-all font-semibold tracking-wide">
+              {{ option.name }}
+            </h2>
           </div>
         </div>
       </div>
@@ -41,7 +43,7 @@
               class="px-4 py-2 bg-[#222121] border border-white-2/70 rounded-md drop-shadow-2xl shadow-lg text-white-2/40 outline-none transition-all focus:border-light"
             />
 
-            <input type="text" id="twitter-url" class="" :value="url" readonly />
+            <input type="text" id="twitter-url" class="hidden" :value="url" readonly />
           </div>
 
           <button
@@ -184,16 +186,23 @@ export default {
 </script>
 
 <style scoped lang="scss">
-#modal:hover {
-  background-color: #fdb623;
-  img {
-    filter: invert(100%);
+#modal {
+  background: #303030;
+  box-shadow: 8px 8px 16px #2a2a2a, -8px -8px 16px #383838;
+
+  &:active {
+    background-color: #fdb623;
   }
-  h2 {
-    filter: invert(100%);
+
+  &:hover {
+    background-color: #fdb623;
+    box-shadow: none;
+    img {
+      filter: invert(100%);
+    }
+    h2 {
+      filter: invert(100%);
+    }
   }
-}
-#modal:active {
-  background-color: #fdb623;
 }
 </style>

@@ -59,8 +59,8 @@ export default {
       this.$router.push("/");
       this.activeRoute = route;
 
-      document.getElementById("ShowQrCodeRead").style.display = "none";
-      document.getElementById("ShowScan").style.display = "block";
+      // document.getElementById("ShowQrCodeRead").style.display = "none";
+      // document.getElementById("ShowScan").style.display = "block";
     },
 
     configs(route) {
