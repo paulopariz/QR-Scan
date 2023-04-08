@@ -1,5 +1,5 @@
 <template>
-  <div class="w-screen h-screen fixed z-50 bg-light">
+  <div class="w-screen h-screen fixed z-50">
     <span
       class="loader animate__animated animate__fadeIn animate__delay-1s fixed top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2"
     ></span>

@@ -1,13 +1,21 @@
 <template>
   <section>
     <div class="fixed top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2">
-      <div v-show="ShowScan" id="ShowScan">
-        <StreamBarcodeReader
-          @decode="onDecode"
-          @loaded="onLoaded"
-          class="w-screen scale-150"
-        ></StreamBarcodeReader>
-      </div>
+      <!--BOTÃO DE ATIVAR SCAN!-->
+      <button
+        @click="ShowScan = true"
+        class="px-9 py-2 rounded-lg text-white-2 border border-white-2/5 transition-all hover:scale-95 active:scale-95"
+        :class="{ hidden: ShowScan === true }"
+      >
+        Abrir Scan
+      </button>
+
+      <StreamBarcodeReader
+        v-if="ShowScan"
+        @decode="onDecode"
+        @loaded="onLoaded"
+        class="w-screen scale-150"
+      />
     </div>
 
     <div v-show="ShowQrCodeRead" id="ShowQrCodeRead">
@@ -38,21 +46,22 @@ export default {
 
   data() {
     return {
+      loading: false,
       currentDateTime: "",
 
-      ShowScan: true,
       ShowQrCodeRead: false,
+      ShowScan: false,
 
       textToCopy: "",
       copyTextBtn: "Copiar",
     };
   },
+
   methods: {
     onDecode(contentQrCode) {
       navigator.vibrate([200]);
-
-      this.ShowQrCodeRead = true;
       this.ShowScan = false;
+      this.ShowQrCodeRead = true;
       this.textToCopy = contentQrCode;
       this.currentDateTime = moment().locale("pt-br").format("D MMM YYYY, h:mm a");
 
@@ -67,8 +76,8 @@ export default {
     closeModal() {
       navigator.vibrate([50]);
 
-      this.ShowQrCodeRead = false;
       this.ShowScan = true;
+      this.ShowQrCodeRead = false;
     },
 
     async copy() {
@@ -107,7 +116,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped lang="scss">
 .laser {
   background-color: #fdb623 !important;
   box-shadow: 0 0 4px #fdb623 !important;
@@ -115,5 +124,10 @@ export default {
 
 video {
   height: 10px;
+}
+
+button {
+  background: #303030;
+  box-shadow: 8px 8px 16px #2a2a2a, -8px -8px 16px #383838;
 }
 </style>

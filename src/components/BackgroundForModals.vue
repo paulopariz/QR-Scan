@@ -9,7 +9,7 @@
       <button
         id="btnBack"
         @click="closeModal"
-        class="px-4 py-3 rounded-lg border-none transition-all hover:scale-95"
+        class="px-4 py-3 rounded-lg border border-white-2/5 transition-all hover:scale-95"
       >
         <img
           src="@/assets/img/iconBack.svg"

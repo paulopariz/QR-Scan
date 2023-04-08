@@ -29,7 +29,7 @@
         <a
           :href="link"
           target="_blank"
-          class="bg-light rounded-md px-5 py-4 transition-all hover:scale-95 active:scale-95 cursor-pointer"
+          class="bg-light rounded-md px-5 py-4 transition-all hover:scale-95 active:scale-95 border border-white-2/5 cursor-pointer"
         >
           <img
             src="@/assets/img/iconAccess.svg"
@@ -43,7 +43,7 @@
 
       <div class="flex flex-col gap-2 items-center">
         <button
-          class="bg-light rounded-md px-5 py-4 transition-all hover:scale-95 active:scale-95"
+          class="bg-light rounded-md px-5 py-4 transition-all hover:scale-95 active:scale-95 border border-white-2/5"
           @click="clickCopy"
         >
           <img

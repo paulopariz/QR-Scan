@@ -10,7 +10,7 @@
       <div v-for="option in Options" :key="option.id">
         <div
           @click="openModal(option.id)"
-          class="rounded-lg w-24 h-24 flex items-center justify-center transition-all border-2 border-transparent cursor-pointer select-none"
+          class="rounded-lg w-24 h-24 flex items-center justify-center transition-all border border-white-2/5 cursor-pointer select-none"
           id="modal"
         >
           <div class="flex items-center flex-col gap-3">
@@ -197,6 +197,7 @@ export default {
   &:hover {
     background-color: #fdb623;
     box-shadow: none;
+    border-color: transparent;
     img {
       filter: invert(100%);
     }
