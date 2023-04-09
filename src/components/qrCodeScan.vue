@@ -1,6 +1,8 @@
 <template>
   <section>
-    <div class="fixed top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2">
+    <div
+      class="absolute top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2 overflow-hidden"
+    >
       <!--BOTÃO DE ATIVAR SCAN!-->
       <button
         @click="ShowScan = true"
