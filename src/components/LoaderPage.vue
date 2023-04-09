@@ -1,43 +1,48 @@
 <template>
   <div>
-    <IconLoading
-      v-show="loading"
-      class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-light"
-    />
-
     <div v-show="Loader">
       <div class="h-screen w-screen bg-light fixed z-50">
         <div class="fixed top-[30%] left-1/2 -translate-x-1/2 -translate-y-1/2">
           <img src="../assets/img/logoLight.svg" class="select-none" alt="Logo" />
         </div>
 
-        <SectionStart :startClick="start" startText="Iniciar" />
+        <SectionStart
+          :startClick="start"
+          startText="Iniciar"
+          :contentBtn="contentBtn"
+          :loadingBtn="loadingBtn"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import IconLoading from "./iconLoading.vue";
 import SectionStart from "./SectionStart.vue";
 export default {
-  components: { SectionStart, IconLoading },
+  components: { SectionStart },
 
   data() {
     return {
       Loader: false,
       loading: true,
+
+      loadingBtn: false,
+      contentBtn: true,
     };
   },
   methods: {
     start() {
-      this.Loader = false;
+      this.loadingBtn = true;
+      this.contentBtn = false;
+
       navigator.vibrate([50]);
 
       setTimeout(() => {
         // this.$router.push("/");
         document.getElementById("BarBottom").style.display = "block";
-      }, 100);
+        this.Loader = false;
+      }, 2000);
     },
   },
 
@@ -45,7 +50,7 @@ export default {
     setTimeout(() => {
       this.loading = false;
       this.Loader = true;
-    }, 4000);
+    }, 2000);
   },
 };
 </script>

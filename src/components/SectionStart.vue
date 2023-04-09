@@ -6,19 +6,26 @@
       </h1>
       <button
         @click="startClick"
-        class="bg-dark flex items-center justify-between border border-white-2/5 w-4/5 px-7 h-14 select-none rounded-lg transition-all active:scale-95 hover:scale-95"
+        class="bg-dark border border-white-2/5 w-4/5 px-7 h-14 select-none rounded-lg transition-all active:scale-95 hover:scale-95"
       >
-        <span class="text-transparent text-[0px]">.</span>
-        <h1 class="text-white font-bold tracking-wide text-base">{{ startText }}</h1>
-        <img src="@/assets/img/arrow.svg" alt="Arrow" />
+        <div v-show="contentBtn" class="flex items-center justify-between">
+          <span class="text-transparent text-[0px]">.</span>
+          <h1 class="text-white font-bold tracking-wide text-base">{{ startText }}</h1>
+          <img src="@/assets/img/arrow.svg" alt="Arrow" />
+        </div>
+
+        <IconLoadingBtn class="flex justify-center items-center" v-show="loadingBtn" />
       </button>
     </div>
   </div>
 </template>
 
 <script>
+import IconLoadingBtn from "./iconLoadingBtn.vue";
+
 export default {
-  props: ["startText", "startClick"],
+  props: ["startText", "startClick", "loadingBtn", "contentBtn"],
+  components: { IconLoadingBtn },
 };
 </script>
 

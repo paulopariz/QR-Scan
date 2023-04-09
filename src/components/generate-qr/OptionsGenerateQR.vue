@@ -168,10 +168,12 @@ export default {
     },
 
     openModal(optionId) {
-      this.viewModal = this.Options.find((option) => option.id === optionId);
-      window.history.pushState(null, null, `/generate-qr/${this.viewModal.name}`);
+      setTimeout(() => {
+        this.viewModal = this.Options.find((option) => option.id === optionId);
+        window.history.pushState(null, null, `/generate-qr/${this.viewModal.name}`);
 
-      document.getElementById("BarBottom").style.display = "none";
+        document.getElementById("BarBottom").style.display = "none";
+      }, 800);
     },
     closeModal() {
       navigator.vibrate([50]);
