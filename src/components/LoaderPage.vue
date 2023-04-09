@@ -24,8 +24,7 @@ export default {
 
   data() {
     return {
-      Loader: false,
-      loading: true,
+      Loader: true,
 
       loadingBtn: false,
       contentBtn: true,
@@ -44,13 +43,6 @@ export default {
         this.Loader = false;
       }, 2000);
     },
-  },
-
-  created() {
-    setTimeout(() => {
-      this.loading = false;
-      this.Loader = true;
-    }, 2000);
   },
 };
 </script>
