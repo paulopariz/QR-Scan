@@ -27,43 +27,41 @@
       <div v-if="viewModal">
         <BackgroundForModals :closeModal="closeModal" :title="viewModal.name" />
 
-        <div
-          class="w-5/6 gap-9 drop-shadow-2xl shadow-lg absolute z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-dark/50 rounded-lg border-2 border-x-0 border-light flex flex-col justify-between items-center px-5 py-8"
-        >
-          <img :src="viewModal.icon" class="w-16 select-none" />
+        <!--Modal para gerar o qr code-->
 
-          <div class="flex flex-col gap-3 w-full">
-            <label for="Username" class="text-white-2 tracking-wide">{{
-              viewModal.label
-            }}</label>
-            <input
-              :type="viewModal.type"
-              :placeholder="viewModal.placeholder"
-              v-model="username"
-              class="px-4 py-2 bg-[#222121] border border-white-2/70 rounded-md drop-shadow-2xl shadow-lg text-white-2/40 outline-none transition-all focus:border-light"
-            />
-
-            <input type="text" id="twitter-url" class="hidden" :value="url" readonly />
-          </div>
-
-          <button
-            @click="generate"
-            class="mt-4 px-6 py-2 bg-light text-dark tracking-wide rounded-lg drop-shadow-2xl shadow-lg transition-all active:scale-95 hover:scale-95"
+        <div v-show="showModalGenerated">
+          <div
+            class="w-5/6 gap-9 drop-shadow-2xl shadow-lg absolute z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-dark/50 rounded-lg border-2 border-x-0 border-light flex flex-col justify-between items-center px-5 py-8"
           >
-            Gerar QR Code
-          </button>
+            <img :src="viewModal.icon" class="w-16 select-none" />
+
+            <div class="flex flex-col gap-3 w-full">
+              <label for="Username" class="text-white-2 tracking-wide">{{
+                viewModal.label
+              }}</label>
+              <input
+                :type="viewModal.type"
+                :placeholder="viewModal.placeholder"
+                v-model="username"
+                class="px-4 py-2 bg-[#222121] border border-white-2/70 rounded-md drop-shadow-2xl shadow-lg text-white-2/40 outline-none transition-all focus:border-light"
+              />
+
+              <input type="text" id="twitter-url" class="hidden" :value="url" readonly />
+            </div>
+
+            <button
+              @click="generate"
+              class="mt-4 px-6 py-2 bg-light text-dark tracking-wide rounded-lg drop-shadow-2xl shadow-lg transition-all active:scale-95 hover:scale-95"
+            >
+              Gerar QR Code
+            </button>
+          </div>
         </div>
 
-        <div v-show="x">
-          <div
-            class="absolute z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-zinc-700 h-screen w-screen"
-          >
-            <qr-code
-              :text="qrCodeGenerated"
-              :size="100"
-              class="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 top-1/2"
-            ></qr-code>
-          </div>
+        <!--Modal qr code gerado-->
+
+        <div v-show="ShowQrCodeGenerated">
+          <QrCodeGenerated :qrCodeGenerated="qrCodeGenerated" />
         </div>
       </div>
     </div>
@@ -72,14 +70,16 @@
 
 <script>
 import BackgroundForModals from "../BackgroundForModals.vue";
+import QrCodeGenerated from "../qr-generated/qrCodeGenerated.vue";
 
 export default {
-  components: { BackgroundForModals },
+  components: { BackgroundForModals, QrCodeGenerated },
   data() {
     return {
       viewModal: null,
       username: "",
-      x: false,
+      ShowQrCodeGenerated: false,
+      showModalGenerated: true,
 
       qrCodeGenerated: "",
 
@@ -177,9 +177,12 @@ export default {
 
   methods: {
     generate() {
+      this.ShowQrCodeGenerated = true;
+      this.showModalGenerated = false;
+
       console.log(this.url);
+
       this.qrCodeGenerated = this.url;
-      this.x = true;
 
       this.username = "";
     },
@@ -192,8 +195,12 @@ export default {
         document.getElementById("BarBottom").style.display = "none";
       }, 800);
     },
+
     closeModal() {
       navigator.vibrate([50]);
+
+      this.ShowQrCodeGenerated = false;
+      this.showModalGenerated = true;
 
       this.viewModal = false;
       window.history.pushState(null, null, "/generate-qr");
