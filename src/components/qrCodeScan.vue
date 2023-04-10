@@ -58,6 +58,8 @@ export default {
 
   methods: {
     onDecode(contentQrCode) {
+      document.getElementById("BarBottom").style.display = "none";
+
       navigator.vibrate([200]);
       this.ShowScan = false;
       this.ShowQrCodeRead = true;
@@ -73,6 +75,7 @@ export default {
     },
 
     closeModal() {
+      document.getElementById("BarBottom").style.display = "block";
       navigator.vibrate([50]);
 
       this.ShowScan = true;
