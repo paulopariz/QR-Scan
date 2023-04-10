@@ -25,7 +25,7 @@
       <!--MODAL-->
 
       <div v-if="viewModal">
-        <BackgroundForModals :closeModal="closeModal" :title="viewModal.name" />
+        <BackgroundForModals :closeModal="closeModal" :title="title" />
 
         <!--Modal para gerar o qr code-->
 
@@ -173,6 +173,14 @@ export default {
     url() {
       return this.viewModal.url + this.username;
     },
+
+    title() {
+      if (this.ShowQrCodeGenerated == true) {
+        return "QR Code" + " " + this.viewModal.name;
+      } else {
+        return this.viewModal.name;
+      }
+    },
   },
 
   methods: {
@@ -193,7 +201,7 @@ export default {
         window.history.pushState(null, null, `/generate-qr/${this.viewModal.name}`);
 
         document.getElementById("BarBottom").style.display = "none";
-      }, 800);
+      }, 100);
     },
 
     closeModal() {

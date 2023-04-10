@@ -5,7 +5,7 @@
     <EclipseBackground class="-right-[45%] -top-[15%]" />
     <EclipseBackground class="bottom-0 -left-2/3 -scale-95" />
 
-    <nav class="flex items-center gap-6 mt-9">
+    <nav class="flex items-center gap-6 mt-12">
       <button
         id="btnBack"
         @click="closeModal"
