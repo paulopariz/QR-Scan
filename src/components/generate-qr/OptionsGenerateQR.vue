@@ -53,6 +53,18 @@
             Gerar QR Code
           </button>
         </div>
+
+        <div v-show="x">
+          <div
+            class="absolute z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-zinc-700 h-screen w-screen"
+          >
+            <qr-code
+              :text="qrCodeGenerated"
+              :size="100"
+              class="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 top-1/2"
+            ></qr-code>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -67,6 +79,9 @@ export default {
     return {
       viewModal: null,
       username: "",
+      x: false,
+
+      qrCodeGenerated: "",
 
       Options: [
         {
@@ -163,6 +178,8 @@ export default {
   methods: {
     generate() {
       console.log(this.url);
+      this.qrCodeGenerated = this.url;
+      this.x = true;
 
       this.username = "";
     },
