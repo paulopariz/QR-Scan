@@ -11,39 +11,84 @@
         class="w-full text-base text-white-2/80 tracking-wide select-none whitespace-nowrap overflow-auto py-0.5 transition-all"
         id="textCopy"
       >
-        {{ qrCodeGenerated }}
+        {{ qrCodeGeneratedContet }}
       </p>
     </div>
 
-    <qr-code
+    <img
+      :src="qrCodeGenerated"
+      alt="QR Code"
+      class="absolute z-[100] left-1/2 -translate-x-1/2 -translate-y-1/2 top-1/2 border-4 rounded-md border-light p-4 bg-white-2"
+      id="imgQrCode"
+    />
+
+    <!-- <qr-code
       id="imgQrCode"
       :text="qrCodeGenerated"
       :size="140"
       bg-color="#D9D9D9"
       class="absolute z-[100] left-1/2 -translate-x-1/2 -translate-y-1/2 top-1/2 border-4 rounded-md border-light p-4 bg-white-2"
       error-level="H"
-    ></qr-code>
+    ></qr-code> -->
 
     <div
       class="absolute z-50 top-2/3 left-1/2 -translate-x-1/2 flex items-center justify-center gap-10"
     >
-      <div class="flex flex-col gap-2 items-center">
-        <button
-          id="downloadBtn"
-          @click="download"
-          class="rounded-md px-5 py-4 transition-all hover:scale-95 active:scale-95 border border-white-2/5 cursor-pointer"
-        >
-          <img
-            src="@/assets/img/iconDownload.svg"
-            class="flex items-center justify-center animate__animated"
-            :class="{ download: downloadText === 'Baixando...' }"
-            alt="Copy"
-          />
-        </button>
+      <div class="flex items-center gap-6">
+        <div class="flex flex-col gap-2 items-center">
+          <button
+            @click="download"
+            class="rounded-md px-5 py-4 transition-all hover:scale-95 active:scale-95 border border-white-2/5 cursor-pointer"
+          >
+            <img
+              src="@/assets/img/iconDownload.svg"
+              class="flex items-center justify-center animate__animated"
+              :class="{ download: downloadText === 'Baixando...' }"
+              alt="Copy"
+            />
+          </button>
+          <span class="text-sm text-white-2 tracking-wide animate__animated">
+            {{ downloadText }}</span
+          >
+        </div>
 
-        <span class="text-sm text-white-2 tracking-wide animate__animated">
-          {{ downloadText }}</span
-        >
+        <!--SAVE QRCODE-->
+        <div class="flex flex-col gap-2 items-center">
+          <button
+            id="downloadBtn"
+            @click="saveQrCode"
+            class="rounded-md px-5 py-4 transition-all hover:scale-95 active:scale-95 border border-white-2/5 cursor-pointer"
+          >
+            <img
+              src="@/assets/img/iconCopy.svg"
+              class="flex items-center justify-center animate__animated"
+              :class="{ download: downloadText === 'Baixando...' }"
+              alt="Copy"
+            />
+          </button>
+          <span class="text-sm text-white-2 tracking-wide animate__animated">
+            Salvar</span
+          >
+        </div>
+
+        <!--VER QRCODE SALVO-->
+
+        <div class="flex flex-col gap-2 items-center">
+          <button
+            @click="showHistory"
+            class="rounded-md px-5 py-4 transition-all hover:scale-95 active:scale-95 border border-white-2/5 cursor-pointer"
+          >
+            <img
+              src="@/assets/img/iconSettings.svg"
+              class="flex items-center justify-center animate__animated"
+              :class="{ download: downloadText === 'Baixando...' }"
+              alt="Copy"
+            />
+          </button>
+          <span class="text-sm text-white-2 tracking-wide animate__animated">
+            Ver historico</span
+          >
+        </div>
       </div>
     </div>
   </div>
@@ -55,7 +100,7 @@
 export default {
   components: {},
 
-  props: ["qrCodeGenerated"],
+  props: ["qrCodeGenerated", "qrCodeGeneratedContet", "saveQrCode", "showHistory"],
   data() {
     return {
       imgDownload: "",

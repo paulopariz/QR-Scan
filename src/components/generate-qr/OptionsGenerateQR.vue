@@ -75,7 +75,25 @@
         <!--Modal qr code gerado-->
 
         <div v-show="ShowQrCodeGenerated">
-          <QrCodeGenerated :qrCodeGenerated="qrCodeGenerated" />
+          <QrCodeGenerated
+            :qrCodeGeneratedContet="qrCodeGeneratedContet"
+            :qrCodeGenerated="qrCode"
+            :saveQrCode="saveQrCode"
+            :showHistory="showHistory"
+          />
+
+          <div v-show="viewHistory">
+            <div
+              v-if="qrCodes.length"
+              class="absolute z-[1000] top-[100%] left-1/2 -translate-x-1/2 -translate-y-1/2 h-2/4 w-screen bg-zinc-600"
+            >
+              <ul>
+                <li v-for="(code, index) in qrCodes" :key="index">
+                  <img :src="code" alt="QR Code" />
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -86,16 +104,24 @@
 import BackgroundForModals from "../BackgroundForModals.vue";
 import QrCodeGenerated from "../qr-generated/qrCodeGenerated.vue";
 
+import qrcode from "qrcode";
+
 export default {
   components: { BackgroundForModals, QrCodeGenerated },
   data() {
     return {
       viewModal: null,
       username: "",
+
+      qrCodes: [],
+      qrCode: null,
+      viewHistory: false,
+
       ShowQrCodeGenerated: false,
       showModalGenerated: true,
 
       qrCodeGenerated: "",
+      qrCodeGeneratedContet: "",
 
       msgValidation: false,
 
@@ -199,12 +225,40 @@ export default {
     },
   },
 
+  mounted() {
+    const qrCodes = localStorage.getItem("qrCodes");
+    if (qrCodes) {
+      this.qrCodes = JSON.parse(qrCodes);
+    }
+  },
+
   methods: {
-    generate() {
+    contentQrcode() {
+      this.qrCodeGeneratedContet = this.url;
+    },
+
+    showHistory() {
+      this.viewHistory = !this.history;
+    },
+
+    saveQrCode() {
+      this.qrCodes.push(this.qrCode);
+      localStorage.setItem("qrCodes", JSON.stringify(this.qrCodes));
+    },
+
+    async generate() {
+      this.contentQrcode();
       if (this.username.length == "") {
         this.msgValidation = true;
         document.getElementById("input").style.borderColor = "#FF0000";
       } else {
+        const qrCodeData = this.url;
+        const qrCode = await qrcode.toDataURL(qrCodeData);
+
+        this.qrCode = qrCode;
+
+        //
+
         this.msgValidation = false;
         this.ShowQrCodeGenerated = true;
         this.showModalGenerated = false;
