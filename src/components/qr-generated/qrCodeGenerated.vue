@@ -50,8 +50,6 @@
 </template>
 
 <script>
-import { saveAs } from "file-saver";
-
 export default {
   components: {},
 
@@ -78,8 +76,14 @@ export default {
 
         fetch(imgSrc)
           .then((response) => response.blob())
-          .then((blob) => saveAs(blob, "QR-Code.png"))
-          .catch((error) => console.error(error));
+          .then((blob) => {
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "QR-Code.png";
+            a.click();
+            window.URL.revokeObjectURL(url);
+          });
       }, 5000);
 
       setTimeout(() => {
