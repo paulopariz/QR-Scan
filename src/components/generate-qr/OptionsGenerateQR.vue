@@ -44,6 +44,7 @@
                 :type="viewModal.type"
                 :placeholder="viewModal.placeholder"
                 v-model="username"
+                @keyup.enter="generate"
                 id="input"
                 class="px-4 py-2 bg-[#222121] border border-white-2/70 rounded-md drop-shadow-2xl shadow-lg text-white-2/40 outline-none transition-all focus:border-light"
               />
@@ -51,7 +52,14 @@
                 >O campo não pode estar vazio</span
               >
 
-              <input type="text" id="twitter-url" class="hidden" :value="url" readonly />
+              <input
+                type="text"
+                id="twitter-url"
+                class="hidden"
+                :value="url"
+                readonly
+                @keyup.enter="generate"
+              />
             </div>
 
             <button
