@@ -36,15 +36,20 @@
             <img :src="viewModal.icon" class="w-16 select-none" />
 
             <div class="flex flex-col gap-3 w-full">
-              <label for="Username" class="text-white-2 tracking-wide">{{
-                viewModal.label
-              }}</label>
+              <label for="Username" class="text-white-2 tracking-wide">
+                {{ viewModal.label }}
+              </label>
+
               <input
                 :type="viewModal.type"
                 :placeholder="viewModal.placeholder"
                 v-model="username"
+                id="input"
                 class="px-4 py-2 bg-[#222121] border border-white-2/70 rounded-md drop-shadow-2xl shadow-lg text-white-2/40 outline-none transition-all focus:border-light"
               />
+              <span v-show="msgValidation" class="text-red-600 text-sm tracking-wide"
+                >O campo não pode estar vazio</span
+              >
 
               <input type="text" id="twitter-url" class="hidden" :value="url" readonly />
             </div>
@@ -85,6 +90,8 @@ export default {
       showModalGenerated: true,
 
       qrCodeGenerated: "",
+
+      msgValidation: false,
 
       Options: [
         {
@@ -185,21 +192,27 @@ export default {
       }
     },
 
-    isDisabled() {
-      return this.username.length == "";
-    },
+    // isDisabled() {
+    //   return this.username.length == "";
+    // },
   },
 
   methods: {
     generate() {
-      this.ShowQrCodeGenerated = true;
-      this.showModalGenerated = false;
+      if (this.username.length == "") {
+        this.msgValidation = true;
+        document.getElementById("input").style.borderColor = "#FF0000";
+      } else {
+        this.msgValidation = false;
+        this.ShowQrCodeGenerated = true;
+        this.showModalGenerated = false;
 
-      console.log(this.url);
+        console.log(this.url);
 
-      this.qrCodeGenerated = this.url;
+        this.qrCodeGenerated = this.url;
 
-      this.username = "";
+        this.username = "";
+      }
     },
 
     openModal(optionId) {
