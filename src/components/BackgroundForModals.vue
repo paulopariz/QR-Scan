@@ -37,12 +37,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
 button {
   background: #303030;
   box-shadow: 8px 8px 16px #2a2a2a, -8px -8px 16px #383838;

@@ -50,6 +50,9 @@
             </div>
 
             <button
+              id="generateBtn"
+              :disabled="isDisabled"
+              :class="{ btnDisabled: isDisabled === true }"
               @click="generate"
               class="mt-4 px-6 py-2 bg-light text-dark tracking-wide rounded-lg drop-shadow-2xl shadow-lg transition-all active:scale-95 hover:scale-95"
             >
@@ -181,6 +184,10 @@ export default {
         return this.viewModal.name;
       }
     },
+
+    isDisabled() {
+      return this.username.length == "";
+    },
   },
 
   methods: {
@@ -239,5 +246,16 @@ export default {
       filter: invert(100%);
     }
   }
+}
+
+.btnDisabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 </style>
