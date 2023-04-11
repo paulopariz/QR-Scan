@@ -220,6 +220,7 @@ export default {
 
     closeModal() {
       navigator.vibrate([50]);
+      this.msgValidation = false;
 
       this.ShowQrCodeGenerated = false;
       this.showModalGenerated = true;

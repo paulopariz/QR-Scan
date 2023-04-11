@@ -50,6 +50,8 @@
 </template>
 
 <script>
+import { saveAs } from "file-saver";
+
 export default {
   components: {},
 
@@ -74,16 +76,18 @@ export default {
           .getElementById("imgQrCode")
           .querySelector("div > div > div > img").src;
 
-        fetch(imgSrc)
-          .then((response) => response.blob())
-          .then((blob) => {
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement("a");
-            a.href = url;
-            a.download = "QR-Code.png";
-            a.click();
-            window.URL.revokeObjectURL(url);
-          });
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", imgSrc, true);
+        xhr.responseType = "blob";
+
+        xhr.onload = function () {
+          if (this.status === 200) {
+            const blob = this.response;
+            saveAs(blob, "QR-Code.png");
+          }
+        };
+
+        xhr.send();
       }, 5000);
 
       setTimeout(() => {
