@@ -24,4 +24,8 @@ body {
   font-family: "Itim", cursive;
   background-color: #333333;
 }
+
+*::-webkit-scrollbar {
+  width: 0px;
+}
 </style>
