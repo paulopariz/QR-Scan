@@ -83,7 +83,7 @@
           />
 
           <div v-show="viewHistory">
-            <div
+            <!-- <div
               v-if="qrCodes.length"
               class="absolute z-[1000] top-[100%] left-1/2 -translate-x-1/2 -translate-y-1/2 h-2/4 w-screen bg-zinc-600"
             >
@@ -92,7 +92,7 @@
                   <img :src="code" alt="QR Code" />
                 </li>
               </ul>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -225,12 +225,12 @@ export default {
     },
   },
 
-  mounted() {
-    const qrCodes = localStorage.getItem("qrCodes");
-    if (qrCodes) {
-      this.qrCodes = JSON.parse(qrCodes);
-    }
-  },
+  // mounted() {
+  //   const qrCodes = localStorage.getItem("qrCodes");
+  //   if (qrCodes) {
+  //     this.qrCodes = JSON.parse(qrCodes);
+  //   }
+  // },
 
   methods: {
     contentQrcode() {
@@ -243,7 +243,17 @@ export default {
 
     saveQrCode() {
       this.qrCodes.push(this.qrCode);
-      localStorage.setItem("qrCodes", JSON.stringify(this.qrCodes));
+      this.qrCodes.push(this.qrCodeGeneratedContet);
+
+      const history = {
+        qrCode: this.qrCode,
+        qrCodeGeneratedContent: this.qrCodeGeneratedContet,
+      };
+
+      let qrCodeHistory = JSON.parse(localStorage.getItem("qrCodeHistory")) || [];
+      qrCodeHistory.push(history);
+
+      localStorage.setItem("qrCodeHistory", JSON.stringify(qrCodeHistory));
     },
 
     async generate() {
