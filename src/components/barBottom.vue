@@ -18,17 +18,13 @@
         </li>
 
         <li
-          @click="configs('/settings')"
-          :class="{ active: activeRoute === '/settings' }"
+          @click="configs('/history')"
+          :class="{ active: activeRoute === '/history' }"
           class="flex items-center flex-col gap-1"
         >
-          <img
-            src="@/assets/img/iconSettings.svg"
-            alt="icon"
-            class="transition-all hover:rotate-45"
-          />
+          <img src="@/assets/img/iconHistory.svg" alt="icon" />
           <span class="text-white-2 text-[13px] tracking-wide font-semibold"
-            >Configs</span
+            >Histórico</span
           >
         </li>
       </ul>
@@ -65,7 +61,7 @@ export default {
 
     configs(route) {
       navigator.vibrate([50]);
-      this.$router.push("/settings");
+      this.$router.push("/history");
       this.activeRoute = route;
     },
   },

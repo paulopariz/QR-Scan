@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center justify-between mt-48 px-14">
+  <div class="flex items-center justify-between">
     <div v-if="qrCodes.length" class="">
       <ul>
         <li v-for="(code, index) in qrCodes" :key="index">

@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import GenerateQrView from '../views/GenerateQrView.vue'
-import SettingsView from '../views/SettingsView.vue'
+import HistoryView from '../views/HistoryView.vue'
 
 const routes = [
   {
@@ -16,9 +16,9 @@ const routes = [
 
   },
    {
-     path: '/settings',
-     name: 'settings',
-     component: SettingsView
+     path: '/history',
+     name: 'history',
+     component: HistoryView
 
    }
 ]
