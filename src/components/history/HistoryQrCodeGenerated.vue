@@ -110,17 +110,25 @@ export default {
     },
 
     OpenHistoryQrCode(HistoryQrCodeId) {
-      this.ViewModalHistory = true;
+      document.body.style.overflow = "hidden";
+      document.getElementById("BarBottom").style.bottom = "-150px";
 
-      this.ViewModalHistory = this.qrCodes.find(
-        (HistoryQrCode) => HistoryQrCode.id === HistoryQrCodeId
-      );
+      setTimeout(() => {
+        this.ViewModalHistory = true;
 
-      document.getElementById("BarBottom").style.display = "none";
+        this.ViewModalHistory = this.qrCodes.find(
+          (HistoryQrCode) => HistoryQrCode.id === HistoryQrCodeId
+        );
+      }, 250);
     },
+
     closeModalHistory() {
       this.ViewModalHistory = false;
-      console.log("nsid");
+      document.body.style.overflow = "auto";
+
+      setTimeout(() => {
+        document.getElementById("BarBottom").style.bottom = "0px";
+      }, 350);
     },
   },
 };

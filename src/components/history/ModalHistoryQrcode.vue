@@ -1,12 +1,13 @@
 <template>
   <div
-    class="fixed w-screen h-screen bg-dark/5 z-40 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-all"
+    id="fundoModal"
+    class="fixed w-screen h-screen bg-dark/80 z-40 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center m-auto"
   >
     <section
       id="modal"
-      class="fixed bg-dark z-40 w-11/12 h-3/5 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 transition-all"
+      class="bg-[#333333] h-3/5 w-11/12 z-40 rounded-lg drop-shadow-2xl shadow-lg"
     >
-      <button @click="closeModalHistory" class="bg-red-50 p-2">fechar</button>
+      <button @click="closeModalHistory" class="p-2">fechar</button>
     </section>
   </div>
 </template>
@@ -19,6 +20,29 @@ export default {
 
 <style scoped>
 #modal {
-  transition: modal 3s all;
+  animation: modal 0.5s both;
+}
+
+@keyframes modal {
+  0% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+#fundoModal {
+  animation: fundoModal 0.2s both;
+  backdrop-filter: blur(1.2px);
+}
+
+@keyframes fundoModal {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-screen h-20 fixed z-40 left-1/2 -translate-x-1/2 py-4 px-14 bottom-0 bg-dark border-2 border-x-0 border-b-0 border-light"
+    class="w-screen h-20 fixed z-40 left-1/2 -translate-x-1/2 py-4 px-14 bottom-0 bg-dark border-2 border-x-0 border-b-0 border-light transition-all"
   >
     <div>
       <ul class="flex items-center justify-between">
