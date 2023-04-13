@@ -5,8 +5,8 @@
     <div>
       <ul class="flex items-center justify-between">
         <li
-          @click="generateQr('generate-qr')"
-          :class="{ active: activeRoute === 'generate-qr' }"
+          @click="generateQr('/generate-qr')"
+          :class="{ active: activeRoute === '/generate-qr' }"
           class="flex items-center flex-col gap-1"
         >
           <img src="@/assets/img/iconGenerate.svg" class="" alt="icon" />
