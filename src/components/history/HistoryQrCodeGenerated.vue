@@ -8,7 +8,8 @@
       </nav>
 
       <div
-        class="bg-dark flex items-center justify-center mt-6 p-1.5 rounded-lg"
+        class="flex items-center justify-center mt-6 p-1.5 rounded-lg animate__animated animate__fadeIn"
+        id="selectHistory"
         v-show="selectHistory"
       >
         <div class="w-full">
@@ -16,7 +17,7 @@
           <label
             for="1"
             class="block cursor-pointer rounded-lg select-none p-2 text-center text-white-2 peer-checked:bg-light peer-checked:font-bold peer-checked:text-dark"
-            >1</label
+            >Scan</label
           >
         </div>
 
@@ -25,15 +26,15 @@
           <label
             for="2"
             class="block cursor-pointer rounded-lg select-none p-2 text-center text-white-2 peer-checked:bg-light peer-checked:font-bold peer-checked:text-dark"
-            >2</label
+            >Gerados</label
           >
         </div>
       </div>
     </div>
 
     <div class="px-10 py-6 pb-36 m-auto">
-      <div class="mt-14">
-        <div v-if="qrCodes.length" class="flex flex-col justify-center gap-8">
+      <div class="mt-36">
+        <div v-if="qrCodes.length" class="flex flex-col justify-center gap-5">
           <section v-for="(HistoryQrCode, index) in qrCodes" :key="index">
             <div
               class="rounded-lg border-2 border-transparent px-5 py-3 flex justify-between"
@@ -84,7 +85,7 @@ export default {
 
   methods: {
     handleScroll() {
-      if (window.scrollY > 420) {
+      if (window.scrollY > 620) {
         this.selectHistory = false;
       } else {
         this.selectHistory = true;
@@ -97,6 +98,11 @@ export default {
 <style scoped>
 #setionHistory {
   background: #303030;
+  box-shadow: 8px 8px 16px #2a2a2a, -8px -8px 16px #383838;
+}
+
+#selectHistory {
+  background: #2f2f2f;
   box-shadow: 8px 8px 16px #2a2a2a, -8px -8px 16px #383838;
 }
 </style>
