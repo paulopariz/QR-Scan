@@ -63,45 +63,16 @@
               ></button>
             </div>
 
+            <!--MODAL-->
+
             <div v-show="HistoryQrCode.ViewModalHistory">
               <ModalHistoryQrcode
                 @close="closeModal(HistoryQrCode)"
                 :imgQrCode="HistoryQrCode.qrCode"
                 :xxx="HistoryQrCode.qrCodeGeneratedContent"
               />
-
-              <!-- <div
-                id="fundoModal"
-                class="fixed w-screen h-screen bg-dark/90 z-40 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center m-auto"
-              >
-                <section
-                  id="modal"
-                  class="bg-[#333333] h-3/5 w-11/12 z-40 rounded-lg drop-shadow-2xl shadow-lg"
-                >
-                  <button
-                    @click="closeModalHistory(HistoryQrCode)"
-                    class="p-2 float-right bg-dark border border-white-2/5 transition-all rounded-md -mt-2.5 -mr-2.5 drop-shadow-2xl shadow-lg focus:mt-0 focus:mr-0 focus:bg-transparent focus:border-transparent focus:shadow-none focus:drop-shadow-none"
-                  >
-                    <img src="@/assets/img/iconClose.svg" alt="Close" />
-                  </button>
-
-                  <div>
-                    <img
-                      :src="HistoryQrCode.qrCode"
-                      alt="Qr-Code"
-                      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 border-4 rounded-md border-light bg-white"
-                    />
-
-                    <h1 class="text-white mt-5">
-                      {{ HistoryQrCode.qrCodeGeneratedContent }}
-                    </h1>
-                  </div>
-                </section>
-              </div> -->
             </div>
           </section>
-
-          <!--MODAL-->
         </div>
       </div>
     </div>

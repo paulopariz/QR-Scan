@@ -18,10 +18,33 @@
         <img
           :src="imgQrCode"
           alt="Qr-Code"
-          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 border-4 rounded-md border-light bg-white"
+          class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 border-4 rounded-md border-light bg-white"
         />
+      </div>
+      <div
+        class="w-11/12 m-auto rounded-lg border-2 border-transparent px-5 py-2 absolute top-[70%] left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center gap-5"
+      >
+        <p
+          class="w-full text-lg text-center text-white-2/80 tracking-wide select-none whitespace-nowrap overflow-auto py-0.5 transition-all"
+        >
+          {{ xxx }}
+        </p>
 
-        <h1 class="text-white mt-5">{{ xxx }}</h1>
+        <div class="flex flex-col gap-2 items-center">
+          <a
+            :href="xxx"
+            target="_blank"
+            class="rounded-md px-5 py-4 transition-all hover:scale-95 active:scale-95 border border-white-2/5 cursor-pointer"
+          >
+            <img
+              src="@/assets/img/iconAccess.svg"
+              class="flex items-center justify-center"
+              alt="Copy"
+            />
+          </a>
+
+          <span class="text-sm text-white-2 tracking-wide">Acessar</span>
+        </div>
       </div>
     </section>
   </div>
@@ -67,6 +90,10 @@ export default {
       background: transparent;
       border-color: transparent;
     }
+  }
+  a {
+    background: #303030;
+    box-shadow: 8px 8px 16px #2a2a2a, -8px -8px 16px #383838;
   }
 }
 

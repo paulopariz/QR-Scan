@@ -225,13 +225,6 @@ export default {
     },
   },
 
-  // mounted() {
-  //   const qrCodes = localStorage.getItem("qrCodes");
-  //   if (qrCodes) {
-  //     this.qrCodes = JSON.parse(qrCodes);
-  //   }
-  // },
-
   methods: {
     contentQrcode() {
       this.qrCodeGeneratedContet = this.url;
