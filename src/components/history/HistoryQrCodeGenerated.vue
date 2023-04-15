@@ -1,17 +1,14 @@
 <template>
   <div>
-    <div class="fixed bg-[#333333] w-screen z-10 px-10 pt-6 pb-1 m-auto">
+    <header id="header" class="fixed bg-[#333333] w-screen z-10 px-10 pt-6 pb-2 m-auto">
       <nav class="flex items-center gap-6">
         <h1 class="text-xl text-white-2 font-semibold tracking-wider select-none">
           Histórico
         </h1>
       </nav>
 
-      <div v-show="selectHistory">
-        <div
-          class="grid grid-cols-2 mt-6 p-2 rounded-lg animate__animated animate__fadeIn"
-          id="selectHistory"
-        >
+      <div v-show="selectHistory" class="animate__animated animate__fadeIn">
+        <div class="grid grid-cols-2 mt-6 p-2 rounded-lg" id="selectHistory">
           <div class="w-full">
             <input type="radio" name="option" id="1" class="peer hidden" checked />
             <label
@@ -29,7 +26,7 @@
             >
           </div>
         </div>
-        <div class="float-right px-1 mt-3" v-if="qrCodes.length === ''">
+        <div class="float-right px-1 mt-3" v-if="qrCodes.length > 0">
           <button
             class="text-light tracking-wide text-sm underline decoration-2"
             @click="deleteHistory()"
@@ -38,10 +35,15 @@
           </button>
         </div>
       </div>
-    </div>
+    </header>
 
     <div class="px-10 py-6 pb-36 m-auto">
       <div class="mt-40">
+        <div
+          id="historyClear"
+          class="hidden fixed z-40 -mt-5 left-1/2 -translate-x-1/2 h-[1px] w-full bg-[#333333] border border-light border-x-0 border-t-0 transition-all"
+        ></div>
+
         <div v-if="qrCodes.length" class="flex flex-col justify-center gap-5">
           <section v-for="HistoryQrCode in qrCodes" :key="HistoryQrCode.id">
             <div
@@ -108,16 +110,18 @@ export default {
     if (qrCodes) {
       this.qrCodes = JSON.parse(qrCodes);
     }
-    window.addEventListener("scroll", this.handleScroll); // adicione o evento de rolagem quando o componente é montado
+    window.addEventListener("scroll", this.handleScroll);
   },
   beforeUnmount() {
-    window.removeEventListener("scroll", this.handleScroll); // remova o evento de rolagem quando o componente é desmontado
+    window.removeEventListener("scroll", this.handleScroll);
   },
   methods: {
     handleScroll() {
-      if (window.scrollY > 550) {
+      if (window.scrollY > 500) {
         this.selectHistory = false;
+        document.getElementById("header").style.paddingBottom = "24px";
       } else {
+        document.getElementById("header").style.paddingBottom = "8px";
         this.selectHistory = true;
       }
     },
@@ -144,8 +148,15 @@ export default {
     },
 
     deleteHistory() {
-      localStorage.clear();
-      this.qrCodes = [];
+      document.getElementById("historyClear").style.display = "block";
+      document.getElementById("BarBottom").style.bottom = "-150px";
+
+      setTimeout(() => {
+        localStorage.clear();
+        this.qrCodes = [];
+        document.getElementById("historyClear").style.display = "none";
+        document.getElementById("BarBottom").style.bottom = "0";
+      }, 3500);
     },
   },
   components: { ModalHistoryQrcode },
@@ -176,5 +187,18 @@ export default {
 #selectHistory {
   background: #2f2f2f;
   box-shadow: 8px 8px 16px #2a2a2a, -8px -8px 16px #383838;
+}
+
+#historyClear {
+  animation: historyClear 3s both;
+}
+
+@keyframes historyClear {
+  0% {
+  }
+  100% {
+    height: 100vh;
+    width: 100vh;
+  }
 }
 </style>
