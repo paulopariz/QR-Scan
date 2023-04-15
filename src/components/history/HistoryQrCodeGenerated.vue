@@ -1,39 +1,47 @@
 <template>
   <div>
-    <div class="fixed bg-[#333333] w-screen z-10 px-10 py-6 m-auto">
+    <div class="fixed bg-[#333333] w-screen z-10 px-10 pt-6 pb-1 m-auto">
       <nav class="flex items-center gap-6">
         <h1 class="text-xl text-white-2 font-semibold tracking-wider select-none">
           Histórico
         </h1>
       </nav>
 
-      <div
-        class="flex items-center justify-center mt-6 p-2 rounded-lg animate__animated animate__fadeIn"
-        id="selectHistory"
-        v-show="selectHistory"
-      >
-        <div class="w-full">
-          <input type="radio" name="option" id="1" class="peer hidden" checked />
-          <label
-            for="1"
-            class="block cursor-pointer rounded-lg select-none p-2 text-center text-white-2 peer-checked:bg-light peer-checked:font-bold peer-checked:text-dark"
-            >Scan</label
-          >
+      <div v-show="selectHistory">
+        <div
+          class="grid grid-cols-2 mt-6 p-2 rounded-lg animate__animated animate__fadeIn"
+          id="selectHistory"
+        >
+          <div class="w-full">
+            <input type="radio" name="option" id="1" class="peer hidden" checked />
+            <label
+              for="1"
+              class="block cursor-pointer rounded-lg select-none p-2 text-center text-white-2 peer-checked:bg-light peer-checked:font-bold peer-checked:text-dark"
+              >Scan</label
+            >
+          </div>
+          <div class="w-full">
+            <input type="radio" name="option" id="2" class="peer hidden" />
+            <label
+              for="2"
+              class="block cursor-pointer rounded-lg select-none p-2 text-center text-white-2 peer-checked:bg-light peer-checked:font-bold peer-checked:text-dark"
+              >Gerados</label
+            >
+          </div>
         </div>
-
-        <div class="w-full">
-          <input type="radio" name="option" id="2" class="peer hidden" />
-          <label
-            for="2"
-            class="block cursor-pointer rounded-lg select-none p-2 text-center text-white-2 peer-checked:bg-light peer-checked:font-bold peer-checked:text-dark"
-            >Gerados</label
+        <div class="float-right px-1 mt-3" v-if="qrCodes.length === ''">
+          <button
+            class="text-light tracking-wide text-sm underline decoration-2"
+            @click="deleteHistory()"
           >
+            Limpar Histórico
+          </button>
         </div>
       </div>
     </div>
 
     <div class="px-10 py-6 pb-36 m-auto">
-      <div class="mt-36">
+      <div class="mt-40">
         <div v-if="qrCodes.length" class="flex flex-col justify-center gap-5">
           <section v-for="HistoryQrCode in qrCodes" :key="HistoryQrCode.id">
             <div
@@ -132,7 +140,12 @@ export default {
 
     deleteQrcode(index) {
       this.qrCodes.splice(index, 1);
-      localStorage.setItem("qrCodeHistory", JSON.stringify(this.qrCodes)); // Atualiza o localStorage
+      localStorage.setItem("qrCodeHistory", JSON.stringify(this.qrCodes));
+    },
+
+    deleteHistory() {
+      localStorage.clear();
+      this.qrCodes = [];
     },
   },
   components: { ModalHistoryQrcode },
