@@ -35,16 +35,15 @@
     <div class="px-10 py-6 pb-36 m-auto">
       <div class="mt-36">
         <div v-if="qrCodes.length" class="flex flex-col justify-center gap-5">
-          <section
-            v-for="HistoryQrCode in qrCodes"
-            :key="HistoryQrCode.id"
-            @click="OpenHistoryQrCodeModal(HistoryQrCode)"
-          >
+          <section v-for="HistoryQrCode in qrCodes" :key="HistoryQrCode.id">
             <div
-              class="rounded-lg border-2 border-transparent px-5 py-3 flex justify-between cursor-pointer transition-all"
+              class="rounded-lg border-2 border-transparent flex justify-between cursor-pointer transition-all"
               id="setionHistory"
             >
-              <div class="flex items-center gap-3 overflow-hidden w-full">
+              <div
+                class="flex items-center gap-3 overflow-hidden w-full py-3 pl-5"
+                @click="OpenHistoryQrCodeModal(HistoryQrCode)"
+              >
                 <div
                   id="logo"
                   class="w-9 h-9 bg-[url('@/assets/img/logoDark.svg')] bg-cover bg-center bg-no-repeat transition-all"
@@ -58,9 +57,15 @@
                 </p>
               </div>
               <button
-                id="btnDelete"
-                class="bg-[url('@/assets/img/iconBin.svg')] bg-cover bg-no-repeat bg-center h-[18px] w-[14px] m-auto transition-all"
-              ></button>
+                @click="deleteQrcode(index)"
+                class="m-auto flex items-center justify-center py-5 pl-3 pr-5"
+              >
+                <div
+                  @click="deleteQrcode(index)"
+                  id="btnDelete"
+                  class="bg-[url('@/assets/img/iconBin.svg')] bg-cover bg-no-repeat bg-center h-[18px] w-[14px] m-auto transition-all"
+                ></div>
+              </button>
             </div>
 
             <!--MODAL-->
@@ -123,6 +128,11 @@ export default {
       setTimeout(() => {
         document.getElementById("BarBottom").style.bottom = "0px";
       }, 800);
+    },
+
+    deleteQrcode(index) {
+      this.qrCodes.splice(index, 1);
+      localStorage.setItem("qrCodeHistory", JSON.stringify(this.qrCodes)); // Atualiza o localStorage
     },
   },
   components: { ModalHistoryQrcode },
