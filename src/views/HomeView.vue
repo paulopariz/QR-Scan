@@ -1,5 +1,5 @@
 <template>
-  <div class="h-screen w-screen">
+  <div class="h-screen w-screen animate__animated animate__fadeIn">
     <qrCodeScan />
   </div>
 </template>

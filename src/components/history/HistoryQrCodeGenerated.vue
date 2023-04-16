@@ -46,7 +46,7 @@
 
         <div
           v-if="qrCodes.length < 1"
-          class="flex items-center justify-center gap-2 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate__animated animate__fadeIn"
+          class="flex items-center justify-center gap-2 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate__animated animate__fadeIn"
         >
           <h1 class="text-white-2 text-lg tracking-wide">Histórico vazio</h1>
           <img src="@/assets/img/iconHistory.svg" alt="history" class="w-5" />

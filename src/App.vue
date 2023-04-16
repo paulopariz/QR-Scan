@@ -1,5 +1,5 @@
 <template>
-  <div class="h-screen">
+  <div class="h-screen animate__animated animate__fadeIn">
     <LoaderPage class="" />
 
     <BarBottom class="" id="BarBottom" />

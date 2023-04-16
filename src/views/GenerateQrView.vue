@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="animate__animated animate__fadeIn">
     <OptionsGenerateQR />
   </div>
 </template>
