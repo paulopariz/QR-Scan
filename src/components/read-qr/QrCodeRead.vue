@@ -27,6 +27,7 @@
     >
       <div class="flex flex-col gap-2 items-center">
         <a
+          id="link"
           :href="link"
           target="_blank"
           class="bg-light rounded-md px-5 py-4 transition-all hover:scale-95 active:scale-95 border border-white-2/5 cursor-pointer"
@@ -55,6 +56,8 @@
 
         <div class="flex items-center">
           <span class="text-sm text-white-2 tracking-wide">{{ copyTextBtn }} </span>
+          <input class="hidden" type="text" id="link" :value="link" />
+
           <img
             src="@/assets/img/iconCheck.svg"
             class="hidden absolute -right-3 -mt-0.5"
@@ -69,21 +72,41 @@
             alt="Error"
           />
         </div>
+
+        <img :src="qrCodeUrlRead" alt="QR Code" class="w-0 hidden" />
       </div>
     </div>
   </section>
 </template>
 
 <script>
+import qrcode from "qrcode";
+
 export default {
   name: "QrCodeRead",
 
   props: ["link", "clickCopy", "copyTextBtn", "date"],
   data() {
-    return {};
+    return {
+      qrCodeUrlRead: null,
+    };
   },
 
-  methods: {},
+  methods: {
+    qrRead() {
+      qrcode
+        .toDataURL(this.link)
+        .then((url) => {
+          this.qrCodeUrlRead = url;
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    },
+  },
+  mounted() {
+    this.qrRead();
+  },
 };
 </script>
 

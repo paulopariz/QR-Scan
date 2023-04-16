@@ -23,5 +23,6 @@ export default {
 body {
   font-family: "Itim", cursive;
   background-color: #333333;
+  user-select: none;
 }
 </style>
