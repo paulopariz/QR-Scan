@@ -114,7 +114,7 @@ export default {
   },
 
   mounted() {
-    const qrCodes = localStorage.getItem("qrCodeHistory");
+    const qrCodes = localStorage.getItem("qrCodeHistoryGenerate");
     if (qrCodes) {
       this.qrCodes = JSON.parse(qrCodes);
     }
@@ -156,7 +156,7 @@ export default {
 
     deleteQrcode(index) {
       this.qrCodes.splice(index, 1);
-      localStorage.setItem("qrCodeHistory", JSON.stringify(this.qrCodes));
+      localStorage.setItem("qrCodeHistoryGenerate", JSON.stringify(this.qrCodes));
     },
     deleteHistory() {
       document.getElementById("historyClear").style.display = "block";

@@ -22,15 +22,6 @@
       id="imgQrCode"
     />
 
-    <!-- <qr-code
-      id="imgQrCode"
-      :text="qrCodeGenerated"
-      :size="140"
-      bg-color="#D9D9D9"
-      class="absolute z-[100] left-1/2 -translate-x-1/2 -translate-y-1/2 top-1/2 border-4 rounded-md border-light p-4 bg-white-2"
-      error-level="H"
-    ></qr-code> -->
-
     <div
       class="absolute z-50 top-2/3 left-1/2 -translate-x-1/2 flex items-center justify-center gap-10"
     >

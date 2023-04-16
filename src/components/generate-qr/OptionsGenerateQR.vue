@@ -243,10 +243,14 @@ export default {
         qrCodeGeneratedContent: this.qrCodeGeneratedContet,
       };
 
-      let qrCodeHistory = JSON.parse(localStorage.getItem("qrCodeHistory")) || [];
-      qrCodeHistory.push(history);
+      let qrCodeHistoryGenerate =
+        JSON.parse(localStorage.getItem("qrCodeHistoryGenerate")) || [];
+      qrCodeHistoryGenerate.push(history);
 
-      localStorage.setItem("qrCodeHistory", JSON.stringify(qrCodeHistory));
+      localStorage.setItem(
+        "qrCodeHistoryGenerate",
+        JSON.stringify(qrCodeHistoryGenerate)
+      );
     },
 
     async generate() {

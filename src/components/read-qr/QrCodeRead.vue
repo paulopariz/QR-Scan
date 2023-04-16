@@ -73,6 +73,9 @@
           />
         </div>
 
+        <div @click="saveQrCodeRead" class="bg-red-800 text-white p-3 cursor-pointer">
+          ADD HISTORY
+        </div>
         <img :src="qrCodeUrlRead" alt="QR Code" class="w-0 hidden" />
       </div>
     </div>
@@ -89,6 +92,7 @@ export default {
   data() {
     return {
       qrCodeUrlRead: null,
+      qrCodesRead: [],
     };
   },
 
@@ -103,7 +107,23 @@ export default {
           console.error(error);
         });
     },
+
+    saveQrCodeRead() {
+      this.qrCodesRead.push(this.qrCodeUrlRead);
+      this.qrCodesRead.push(this.link);
+
+      const historyRead = {
+        qrCodeUrlRead: this.qrCodeUrlRead,
+        link: this.link,
+      };
+
+      let qrCodeHistoryRead = JSON.parse(localStorage.getItem("qrCodeHistoryRead")) || [];
+      qrCodeHistoryRead.push(historyRead);
+
+      localStorage.setItem("qrCodeHistoryRead", JSON.stringify(qrCodeHistoryRead));
+    },
   },
+
   mounted() {
     this.qrRead();
   },
