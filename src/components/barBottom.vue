@@ -1,12 +1,13 @@
 <template>
   <div
-    class="w-screen h-20 fixed z-40 left-1/2 -translate-x-1/2 py-4 px-14 bottom-0 bg-dark border-2 border-x-0 border-b-0 border-light transition-all"
+    class="w-screen h-20 fixed z-40 left-1/2 -translate-x-1/2 py-4 px-14 bottom-0 bg-dark border-2 border-transparent border-x-0 border-b-0 transition-all"
+    :class="{ routeScan: $route.path === '/' }"
   >
     <div>
       <ul class="flex items-center justify-between">
         <li
           @click="generateQr('/generate-qr')"
-          :class="{ active: activeRoute === '/generate-qr' }"
+          :class="{ active: $route.path === '/generate-qr' }"
           class="flex items-center flex-col gap-1"
         >
           <img src="@/assets/img/iconGenerate.svg" class="" alt="icon" />
@@ -19,7 +20,7 @@
 
         <li
           @click="configs('/history')"
-          :class="{ active: activeRoute === '/history' }"
+          :class="{ active: $route.path === '/history' }"
           class="flex items-center flex-col gap-1"
         >
           <img src="@/assets/img/iconHistory.svg" alt="icon" />
@@ -37,32 +38,26 @@ export default {
   computed: {},
 
   data() {
-    return {
-      activeRoute: "",
-    };
+    return {};
   },
 
   methods: {
-    generateQr(route) {
+    generateQr() {
       navigator.vibrate([50]);
       this.$router.push("/generate-qr");
-
-      this.activeRoute = route;
     },
 
-    openScan(route) {
+    openScan() {
       navigator.vibrate([50]);
       this.$router.push("/");
-      this.activeRoute = route;
 
       // document.getElementById("ShowQrCodeRead").style.display = "none";
       // document.getElementById("ShowScan").style.display = "block";
     },
 
-    configs(route) {
+    configs() {
       navigator.vibrate([50]);
       this.$router.push("/history");
-      this.activeRoute = route;
     },
   },
 };
@@ -87,5 +82,9 @@ li {
   content: "";
   position: absolute;
   bottom: 2.5px;
+}
+
+.routeScan {
+  border-color: #fdb623;
 }
 </style>

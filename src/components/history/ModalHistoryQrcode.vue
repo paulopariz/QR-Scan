@@ -27,12 +27,12 @@
         <p
           class="w-full text-lg text-center text-white-2/80 tracking-wide select-none whitespace-nowrap overflow-auto py-0.5 transition-all"
         >
-          {{ xxx }}
+          {{ contentQrcode }}
         </p>
 
         <div class="flex flex-col gap-2 items-center">
           <a
-            :href="xxx"
+            :href="contentQrcode"
             target="_blank"
             class="rounded-md px-5 py-4 transition-all hover:scale-95 active:scale-95 border border-white-2/5 cursor-pointer"
           >
@@ -57,7 +57,7 @@ export default {
       type: String,
       required: true,
     },
-    xxx: {
+    contentQrcode: {
       type: String,
     },
     closeModalHistory: {

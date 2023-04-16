@@ -44,6 +44,14 @@
           class="hidden fixed z-40 -mt-5 left-1/2 -translate-x-1/2 h-[1px] w-full bg-[#333333] border border-light border-x-0 border-t-0 transition-all"
         ></div>
 
+        <div
+          v-if="qrCodes.length < 1"
+          class="flex items-center justify-center gap-2 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate__animated animate__fadeIn"
+        >
+          <h1 class="text-white-2 text-lg tracking-wide">Histórico vazio</h1>
+          <img src="@/assets/img/iconHistory.svg" alt="history" class="w-5" />
+        </div>
+
         <div v-if="qrCodes.length" class="flex flex-col justify-center gap-5">
           <section v-for="HistoryQrCode in qrCodes" :key="HistoryQrCode.id">
             <div
@@ -71,7 +79,6 @@
                 class="m-auto flex items-center justify-center py-5 pl-3 pr-5"
               >
                 <div
-                  @click="deleteQrcode(index)"
                   id="btnDelete"
                   class="bg-[url('@/assets/img/iconBin.svg')] bg-cover bg-no-repeat bg-center h-[18px] w-[14px] m-auto transition-all"
                 ></div>
@@ -84,7 +91,7 @@
               <ModalHistoryQrcode
                 @close="closeModal(HistoryQrCode)"
                 :imgQrCode="HistoryQrCode.qrCode"
-                :xxx="HistoryQrCode.qrCodeGeneratedContent"
+                :contentQrcode="HistoryQrCode.qrCodeGeneratedContent"
               />
             </div>
           </section>
@@ -105,6 +112,7 @@ export default {
       ViewModalHistory: false,
     };
   },
+
   mounted() {
     const qrCodes = localStorage.getItem("qrCodeHistory");
     if (qrCodes) {
@@ -112,9 +120,11 @@ export default {
     }
     window.addEventListener("scroll", this.handleScroll);
   },
+
   beforeUnmount() {
     window.removeEventListener("scroll", this.handleScroll);
   },
+
   methods: {
     handleScroll() {
       if (window.scrollY > 500) {
@@ -125,6 +135,7 @@ export default {
         this.selectHistory = true;
       }
     },
+
     OpenHistoryQrCodeModal(HistoryQrCode) {
       document.body.style.overflow = "hidden";
       document.getElementById("BarBottom").style.bottom = "-150px";
@@ -132,6 +143,7 @@ export default {
         HistoryQrCode.ViewModalHistory = true;
       }, 250);
     },
+
     closeModal(HistoryQrCode) {
       setTimeout(() => {
         document.body.style.overflow = "auto";
@@ -146,7 +158,6 @@ export default {
       this.qrCodes.splice(index, 1);
       localStorage.setItem("qrCodeHistory", JSON.stringify(this.qrCodes));
     },
-
     deleteHistory() {
       document.getElementById("historyClear").style.display = "block";
       document.getElementById("BarBottom").style.bottom = "-150px";
@@ -156,7 +167,7 @@ export default {
         this.qrCodes = [];
         document.getElementById("historyClear").style.display = "none";
         document.getElementById("BarBottom").style.bottom = "0";
-      }, 3500);
+      }, 2000);
     },
   },
   components: { ModalHistoryQrcode },
@@ -190,7 +201,7 @@ export default {
 }
 
 #historyClear {
-  animation: historyClear 3s both;
+  animation: historyClear 1.7s both;
 }
 
 @keyframes historyClear {
