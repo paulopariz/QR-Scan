@@ -12,14 +12,17 @@
           <div class="w-full">
             <input type="radio" name="option" id="1" class="peer hidden" checked />
             <label
+              @click="openHistoryScan"
               for="1"
               class="block cursor-pointer rounded-lg select-none p-2 text-center text-white-2 peer-checked:bg-light peer-checked:font-bold peer-checked:text-dark"
               >Scan</label
             >
           </div>
+
           <div class="w-full">
             <input type="radio" name="option" id="2" class="peer hidden" />
             <label
+              @click="openHistoryGenerated"
               for="2"
               class="block cursor-pointer rounded-lg select-none p-2 text-center text-white-2 peer-checked:bg-light peer-checked:font-bold peer-checked:text-dark"
               >Gerados</label
@@ -114,10 +117,11 @@ export default {
   },
 
   mounted() {
-    const qrCodes = localStorage.getItem("qrCodeHistoryGenerate");
+    const qrCodes = localStorage.getItem("qrCodeHistoryRead");
     if (qrCodes) {
       this.qrCodes = JSON.parse(qrCodes);
     }
+
     window.addEventListener("scroll", this.handleScroll);
   },
 
@@ -135,6 +139,21 @@ export default {
         this.selectHistory = true;
       }
     },
+
+    openHistoryGenerated() {
+      const qrCodes = localStorage.getItem("qrCodeHistoryGenerate");
+      if (qrCodes) {
+        this.qrCodes = JSON.parse(qrCodes);
+      }
+    },
+    openHistoryScan() {
+      const qrCodes = localStorage.getItem("qrCodeHistoryRead");
+      if (qrCodes) {
+        this.qrCodes = JSON.parse(qrCodes);
+      }
+    },
+
+    /////
 
     OpenHistoryQrCodeModal(HistoryQrCode) {
       document.body.style.overflow = "hidden";

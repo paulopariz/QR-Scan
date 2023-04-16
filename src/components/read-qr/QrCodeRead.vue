@@ -76,7 +76,7 @@
         <div @click="saveQrCodeRead" class="bg-red-800 text-white p-3 cursor-pointer">
           ADD HISTORY
         </div>
-        <img :src="qrCodeUrlRead" alt="QR Code" class="w-0 hidden" />
+        <img :src="qrCode" alt="QR Code" class="w-0 hidden" />
       </div>
     </div>
   </section>
@@ -91,8 +91,8 @@ export default {
   props: ["link", "clickCopy", "copyTextBtn", "date"],
   data() {
     return {
-      qrCodeUrlRead: null,
-      qrCodesRead: [],
+      qrCode: null,
+      qrCodes: [],
     };
   },
 
@@ -101,7 +101,7 @@ export default {
       qrcode
         .toDataURL(this.link)
         .then((url) => {
-          this.qrCodeUrlRead = url;
+          this.qrCode = url;
         })
         .catch((error) => {
           console.error(error);
@@ -109,12 +109,12 @@ export default {
     },
 
     saveQrCodeRead() {
-      this.qrCodesRead.push(this.qrCodeUrlRead);
-      this.qrCodesRead.push(this.link);
+      this.qrCodes.push(this.qrCode);
+      this.qrCodes.push(this.link);
 
       const historyRead = {
-        qrCodeUrlRead: this.qrCodeUrlRead,
-        link: this.link,
+        qrCode: this.qrCode,
+        qrCodeGeneratedContent: this.link,
       };
 
       let qrCodeHistoryRead = JSON.parse(localStorage.getItem("qrCodeHistoryRead")) || [];
