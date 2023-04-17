@@ -8,10 +8,15 @@
         <li
           @click="generateQr('/generate-qr')"
           :class="{ active: $route.path === '/generate-qr' }"
-          class="flex items-center flex-col gap-1"
+          class="flex items-center flex-col gap-1 transition-all"
         >
-          <img src="@/assets/img/iconGenerate.svg" class="" alt="icon" />
-          <span class="text-white-2 text-[13px] tracking-wide font-semibold">Gerar</span>
+          <div
+            class="transition-all bg-[url('@/assets/img/iconGenerate.svg')] bg-no-repeat bg-cover bg-center w-[30px] h-[30px]"
+          />
+          <span
+            class="transition-all text-white-2 text-[13px] tracking-wide font-semibold"
+            >Gerar</span
+          >
         </li>
 
         <li class="p-4 bg-light rounded-full -mt-20 scan" @click="openScan">
@@ -21,10 +26,13 @@
         <li
           @click="configs('/history')"
           :class="{ active: $route.path === '/history' }"
-          class="flex items-center flex-col gap-1"
+          class="flex items-center flex-col gap-1 transition-all"
         >
-          <img src="@/assets/img/iconHistory.svg" alt="icon" />
-          <span class="text-white-2 text-[13px] tracking-wide font-semibold"
+          <div
+            class="transition-all bg-[url('@/assets/img/iconHistory.svg')] bg-no-repeat bg-cover bg-center w-[30px] h-[30px]"
+          />
+          <span
+            class="transition-all text-white-2 text-[13px] tracking-wide font-semibold"
             >Histórico</span
           >
         </li>
@@ -50,9 +58,6 @@ export default {
     openScan() {
       navigator.vibrate([50]);
       this.$router.push("/");
-
-      // document.getElementById("ShowQrCodeRead").style.display = "none";
-      // document.getElementById("ShowScan").style.display = "block";
     },
 
     configs() {
@@ -63,7 +68,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .scan {
   filter: drop-shadow(0px 0px 21px #fdb623);
 }
@@ -73,15 +78,24 @@ li {
   user-select: none;
 }
 
-.active::before {
-  color: #fdb623;
-  background: #fdb623;
-  width: 4.5px;
-  height: 4.5px;
-  border-radius: 50%;
-  content: "";
-  position: absolute;
-  bottom: 2.5px;
+.active:nth-child(3) {
+  div {
+    background-image: url("@/assets/img/iconHistoryActive.svg");
+  }
+
+  span {
+    color: #fdb623;
+  }
+}
+
+.active:nth-child(1) {
+  div {
+    background-image: url("@/assets/img/iconGenerateActive.svg");
+  }
+
+  span {
+    color: #fdb623;
+  }
 }
 
 .routeScan {

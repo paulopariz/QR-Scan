@@ -41,7 +41,7 @@
     </header>
 
     <div class="px-10 py-6 pb-36 m-auto">
-      <div class="mt-40">
+      <div class="mt-44">
         <div
           id="historyClear"
           class="hidden fixed z-40 -mt-5 left-1/2 -translate-x-1/2 h-[1px] w-full bg-[#333333] border border-light border-x-0 border-t-0 transition-all"
@@ -99,7 +99,7 @@
                 >
                   <div
                     id="btnDelete"
-                    class="bg-[url('@/assets/img/iconBin.svg')] bg-red-600 bg-cover bg-no-repeat bg-center h-[18px] w-[14px] m-auto transition-all"
+                    class="bg-[url('@/assets/img/iconBin.svg')] bg-cover bg-no-repeat bg-center h-[18px] w-[14px] m-auto transition-all"
                   ></div>
                 </button>
               </div>
