@@ -25,6 +25,7 @@
         :clickCopy="copy"
         :copyTextBtn="copyTextBtn"
         :date="currentDateTime"
+        :qrCode="qrCode"
       />
     </div>
   </section>
@@ -36,6 +37,8 @@ import moment from "moment";
 
 import BackgroundForModals from "./BackgroundForModals.vue";
 import QrCodeRead from "./read-qr/QrCodeRead.vue";
+
+import qrcode from "qrcode";
 
 export default {
   components: {
@@ -53,11 +56,15 @@ export default {
 
       textToCopy: "",
       copyTextBtn: "Copiar",
+
+      //history
+      qrCode: "",
+      qrCodes: [],
     };
   },
 
   methods: {
-    onDecode(contentQrCode) {
+    async onDecode(contentQrCode) {
       document.getElementById("BarBottom").style.display = "none";
 
       navigator.vibrate([200]);
@@ -69,7 +76,20 @@ export default {
       if (this.textToCopy == "") {
         this.textToCopy = "Sem conteúdo!";
       }
+
+      // add in history
+      try {
+        const url = await qrcode.toDataURL(contentQrCode);
+        this.qrCode = url;
+        this.qrCodes.push({ qrCode: url, qrCodeGeneratedContent: contentQrCode });
+        localStorage.setItem("qrCodeHistoryRead", JSON.stringify(this.qrCodes));
+      } catch (error) {
+        console.error(error);
+      }
     },
+
+    async saveQrCodeRead() {},
+
     onLoaded() {
       console.log(`Ready to start scanning barcodes`);
     },
