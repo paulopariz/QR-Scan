@@ -42,37 +42,16 @@
             {{ downloadText }}</span
           >
         </div>
-
-        <!--SAVE QRCODE-->
-        <div class="flex flex-col gap-2 items-center">
-          <button
-            id="downloadBtn"
-            @click="saveQrCode"
-            class="rounded-md px-5 py-4 transition-all hover:scale-95 active:scale-95 border border-white-2/5 cursor-pointer"
-          >
-            <img
-              src="@/assets/img/iconCopy.svg"
-              class="flex items-center justify-center animate__animated"
-              :class="{ download: downloadText === 'Baixando...' }"
-              alt="Copy"
-            />
-          </button>
-          <span class="text-sm text-white-2 tracking-wide animate__animated">
-            Salvar</span
-          >
-        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-//  import { saveAs } from "file-saver";
-
 export default {
   components: {},
 
-  props: ["qrCodeGenerated", "qrCodeGeneratedContet", "saveQrCode", "showHistory"],
+  props: ["qrCodeGenerated", "qrCodeGeneratedContet", "showHistory"],
   data() {
     return {
       imgDownload: "",

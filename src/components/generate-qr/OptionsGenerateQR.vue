@@ -234,24 +234,7 @@ export default {
       this.viewHistory = !this.history;
     },
 
-    saveQrCode() {
-      this.qrCodes.push(this.qrCode);
-      this.qrCodes.push(this.qrCodeGeneratedContet);
-
-      const history = {
-        qrCode: this.qrCode,
-        qrCodeGeneratedContent: this.qrCodeGeneratedContet,
-      };
-
-      let qrCodeHistoryGenerate =
-        JSON.parse(localStorage.getItem("qrCodeHistoryGenerate")) || [];
-      qrCodeHistoryGenerate.push(history);
-
-      localStorage.setItem(
-        "qrCodeHistoryGenerate",
-        JSON.stringify(qrCodeHistoryGenerate)
-      );
-    },
+    saveQrCode() {},
 
     async generate() {
       this.contentQrcode();
@@ -264,6 +247,22 @@ export default {
 
         this.qrCode = qrCode;
 
+        this.qrCodes.push(this.qrCode);
+        this.qrCodes.push(this.qrCodeGeneratedContet);
+
+        const history = {
+          qrCode: this.qrCode,
+          qrCodeGeneratedContent: this.qrCodeGeneratedContet,
+        };
+
+        let qrCodeHistoryGenerate =
+          JSON.parse(localStorage.getItem("qrCodeHistoryGenerate")) || [];
+        qrCodeHistoryGenerate.push(history);
+
+        localStorage.setItem(
+          "qrCodeHistoryGenerate",
+          JSON.stringify(qrCodeHistoryGenerate)
+        );
         //
 
         this.msgValidation = false;
