@@ -35,17 +35,19 @@ export default {
       setTimeout(() => {
         this.ShowRedirectInitial = false;
 
-        localStorage.setItem("ShowRedirectInitial", this.ShowRedirectInitial);
+        sessionStorage.setItem("ShowRedirectInitial", this.ShowRedirectInitial);
       }, 1000);
     },
   },
 
   mounted() {
-    const localStorageContent = localStorage.getItem("ShowRedirectInitial");
+    const localStorageContent = sessionStorage.getItem("ShowRedirectInitial");
     console.log(localStorageContent);
     if (localStorageContent === "false") {
       this.ShowRedirectInitial = false;
     }
+
+    document.body.style.overflow = "hidden";
   },
 };
 </script>

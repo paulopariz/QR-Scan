@@ -1,9 +1,9 @@
 <template>
   <div
-    class="w-screen h-screen absolute z-[2000] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black/90 backdrop-blur-md"
+    class="w-screen h-screen fixed z-[2000] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black/90 backdrop-blur-md"
   >
     <div
-      class="px-4 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full flex flex-col justify-center items-center gap-6"
+      class="px-4 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full flex flex-col justify-center items-center gap-6"
     >
       <img src="@/assets/img/Hi.gif" alt="Hi" class="w-14" />
       <h1 class="text-center text-2xl text-white tracking-wide">

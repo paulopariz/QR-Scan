@@ -2,13 +2,24 @@
   <section>
     <div class="fixed top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2">
       <!--BOTÃO DE ATIVAR SCAN!-->
-      <button
-        @click="ShowScan = true"
-        class="px-9 py-2 rounded-lg text-white-2 border border-white-2/5 transition-all hover:scale-95 active:scale-95 button"
-        :class="{ hidden: ShowScan === true }"
+
+      <DirectionBtnScan
+        v-show="ShowRedirectBtnScan"
+        class="animate__animated animate__fadeIn"
+      />
+
+      <div
+        class="absolute z-[30000] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 m-auto w-screen"
       >
-        Abrir Scan
-      </button>
+        <button
+          @click="ShowScan = true"
+          class="absolute z-[30000] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-9 py-2 rounded-lg text-white-2 border border-white-2/5 transition-all hover:scale-95 active:scale-95"
+          id="button"
+          :class="{ hidden: ShowScan === true }"
+        >
+          Abrir Scan
+        </button>
+      </div>
 
       <StreamBarcodeReader
         v-if="ShowScan"
@@ -39,12 +50,14 @@ import BackgroundForModals from "./BackgroundForModals.vue";
 import QrCodeRead from "./read-qr/QrCodeRead.vue";
 
 import qrcode from "qrcode";
+import DirectionBtnScan from "./direction/DirectionBtnScan.vue";
 
 export default {
   components: {
     StreamBarcodeReader,
     BackgroundForModals,
     QrCodeRead,
+    DirectionBtnScan,
   },
 
   data() {
@@ -60,7 +73,17 @@ export default {
       //history
       qrCode: "",
       qrCodes: [],
+
+      //direction
+      ShowRedirectBtnScan: true,
     };
+  },
+
+  mounted() {
+    if (this.ShowRedirectBtnScan === true) {
+      document.getElementById("BarBottom").style.display = "none";
+      document.getElementById("button").style.boxShadow = "none";
+    }
   },
 
   methods: {
@@ -148,7 +171,7 @@ video {
   height: 10px;
 }
 
-.button {
+#button {
   background: #303030;
   box-shadow: 8px 8px 16px #2a2a2a, -8px -8px 16px #383838;
 }

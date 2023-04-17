@@ -34,6 +34,8 @@ export default {
   },
   methods: {
     start() {
+      document.body.style.overflow = "auto";
+
       this.loadingBtn = true;
       this.contentBtn = false;
 
