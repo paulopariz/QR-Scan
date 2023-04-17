@@ -77,15 +77,32 @@
                   {{ HistoryQrCode.qrCodeGeneratedContent }}
                 </p>
               </div>
-              <button
-                @click="deleteQrcode(index)"
-                class="m-auto flex items-center justify-center py-5 pl-3 pr-5"
-              >
-                <div
-                  id="btnDelete"
-                  class="bg-[url('@/assets/img/iconBin.svg')] bg-cover bg-no-repeat bg-center h-[18px] w-[14px] m-auto transition-all"
-                ></div>
-              </button>
+
+              <!--BOTÃO DE DELETAR QRCODE LIDO-->
+              <div v-show="showBtnDeleteRead">
+                <button
+                  @click="deleteQrcodeRead(index)"
+                  class="m-auto flex items-center justify-center py-5 pl-3 pr-5"
+                >
+                  <div
+                    id="btnDelete"
+                    class="bg-[url('@/assets/img/iconBin.svg')] bg-cover bg-no-repeat bg-center h-[18px] w-[14px] m-auto transition-all"
+                  ></div>
+                </button>
+              </div>
+
+              <!--BOTÃO DE DELETAR QRCODE GERADO-->
+              <div v-show="showBtnDeleteGenerated">
+                <button
+                  @click="deleteQrcodeGeneratad(index)"
+                  class="m-auto flex items-center justify-center py-5 pl-3 pr-5"
+                >
+                  <div
+                    id="btnDelete"
+                    class="bg-[url('@/assets/img/iconBin.svg')] bg-red-600 bg-cover bg-no-repeat bg-center h-[18px] w-[14px] m-auto transition-all"
+                  ></div>
+                </button>
+              </div>
             </div>
 
             <!--MODAL-->
@@ -113,6 +130,9 @@ export default {
       qrCodes: [],
       selectHistory: true,
       ViewModalHistory: false,
+
+      showBtnDeleteRead: true,
+      showBtnDeleteGenerated: false,
     };
   },
 
@@ -141,12 +161,17 @@ export default {
     },
 
     openHistoryGenerated() {
+      this.showBtnDeleteGenerated = true;
+      this.showBtnDeleteRead = false;
+
       const qrCodes = localStorage.getItem("qrCodeHistoryGenerate");
       if (qrCodes) {
         this.qrCodes = JSON.parse(qrCodes);
       }
     },
     openHistoryScan() {
+      this.showBtnDeleteGenerated = false;
+      this.showBtnDeleteRead = true;
       const qrCodes = localStorage.getItem("qrCodeHistoryRead");
       if (qrCodes) {
         this.qrCodes = JSON.parse(qrCodes);
@@ -173,10 +198,22 @@ export default {
       }, 800);
     },
 
-    deleteQrcode(index) {
-      this.qrCodes.splice(index, 1);
-      localStorage.setItem("qrCodeHistoryGenerate", JSON.stringify(this.qrCodes));
+    /// BOTOES DE DELETAR 1 ITEM DI HISTORICO-->
+    deleteQrcodeRead(index) {
+      if (this.qrCodes) {
+        this.qrCodes.splice(index, 1);
+        localStorage.setItem("qrCodeHistoryRead", JSON.stringify(this.qrCodes));
+      }
     },
+    deleteQrcodeGeneratad(index) {
+      if (this.qrCodes) {
+        this.qrCodes.splice(index, 1);
+        localStorage.setItem("qrCodeHistoryGenerate", JSON.stringify(this.qrCodes));
+      }
+    },
+
+    ///
+
     deleteHistory() {
       document.getElementById("historyClear").style.display = "block";
       document.getElementById("BarBottom").style.bottom = "-150px";
