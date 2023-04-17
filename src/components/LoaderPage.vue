@@ -40,7 +40,7 @@ export default {
       navigator.vibrate([50]);
 
       setTimeout(() => {
-        // this.$router.push("/");
+        this.$router.push("/");
         document.getElementById("BarBottom").style.display = "block";
         this.Loader = false;
       }, 2000);

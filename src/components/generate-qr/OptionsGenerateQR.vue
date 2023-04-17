@@ -65,9 +65,13 @@
             <button
               id="generateBtn"
               @click="generate"
-              class="mt-4 px-6 py-2 bg-light text-dark tracking-wide rounded-lg drop-shadow-2xl shadow-lg transition-all active:scale-95 hover:scale-95"
+              class="mt-4 px-6 py-2 bg-light text-dark tracking-wide rounded-lg drop-shadow-2xl shadow-lg transition-all active:scale-95 hover:scale-95 w-2/3 h-10 flex items-center justify-center"
             >
-              Gerar QR Code
+              <span :class="{ hidden: this.loadingBtn === true }">Gerar QR Code</span>
+              <IconLoadingBtn
+                v-show="loadingBtn"
+                class="border-dark/50 border-r-dark w-4 h-4 m-auto"
+              />
             </button>
           </div>
         </div>
@@ -105,11 +109,14 @@ import BackgroundForModals from "../BackgroundForModals.vue";
 import QrCodeGenerated from "../qr-generated/qrCodeGenerated.vue";
 
 import qrcode from "qrcode";
+import IconLoadingBtn from "../iconLoadingBtn.vue";
 
 export default {
-  components: { BackgroundForModals, QrCodeGenerated },
+  components: { BackgroundForModals, QrCodeGenerated, IconLoadingBtn },
   data() {
     return {
+      loadingBtn: false,
+
       viewModal: null,
       username: "",
 
@@ -242,6 +249,14 @@ export default {
         this.msgValidation = true;
         document.getElementById("input").style.borderColor = "#FF0000";
       } else {
+        this.loadingBtn = true;
+
+        setTimeout(() => {
+          this.loadingBtn = false;
+          this.ShowQrCodeGenerated = true;
+          this.showModalGenerated = false;
+        }, 1500);
+
         const qrCodeData = this.url;
         const qrCode = await qrcode.toDataURL(qrCodeData);
 
@@ -266,8 +281,6 @@ export default {
         //
 
         this.msgValidation = false;
-        this.ShowQrCodeGenerated = true;
-        this.showModalGenerated = false;
 
         console.log(this.url);
 
