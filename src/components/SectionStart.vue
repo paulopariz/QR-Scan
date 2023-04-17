@@ -26,6 +26,10 @@ import IconLoadingBtn from "./iconLoadingBtn.vue";
 export default {
   props: ["startText", "startClick", "loadingBtn", "contentBtn"],
   components: { IconLoadingBtn },
+
+  data() {
+    return {};
+  },
 };
 </script>
 
