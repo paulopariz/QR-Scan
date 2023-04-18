@@ -29,6 +29,8 @@
         <div class="flex flex-col gap-2 items-center">
           <button
             @click="download"
+            :disabled="disabled"
+            id="downloadBtn"
             class="rounded-md px-5 py-4 transition-all hover:scale-95 active:scale-95 border border-white-2/5 cursor-pointer"
           >
             <img
@@ -56,36 +58,32 @@ export default {
     return {
       imgDownload: "",
       downloadText: "Baixar QR-Code",
+
+      disabled: false,
     };
   },
 
   methods: {
     download() {
-      document.getElementById("downloadBtn").disabled = true;
+      this.disabled = true;
       this.downloadText = "Baixando...";
 
       setTimeout(() => {
         this.downloadText = "Concluído!";
         document.getElementById("downloadBtn").style.opacity = 0.4;
 
-        const imgSrc = document
-          .getElementById("imgQrCode")
-          .querySelector("div > div > div > img").src;
-        fetch(imgSrc)
-          .then((res) => res.blob())
-          .then((blob) => {
-            const url = window.URL.createObjectURL(blob);
-            const link = document.createElement("a");
-            link.href = url;
-            link.setAttribute("download", "QR-Code.png");
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-          });
+        const imgSrc = document.getElementById("imgQrCode").src;
+
+        const link = document.createElement("a");
+        link.href = imgSrc;
+        link.download = "image.jpg";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
       }, 5000);
 
       setTimeout(() => {
-        document.getElementById("downloadBtn").disabled = false;
+        this.disabled = false;
         this.downloadText = "Baixar QR-Code";
         document.getElementById("downloadBtn").style.opacity = 1;
       }, 8000);

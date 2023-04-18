@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-screen h-screen fixed z-[2000] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black/50 backdrop-blur-md"
+    class="w-screen h-screen fixed z-[2000] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black/70 backdrop-blur-md"
   >
     <div
       class="px-4 fixed top-[30%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full flex flex-col justify-center items-center gap-6"
@@ -11,12 +11,15 @@
         Para escanear o QR code, clique no botão "Abrir Scan" e certifique-se de
         centralizá-lo corretamente para que possa ser lido com precisão.
       </p>
-      <img
-        src="@/assets/img/iconArrow.svg"
-        alt="Arrow"
-        class="invert rotate-180 h-11 transition-all"
-        id="arrow"
-      />
+
+      <div class="h-20 w-20 flex items-center justify-center">
+        <img
+          src="@/assets/img/iconArrow.svg"
+          alt="Arrow"
+          class="invert rotate-180 h-8 transition-all"
+          id="arrow"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -27,4 +30,17 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+#arrow {
+  animation: arrow 0.6s alternate-reverse infinite;
+}
+
+@keyframes arrow {
+  0% {
+    margin-top: 0px;
+  }
+  100% {
+    margin-top: 17px;
+  }
+}
+</style>

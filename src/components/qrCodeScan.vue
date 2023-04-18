@@ -103,6 +103,7 @@ export default {
   methods: {
     openScan() {
       this.fadeOut = true;
+      document.getElementById("BarBottom").style.zIndex = 400;
 
       setTimeout(() => {
         this.ShowRedirectBtnScan = false;

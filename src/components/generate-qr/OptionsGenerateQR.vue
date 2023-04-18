@@ -1,5 +1,13 @@
 <template>
   <div class="px-10 py-6 m-auto">
+    <div v-show="ShowRedirectGenerate">
+      <DirectionGenerate
+        :redirectGenerate="redirectGenerate"
+        class="animate__animated animate__fadeIn"
+        :class="{ animate__fadeOut: fadeOut }"
+      />
+    </div>
+
     <nav>
       <h1 class="text-xl text-white-2 font-semibold tracking-wider select-none">
         Gerar QR
@@ -110,11 +118,14 @@ import QrCodeGenerated from "../qr-generated/qrCodeGenerated.vue";
 
 import qrcode from "qrcode";
 import IconLoadingBtn from "../iconLoadingBtn.vue";
+import DirectionGenerate from "../direction/DirectionGenerate.vue";
 
 export default {
-  components: { BackgroundForModals, QrCodeGenerated, IconLoadingBtn },
+  components: { BackgroundForModals, QrCodeGenerated, IconLoadingBtn, DirectionGenerate },
   data() {
     return {
+      ShowRedirectGenerate: true,
+      fadeOut: false,
       loadingBtn: false,
 
       viewModal: null,
@@ -232,7 +243,24 @@ export default {
     },
   },
 
+  mounted() {
+    const localStorageContent = sessionStorage.getItem("ShowRedirectGenerate");
+    console.log(localStorageContent);
+    if (localStorageContent === "false") {
+      this.ShowRedirectGenerate = false;
+    }
+  },
+
   methods: {
+    redirectGenerate() {
+      this.fadeOut = true;
+
+      setTimeout(() => {
+        this.ShowRedirectGenerate = false;
+        sessionStorage.setItem("ShowRedirectGenerate", this.ShowRedirectGenerate);
+      }, 1000);
+    },
+
     contentQrcode() {
       this.qrCodeGeneratedContet = this.url;
     },
