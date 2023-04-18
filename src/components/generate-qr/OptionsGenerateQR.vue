@@ -98,6 +98,7 @@
             :qrCodeGenerated="qrCode"
             :saveQrCode="saveQrCode"
             :showHistory="showHistory"
+            :date="currentDateTime"
           />
 
           <AlertQR id="alertGenerate" class="" v-show="alert" msg="QR-Code gerado!" />
@@ -129,6 +130,8 @@ import IconLoadingBtn from "../iconLoadingBtn.vue";
 import DirectionGenerateHistory from "../direction/DirectionGenerate&History.vue";
 import AlertQR from "../history/AlertQR.vue";
 
+import moment from "moment";
+
 export default {
   components: {
     BackgroundForModals,
@@ -158,6 +161,8 @@ export default {
       alert: false,
 
       msgValidation: false,
+
+      currentDateTime: "",
 
       Options: [
         {
@@ -288,14 +293,14 @@ export default {
       this.viewHistory = !this.history;
     },
 
-    saveQrCode() {},
-
     async generate() {
       this.contentQrcode();
       if (this.username.length == "") {
         this.msgValidation = true;
         document.getElementById("input").style.borderColor = "#FF0000";
       } else {
+        this.currentDateTime = moment().locale("pt-br").format("D MMM YYYY, h:mm a");
+
         this.loadingBtn = true;
 
         setTimeout(() => {
@@ -326,10 +331,12 @@ export default {
         this.qrCode = qrCode;
 
         this.qrCodes.push(this.qrCode);
+        this.qrCodes.push(this.currentDateTime);
         this.qrCodes.push(this.qrCodeGeneratedContet);
 
         const history = {
           qrCode: this.qrCode,
+          date: this.currentDateTime,
           qrCodeGeneratedContent: this.qrCodeGeneratedContet,
         };
 
