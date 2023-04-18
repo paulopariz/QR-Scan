@@ -8,8 +8,7 @@
 
 <script>
 export default {
-  name: "AlertHistory",
-
+  name: "AlertQR",
   props: ["msg"],
 };
 </script>

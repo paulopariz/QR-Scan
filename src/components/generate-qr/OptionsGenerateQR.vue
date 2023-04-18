@@ -100,6 +100,8 @@
             :showHistory="showHistory"
           />
 
+          <AlertQR id="alertGenerate" class="" v-show="alert" msg="QR-Code gerado!" />
+
           <div v-show="viewHistory">
             <!-- <div
               v-if="qrCodes.length"
@@ -125,6 +127,7 @@ import QrCodeGenerated from "../qr-generated/qrCodeGenerated.vue";
 import qrcode from "qrcode";
 import IconLoadingBtn from "../iconLoadingBtn.vue";
 import DirectionGenerateHistory from "../direction/DirectionGenerate&History.vue";
+import AlertQR from "../history/AlertQR.vue";
 
 export default {
   components: {
@@ -132,6 +135,7 @@ export default {
     QrCodeGenerated,
     IconLoadingBtn,
     DirectionGenerateHistory,
+    AlertQR,
   },
   data() {
     return {
@@ -151,6 +155,7 @@ export default {
 
       qrCodeGenerated: "",
       qrCodeGeneratedContet: "",
+      alert: false,
 
       msgValidation: false,
 
@@ -297,7 +302,23 @@ export default {
           this.loadingBtn = false;
           this.ShowQrCodeGenerated = true;
           this.showModalGenerated = false;
+
+          this.alert = true;
         }, 1500);
+
+        //alert
+        setTimeout(() => {
+          document.getElementById("alertGenerate").style.right = "4px";
+        }, 1700);
+
+        setTimeout(() => {
+          document.getElementById("alertGenerate").style.right = "-75%";
+        }, 3500);
+
+        setTimeout(() => {
+          this.alert = false;
+        }, 3800);
+        //alert
 
         const qrCodeData = this.url;
         const qrCode = await qrcode.toDataURL(qrCodeData);

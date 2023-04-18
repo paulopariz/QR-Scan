@@ -16,7 +16,7 @@
           Histórico
         </h1>
 
-        <AlertHistory id="alert" v-show="alert" msg="Excluído com sucesso!" />
+        <AlertQR id="alertHistory" v-show="alert" msg="Excluído com sucesso!" />
       </nav>
 
       <div v-show="selectHistory" class="animate__animated animate__fadeIn">
@@ -70,24 +70,32 @@
         <div v-if="qrCodes.length" class="flex flex-col justify-center gap-5">
           <section v-for="HistoryQrCode in qrCodes" :key="HistoryQrCode.id">
             <div
-              class="rounded-lg border-2 border-transparent border-x-0 border-t-0 border-r-0 flex justify-between cursor-pointer transition-all"
+              class="rounded-lg border-2 border-transparent border-x-0 border-t-0 border-r-0 flex justify-between items-center cursor-pointer transition-all"
               id="setionHistory"
             >
               <div
                 class="flex items-center gap-3 overflow-hidden w-full py-3 pl-5"
                 @click="OpenHistoryQrCodeModal(HistoryQrCode)"
               >
-                <div
-                  id="logo"
-                  class="w-9 h-9 bg-[url('@/assets/img/logoDark.svg')] bg-cover bg-center bg-no-repeat transition-all"
-                ></div>
+                <div>
+                  <div
+                    id="logo"
+                    class="w-9 h-9 bg-[url('@/assets/img/logoDark.svg')] bg-cover bg-center bg-no-repeat transition-all"
+                  ></div>
+                </div>
 
-                <p
-                  class="w-2/3 text-base text-white-2 tracking-wide whitespace-nowrap overflow-auto select-none py-0.5 transition-all"
-                  id="contentQrCode"
-                >
-                  {{ HistoryQrCode.qrCodeGeneratedContent }}
-                </p>
+                <div class="flex flex-col w-full">
+                  <p
+                    class="w-2/3 text-base text-white-2 tracking-wide whitespace-nowrap overflow-auto select-none py-0.5 transition-all"
+                    id="contentQrCode"
+                  >
+                    {{ HistoryQrCode.qrCodeGeneratedContent }}
+                  </p>
+
+                  <span class="text-white-2/50 text-xs transition-all">
+                    {{ HistoryQrCode.date }}
+                  </span>
+                </div>
               </div>
 
               <!--BOTÃO DE DELETAR QRCODE LIDO-->
@@ -135,7 +143,7 @@
 
 <script>
 import DirectionGenerateHistory from "../direction/DirectionGenerate&History.vue";
-import AlertHistory from "./AlertHistory.vue";
+import AlertQR from "./AlertQR.vue";
 import ModalHistoryQrcode from "./ModalHistoryQrcode.vue";
 
 export default {
@@ -215,19 +223,6 @@ export default {
       if (qrCodes) {
         this.qrCodes = JSON.parse(qrCodes);
       }
-
-      this.alert = true;
-      setTimeout(() => {
-        document.getElementById("alert").style.right = "4px";
-      }, 200);
-
-      setTimeout(() => {
-        document.getElementById("alert").style.right = "-75%";
-      }, 2000);
-
-      setTimeout(() => {
-        this.alert = false;
-      }, 2300);
     },
 
     /////
@@ -256,12 +251,36 @@ export default {
         this.qrCodes.splice(index, 1);
         localStorage.setItem("qrCodeHistoryRead", JSON.stringify(this.qrCodes));
       }
+      this.alert = true;
+      setTimeout(() => {
+        document.getElementById("alertHistory").style.right = "4px";
+      }, 200);
+
+      setTimeout(() => {
+        document.getElementById("alertHistory").style.right = "-75%";
+      }, 2000);
+
+      setTimeout(() => {
+        this.alert = false;
+      }, 2300);
     },
     deleteQrcodeGeneratad(index) {
       if (this.qrCodes) {
         this.qrCodes.splice(index, 1);
         localStorage.setItem("qrCodeHistoryGenerate", JSON.stringify(this.qrCodes));
       }
+      this.alert = true;
+      setTimeout(() => {
+        document.getElementById("alertHistory").style.right = "4px";
+      }, 200);
+
+      setTimeout(() => {
+        document.getElementById("alertHistory").style.right = "-75%";
+      }, 2000);
+
+      setTimeout(() => {
+        this.alert = false;
+      }, 2300);
     },
 
     ///
@@ -278,7 +297,7 @@ export default {
       }, 2000);
     },
   },
-  components: { ModalHistoryQrcode, DirectionGenerateHistory, AlertHistory },
+  components: { ModalHistoryQrcode, DirectionGenerateHistory, AlertQR },
 };
 </script>
 
@@ -292,6 +311,9 @@ export default {
     box-shadow: 0px 0px 0px 0px;
     p {
       color: #262626;
+    }
+    span {
+      color: #262626d1;
     }
 
     #logo {

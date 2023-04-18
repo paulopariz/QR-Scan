@@ -14,7 +14,10 @@
           <img src="@/assets/img/arrow.svg" alt="Arrow" />
         </div>
 
-        <IconLoadingBtn class="flex justify-center items-center" v-show="loadingBtn" />
+        <IconLoadingBtn
+          class="flex justify-center items-center border-white-2/20 border-r-white-2"
+          v-show="loadingBtn"
+        />
       </button>
     </div>
   </div>

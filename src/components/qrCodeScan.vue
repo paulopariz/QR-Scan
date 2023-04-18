@@ -128,7 +128,11 @@ export default {
       try {
         const url = await qrcode.toDataURL(contentQrCode);
         this.qrCode = url;
-        this.qrCodes.push({ qrCode: url, qrCodeGeneratedContent: contentQrCode });
+        this.qrCodes.push({
+          qrCode: url,
+          qrCodeGeneratedContent: contentQrCode,
+          date: this.currentDateTime,
+        });
         localStorage.setItem("qrCodeHistoryRead", JSON.stringify(this.qrCodes));
       } catch (error) {
         console.error(error);
