@@ -6,13 +6,14 @@
       <DirectionBtnScan
         v-show="ShowRedirectBtnScan"
         class="animate__animated animate__fadeIn"
+        :class="{ animate__fadeOut: fadeOut }"
       />
 
       <div
         class="absolute z-[30000] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 m-auto w-screen"
       >
         <button
-          @click="ShowScan = true"
+          @click="openScan"
           class="absolute z-[30000] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-9 py-2 rounded-lg text-white-2 border border-white-2/5 transition-all hover:scale-95 active:scale-95"
           id="button"
           :class="{ hidden: ShowScan === true }"
@@ -62,6 +63,8 @@ export default {
 
   data() {
     return {
+      fadeOut: false,
+
       currentDateTime: "",
 
       ShowQrCodeRead: false,
@@ -81,12 +84,34 @@ export default {
 
   mounted() {
     if (this.ShowRedirectBtnScan === true) {
-      document.getElementById("BarBottom").style.display = "none";
+      document.getElementById("BarBottom").style.zIndex = 0;
       document.getElementById("button").style.boxShadow = "none";
+    }
+
+    const localStorageContent = sessionStorage.getItem("ShowRedirectBtnScan");
+    console.log(localStorageContent);
+    if (localStorageContent === "false") {
+      document.getElementById("button").style.boxShadow =
+        "8px 8px 16px #2a2a2a, -8px -8px 16px #383838";
+
+      document.getElementById("button").style.background = "#303030";
+      document.getElementById("BarBottom").style.zIndex = 40;
+      this.ShowRedirectBtnScan = false;
     }
   },
 
   methods: {
+    openScan() {
+      this.fadeOut = true;
+
+      setTimeout(() => {
+        this.ShowRedirectBtnScan = false;
+        sessionStorage.setItem("ShowRedirectBtnScan", this.ShowRedirectBtnScan);
+
+        this.ShowScan = true;
+      }, 600);
+    },
+
     async onDecode(contentQrCode) {
       document.getElementById("BarBottom").style.display = "none";
 
