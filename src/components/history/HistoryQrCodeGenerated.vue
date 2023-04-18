@@ -129,22 +129,6 @@
         </div>
       </div>
     </div>
-    <section v-if="qrCodes.length">
-      <div
-        class="fixed z-50 h-28 w-screen bottom-0 bg-dark transition-all px-4 py-3 rounded-xl rounded-b-none"
-        v-show="directionModal"
-        id="directionModal"
-      >
-        <button @click="closeDirectionModal" class="float-right">
-          <img src="@/assets/img/iconClose.svg" alt="close" />
-        </button>
-        <p
-          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-white-2 text-center"
-        >
-          Clique em alguma opção para ver mais detalhes
-        </p>
-      </div>
-    </section>
   </div>
 </template>
 
@@ -165,8 +149,6 @@ export default {
       //
       ShowRedirectHistory: true,
       fadeOut: false,
-      attention: false,
-      directionModal: true,
     };
   },
 
@@ -176,15 +158,14 @@ export default {
       this.qrCodes = JSON.parse(qrCodes);
     }
 
+    //
+
     const localStorageContent = sessionStorage.getItem("ShowRedirectHistory");
     if (localStorageContent === "false") {
       this.ShowRedirectHistory = false;
     }
 
-    const localStorageContentModal = sessionStorage.getItem("directionModal");
-    if (localStorageContentModal === "false") {
-      this.directionModal = false;
-    }
+    //
 
     window.addEventListener("scroll", this.handleScroll);
   },
@@ -204,25 +185,8 @@ export default {
       }
     },
 
-    closeDirectionModal() {
-      document.getElementById("directionModal").style.bottom = "-150px";
-      this.attention = false;
-
-      setTimeout(() => {
-        document.getElementById("BarBottom").style.bottom = "0";
-      }, 300);
-
-      setTimeout(() => {
-        this.directionModal = false;
-        sessionStorage.setItem("directionModal", this.directionModal);
-        // document.getElementById("directionModal").style.bottom = "0";
-      }, 1000);
-    },
-
     redirectGenerateHistory() {
-      document.getElementById("BarBottom").style.bottom = "-150px";
       this.fadeOut = true;
-      this.attention = true;
 
       setTimeout(() => {
         this.ShowRedirectHistory = false;
@@ -240,9 +204,11 @@ export default {
         this.qrCodes = JSON.parse(qrCodes);
       }
     },
+
     openHistoryScan() {
       this.showBtnDeleteGenerated = false;
       this.showBtnDeleteRead = true;
+
       const qrCodes = localStorage.getItem("qrCodeHistoryRead");
       if (qrCodes) {
         this.qrCodes = JSON.parse(qrCodes);
@@ -253,13 +219,6 @@ export default {
 
     OpenHistoryQrCodeModal(HistoryQrCode) {
       document.getElementById("directionModal").style.bottom = "-150px";
-
-      this.attention = false;
-
-      setTimeout(() => {
-        this.directionModal = false;
-        sessionStorage.setItem("directionModal", this.directionModal);
-      }, 3000);
 
       document.body.style.overflow = "hidden";
       document.getElementById("BarBottom").style.bottom = "-150px";
