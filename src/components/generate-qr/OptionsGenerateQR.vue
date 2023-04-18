@@ -84,7 +84,7 @@
               <span :class="{ hidden: this.loadingBtn === true }">Gerar QR Code</span>
               <IconLoadingBtn
                 v-show="loadingBtn"
-                class="border-dark/50 border-r-dark w-4 h-4 m-auto"
+                class="w-[16px] h-[16px] m-auto border-solid border-dark border-y-dark/50 border-r-dark/50"
               />
             </button>
           </div>
@@ -260,15 +260,15 @@ export default {
     if (localStorageContent === "false") {
       this.ShowRedirectGenerate = false;
     } else {
-      document.getElementById("titleGenerate").style.display = "none";
+      document.getElementById("titleGenerate").style.opacity = 0;
     }
   },
 
   methods: {
     redirectGenerateHistory() {
       this.fadeOut = true;
-      document.getElementById("titleGenerate").style.display = "block";
 
+      document.getElementById("titleGenerate").style.opacity = 1;
       setTimeout(() => {
         this.ShowRedirectGenerate = false;
         sessionStorage.setItem("ShowRedirectGenerate", this.ShowRedirectGenerate);

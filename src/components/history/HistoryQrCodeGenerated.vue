@@ -4,17 +4,19 @@
       <DirectionGenerateHistory
         :redirectGenerateHistory="redirectGenerateHistory"
         title="Aqui é o seu histórico!"
-        desc="Aqui está o seu histórico completo de QR codes gerados e escaneados. Você pode visualizar todos os códigos QR que foram registrados e também pode optar por excluí-los. Se preferir, você pode selecionar os que deseja remover individualmente ou excluir todo o histórico de uma vez."
+        desc="Aqui está o seu histórico completo de QR codes gerados e escaneados. Você pode clicar encima de um qr-code e ver com mais detalhes e também pode optar por excluí-los. Se preferir, você pode selecionar os que deseja remover individualmente ou excluir todo o histórico de uma vez."
         class="animate__animated animate__fadeIn"
         :class="{ animate__fadeOut: fadeOut }"
       />
     </div>
 
     <header id="header" class="fixed bg-[#333333] w-screen z-10 px-10 pt-6 pb-2 m-auto">
-      <nav class="flex items-center gap-6">
+      <nav class="flex items gap-6">
         <h1 class="text-xl text-white-2 font-semibold tracking-wider select-none">
           Histórico
         </h1>
+
+        <AlertHistory id="alert" v-show="alert" msg="Excluído com sucesso!" />
       </nav>
 
       <div v-show="selectHistory" class="animate__animated animate__fadeIn">
@@ -69,7 +71,6 @@
           <section v-for="HistoryQrCode in qrCodes" :key="HistoryQrCode.id">
             <div
               class="rounded-lg border-2 border-transparent border-x-0 border-t-0 border-r-0 flex justify-between cursor-pointer transition-all"
-              :class="{ attention }"
               id="setionHistory"
             >
               <div
@@ -134,6 +135,7 @@
 
 <script>
 import DirectionGenerateHistory from "../direction/DirectionGenerate&History.vue";
+import AlertHistory from "./AlertHistory.vue";
 import ModalHistoryQrcode from "./ModalHistoryQrcode.vue";
 
 export default {
@@ -145,6 +147,7 @@ export default {
 
       showBtnDeleteRead: true,
       showBtnDeleteGenerated: false,
+      alert: false,
 
       //
       ShowRedirectHistory: true,
@@ -191,7 +194,6 @@ export default {
       setTimeout(() => {
         this.ShowRedirectHistory = false;
         sessionStorage.setItem("ShowRedirectHistory", this.ShowRedirectHistory);
-        // document.getElementById("directionModal").style.bottom = "0";
       }, 1000);
     },
 
@@ -213,13 +215,24 @@ export default {
       if (qrCodes) {
         this.qrCodes = JSON.parse(qrCodes);
       }
+
+      this.alert = true;
+      setTimeout(() => {
+        document.getElementById("alert").style.right = "4px";
+      }, 200);
+
+      setTimeout(() => {
+        document.getElementById("alert").style.right = "-75%";
+      }, 2000);
+
+      setTimeout(() => {
+        this.alert = false;
+      }, 2300);
     },
 
     /////
 
     OpenHistoryQrCodeModal(HistoryQrCode) {
-      document.getElementById("directionModal").style.bottom = "-150px";
-
       document.body.style.overflow = "hidden";
       document.getElementById("BarBottom").style.bottom = "-150px";
       setTimeout(() => {
@@ -265,7 +278,7 @@ export default {
       }, 2000);
     },
   },
-  components: { ModalHistoryQrcode, DirectionGenerateHistory },
+  components: { ModalHistoryQrcode, DirectionGenerateHistory, AlertHistory },
 };
 </script>
 
