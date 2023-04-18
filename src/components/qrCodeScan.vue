@@ -84,7 +84,6 @@ export default {
 
   mounted() {
     if (this.ShowRedirectBtnScan === true) {
-      document.getElementById("BarBottom").style.zIndex = 0;
       document.getElementById("button").style.boxShadow = "none";
     }
 
@@ -95,7 +94,6 @@ export default {
         "8px 8px 16px #2a2a2a, -8px -8px 16px #383838";
 
       document.getElementById("button").style.background = "#303030";
-      document.getElementById("BarBottom").style.zIndex = 40;
       this.ShowRedirectBtnScan = false;
     }
   },

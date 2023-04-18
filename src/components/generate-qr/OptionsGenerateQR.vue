@@ -1,15 +1,21 @@
 <template>
   <div class="px-10 py-6 m-auto">
     <div v-show="ShowRedirectGenerate">
-      <DirectionGenerate
-        :redirectGenerate="redirectGenerate"
+      <DirectionGenerateHistory
+        :redirectGenerateHistory="redirectGenerateHistory"
+        title="Gere seu própio QR-Code"
+        desc="Clique em uma das opções abaixo e gere seu QR code! Mas lembre-se de digitar
+        corretamente o seu nome de usuário, URL ou número, para evitar qualquer erro."
         class="animate__animated animate__fadeIn"
         :class="{ animate__fadeOut: fadeOut }"
       />
     </div>
 
     <nav>
-      <h1 class="text-xl text-white-2 font-semibold tracking-wider select-none">
+      <h1
+        id="titleGenerate"
+        class="text-xl text-white-2 font-semibold tracking-wider select-none"
+      >
         Gerar QR
       </h1>
     </nav>
@@ -118,10 +124,15 @@ import QrCodeGenerated from "../qr-generated/qrCodeGenerated.vue";
 
 import qrcode from "qrcode";
 import IconLoadingBtn from "../iconLoadingBtn.vue";
-import DirectionGenerate from "../direction/DirectionGenerate.vue";
+import DirectionGenerateHistory from "../direction/DirectionGenerate&History.vue";
 
 export default {
-  components: { BackgroundForModals, QrCodeGenerated, IconLoadingBtn, DirectionGenerate },
+  components: {
+    BackgroundForModals,
+    QrCodeGenerated,
+    IconLoadingBtn,
+    DirectionGenerateHistory,
+  },
   data() {
     return {
       ShowRedirectGenerate: true,
@@ -248,12 +259,15 @@ export default {
     console.log(localStorageContent);
     if (localStorageContent === "false") {
       this.ShowRedirectGenerate = false;
+    } else {
+      document.getElementById("titleGenerate").style.display = "none";
     }
   },
 
   methods: {
-    redirectGenerate() {
+    redirectGenerateHistory() {
       this.fadeOut = true;
+      document.getElementById("titleGenerate").style.display = "block";
 
       setTimeout(() => {
         this.ShowRedirectGenerate = false;

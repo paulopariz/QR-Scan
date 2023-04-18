@@ -1,5 +1,15 @@
 <template>
   <div>
+    <div v-show="ShowRedirectHistory">
+      <DirectionGenerateHistory
+        :redirectGenerateHistory="redirectGenerateHistory"
+        title="Aqui é o seu histórico!"
+        desc="Aqui está o seu histórico completo de QR codes gerados e escaneados. Você pode visualizar todos os códigos QR que foram registrados e também pode optar por excluí-los. Se preferir, você pode selecionar os que deseja remover individualmente ou excluir todo o histórico de uma vez."
+        class="animate__animated animate__fadeIn"
+        :class="{ animate__fadeOut: fadeOut }"
+      />
+    </div>
+
     <header id="header" class="fixed bg-[#333333] w-screen z-10 px-10 pt-6 pb-2 m-auto">
       <nav class="flex items-center gap-6">
         <h1 class="text-xl text-white-2 font-semibold tracking-wider select-none">
@@ -48,7 +58,7 @@
         ></div>
 
         <div
-          v-if="qrCodes.length < 1"
+          v-if="(qrCodes.length < 1) & (this.ShowRedirectHistory === false)"
           class="flex items-center justify-center gap-2 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate__animated animate__fadeIn"
         >
           <h1 class="text-white-2 text-lg tracking-wide">Histórico vazio</h1>
@@ -58,7 +68,8 @@
         <div v-if="qrCodes.length" class="flex flex-col justify-center gap-5">
           <section v-for="HistoryQrCode in qrCodes" :key="HistoryQrCode.id">
             <div
-              class="rounded-lg border-2 border-transparent flex justify-between cursor-pointer transition-all"
+              class="rounded-lg border-2 border-transparent border-x-0 border-t-0 border-r-0 flex justify-between cursor-pointer transition-all"
+              :class="{ attention }"
               id="setionHistory"
             >
               <div
@@ -118,10 +129,27 @@
         </div>
       </div>
     </div>
+    <section v-if="qrCodes.length">
+      <div
+        class="fixed z-50 h-28 w-screen bottom-0 bg-dark transition-all px-4 py-3 rounded-xl rounded-b-none"
+        v-show="directionModal"
+        id="directionModal"
+      >
+        <button @click="closeDirectionModal" class="float-right">
+          <img src="@/assets/img/iconClose.svg" alt="close" />
+        </button>
+        <p
+          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-white-2 text-center"
+        >
+          Clique em alguma opção para ver mais detalhes
+        </p>
+      </div>
+    </section>
   </div>
 </template>
 
 <script>
+import DirectionGenerateHistory from "../direction/DirectionGenerate&History.vue";
 import ModalHistoryQrcode from "./ModalHistoryQrcode.vue";
 
 export default {
@@ -133,6 +161,12 @@ export default {
 
       showBtnDeleteRead: true,
       showBtnDeleteGenerated: false,
+
+      //
+      ShowRedirectHistory: true,
+      fadeOut: false,
+      attention: false,
+      directionModal: true,
     };
   },
 
@@ -140,6 +174,16 @@ export default {
     const qrCodes = localStorage.getItem("qrCodeHistoryRead");
     if (qrCodes) {
       this.qrCodes = JSON.parse(qrCodes);
+    }
+
+    const localStorageContent = sessionStorage.getItem("ShowRedirectHistory");
+    if (localStorageContent === "false") {
+      this.ShowRedirectHistory = false;
+    }
+
+    const localStorageContentModal = sessionStorage.getItem("directionModal");
+    if (localStorageContentModal === "false") {
+      this.directionModal = false;
     }
 
     window.addEventListener("scroll", this.handleScroll);
@@ -158,6 +202,33 @@ export default {
         document.getElementById("header").style.paddingBottom = "8px";
         this.selectHistory = true;
       }
+    },
+
+    closeDirectionModal() {
+      document.getElementById("directionModal").style.bottom = "-150px";
+      this.attention = false;
+
+      setTimeout(() => {
+        document.getElementById("BarBottom").style.bottom = "0";
+      }, 300);
+
+      setTimeout(() => {
+        this.directionModal = false;
+        sessionStorage.setItem("directionModal", this.directionModal);
+        // document.getElementById("directionModal").style.bottom = "0";
+      }, 1000);
+    },
+
+    redirectGenerateHistory() {
+      document.getElementById("BarBottom").style.bottom = "-150px";
+      this.fadeOut = true;
+      this.attention = true;
+
+      setTimeout(() => {
+        this.ShowRedirectHistory = false;
+        sessionStorage.setItem("ShowRedirectHistory", this.ShowRedirectHistory);
+        // document.getElementById("directionModal").style.bottom = "0";
+      }, 1000);
     },
 
     openHistoryGenerated() {
@@ -181,6 +252,15 @@ export default {
     /////
 
     OpenHistoryQrCodeModal(HistoryQrCode) {
+      document.getElementById("directionModal").style.bottom = "-150px";
+
+      this.attention = false;
+
+      setTimeout(() => {
+        this.directionModal = false;
+        sessionStorage.setItem("directionModal", this.directionModal);
+      }, 3000);
+
       document.body.style.overflow = "hidden";
       document.getElementById("BarBottom").style.bottom = "-150px";
       setTimeout(() => {
@@ -226,7 +306,7 @@ export default {
       }, 2000);
     },
   },
-  components: { ModalHistoryQrcode },
+  components: { ModalHistoryQrcode, DirectionGenerateHistory },
 };
 </script>
 
@@ -266,6 +346,19 @@ export default {
   100% {
     height: 100vh;
     width: 100vh;
+  }
+}
+
+.attention {
+  animation: attention 1s alternate-reverse infinite;
+}
+
+@keyframes attention {
+  0% {
+    border-color: transparent;
+  }
+  100% {
+    border-color: #fdb623;
   }
 }
 </style>

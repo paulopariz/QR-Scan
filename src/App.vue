@@ -1,7 +1,7 @@
 <template>
   <div class="h-screen animate__animated animate__fadeIn">
     <div v-show="ShowRedirectInitial">
-      <direction-initial
+      <DirectionInitial
         :redirect="redirect"
         class="animate__animated animate__fadeIn"
         :class="{ animate__fadeOut: fadeOut }"
@@ -17,8 +17,9 @@
 
 <script>
 import BarBottom from "./components/barBottom.vue";
-import DirectionInitial from "./components/direction/directionInitial.vue";
+import DirectionInitial from "./components/direction/DirectionInitial.vue";
 import LoaderPage from "./components/LoaderPage.vue";
+
 export default {
   components: { LoaderPage, BarBottom, DirectionInitial },
 
