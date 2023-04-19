@@ -42,12 +42,23 @@
           </div>
         </div>
         <div class="float-right px-1 mt-3" v-if="qrCodes.length > 0">
-          <button
-            class="text-light tracking-wide text-sm underline decoration-2"
-            @click="deleteHistory()"
-          >
-            Limpar Histórico
-          </button>
+          <div v-show="clearHistoryRead">
+            <button
+              class="text-light tracking-wide text-sm underline decoration-2"
+              @click="deleteHistoryRead()"
+            >
+              Limpar Histórico
+            </button>
+          </div>
+
+          <div v-show="clearHistoryGenerate">
+            <button
+              class="text-light tracking-wide text-sm underline decoration-2"
+              @click="deleteHistoryGenerate()"
+            >
+              Limpar Histórico
+            </button>
+          </div>
         </div>
       </div>
     </header>
@@ -157,7 +168,8 @@ export default {
       showBtnDeleteGenerated: false,
       alert: false,
 
-      empty: false,
+      clearHistoryRead: true,
+      clearHistoryGenerate: false,
 
       //
       ShowRedirectHistory: true,
@@ -211,33 +223,28 @@ export default {
       this.showBtnDeleteGenerated = true;
       this.showBtnDeleteRead = false;
 
+      this.clearHistoryRead = false;
+      this.clearHistoryGenerate = true;
+
       const qrCodesGenerate = localStorage.getItem("qrCodeHistoryGenerate");
       if (qrCodesGenerate) {
         this.qrCodes = JSON.parse(qrCodesGenerate);
-        console.log("existe generate");
       } else {
         this.qrCodes = [];
-        console.log("não existe generate");
       }
-
-      // const generate = localStorage.getItem("qrCodeHistoryGenerate");
-      // if (generate & (generate.length > 0)) {
-      //   console.log("maior");
-      //   this.qrCodes = JSON.parse(generate);
-      // } else {
-      //   console.log("menor");
-      // }
     },
 
     openHistoryScan() {
       this.showBtnDeleteGenerated = false;
       this.showBtnDeleteRead = true;
+
+      this.clearHistoryRead = true;
+      this.clearHistoryGenerate = false;
+
       const qrCodes = localStorage.getItem("qrCodeHistoryRead");
       if (qrCodes) {
-        console.log("existe read");
         this.qrCodes = JSON.parse(qrCodes);
       } else {
-        console.log("não existe read");
         this.qrCodes = [];
       }
     },
@@ -300,14 +307,26 @@ export default {
       }, 2300);
     },
 
-    ///
+    ///DELETE HISTORY ALL
 
-    deleteHistory() {
+    deleteHistoryRead() {
       document.getElementById("historyClear").style.display = "block";
       document.getElementById("BarBottom").style.bottom = "-150px";
 
       setTimeout(() => {
-        localStorage.clear();
+        localStorage.removeItem("qrCodeHistoryRead");
+        this.qrCodes = [];
+        document.getElementById("historyClear").style.display = "none";
+        document.getElementById("BarBottom").style.bottom = "0";
+      }, 2000);
+    },
+
+    deleteHistoryGenerate() {
+      document.getElementById("historyClear").style.display = "block";
+      document.getElementById("BarBottom").style.bottom = "-150px";
+
+      setTimeout(() => {
+        localStorage.removeItem("qrCodeHistoryGenerate");
         this.qrCodes = [];
         document.getElementById("historyClear").style.display = "none";
         document.getElementById("BarBottom").style.bottom = "0";
