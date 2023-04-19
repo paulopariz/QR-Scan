@@ -10,7 +10,7 @@
 
     <LoaderPage class="" />
 
-    <BarBottom class="" id="BarBottom" />
+    <BarBottom id="BarBottom" />
     <router-view />
   </div>
 </template>

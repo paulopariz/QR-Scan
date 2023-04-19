@@ -79,7 +79,7 @@
         </div>
 
         <div v-if="qrCodes.length" class="flex flex-col justify-center gap-5">
-          <section v-for="HistoryQrCode in qrCodes" :key="HistoryQrCode.id">
+          <section v-for="(HistoryQrCode, index) in qrCodes" :key="HistoryQrCode.id">
             <div
               class="rounded-lg border-2 border-transparent border-x-0 border-t-0 border-r-0 flex justify-between items-center cursor-pointer transition-all"
               id="setionHistory"
