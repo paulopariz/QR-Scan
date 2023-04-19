@@ -171,7 +171,7 @@ export default {
 
     //
 
-    const localStorageContent = sessionStorage.getItem("ShowRedirectHistory");
+    const localStorageContent = localStorage.getItem("ShowRedirectHistory");
     if (localStorageContent === "false") {
       this.ShowRedirectHistory = false;
     }
@@ -201,24 +201,21 @@ export default {
 
       setTimeout(() => {
         this.ShowRedirectHistory = false;
-        sessionStorage.setItem("ShowRedirectHistory", this.ShowRedirectHistory);
+        localStorage.setItem("ShowRedirectHistory", this.ShowRedirectHistory);
       }, 1000);
     },
 
     openHistoryGenerated() {
       this.showBtnDeleteGenerated = true;
       this.showBtnDeleteRead = false;
-
       const qrCodes = localStorage.getItem("qrCodeHistoryGenerate");
       if (qrCodes) {
         this.qrCodes = JSON.parse(qrCodes);
       }
     },
-
     openHistoryScan() {
       this.showBtnDeleteGenerated = false;
       this.showBtnDeleteRead = true;
-
       const qrCodes = localStorage.getItem("qrCodeHistoryRead");
       if (qrCodes) {
         this.qrCodes = JSON.parse(qrCodes);

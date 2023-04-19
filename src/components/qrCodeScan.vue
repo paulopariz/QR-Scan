@@ -87,7 +87,7 @@ export default {
       document.getElementById("button").style.boxShadow = "none";
     }
 
-    const localStorageContent = sessionStorage.getItem("ShowRedirectBtnScan");
+    const localStorageContent = localStorage.getItem("ShowRedirectBtnScan");
     console.log(localStorageContent);
     if (localStorageContent === "false") {
       document.getElementById("button").style.boxShadow =
@@ -105,7 +105,7 @@ export default {
 
       setTimeout(() => {
         this.ShowRedirectBtnScan = false;
-        sessionStorage.setItem("ShowRedirectBtnScan", this.ShowRedirectBtnScan);
+        localStorage.setItem("ShowRedirectBtnScan", this.ShowRedirectBtnScan);
 
         this.ShowScan = true;
       }, 600);

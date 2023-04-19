@@ -36,13 +36,13 @@ export default {
       setTimeout(() => {
         this.ShowRedirectInitial = false;
 
-        sessionStorage.setItem("ShowRedirectInitial", this.ShowRedirectInitial);
+        localStorage.setItem("ShowRedirectInitial", this.ShowRedirectInitial);
       }, 1000);
     },
   },
 
   mounted() {
-    const localStorageContent = sessionStorage.getItem("ShowRedirectInitial");
+    const localStorageContent = localStorage.getItem("ShowRedirectInitial");
     console.log(localStorageContent);
     if (localStorageContent === "false") {
       this.ShowRedirectInitial = false;

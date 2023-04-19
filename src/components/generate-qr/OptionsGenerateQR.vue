@@ -96,7 +96,6 @@
           <QrCodeGenerated
             :qrCodeGeneratedContet="qrCodeGeneratedContet"
             :qrCodeGenerated="qrCode"
-            :saveQrCode="saveQrCode"
             :showHistory="showHistory"
             :date="currentDateTime"
           />
@@ -265,7 +264,7 @@ export default {
   },
 
   mounted() {
-    const localStorageContent = sessionStorage.getItem("ShowRedirectGenerate");
+    const localStorageContent = localStorage.getItem("ShowRedirectGenerate");
     console.log(localStorageContent);
     if (localStorageContent === "false") {
       this.ShowRedirectGenerate = false;
@@ -281,7 +280,7 @@ export default {
       document.getElementById("titleGenerate").style.opacity = 1;
       setTimeout(() => {
         this.ShowRedirectGenerate = false;
-        sessionStorage.setItem("ShowRedirectGenerate", this.ShowRedirectGenerate);
+        localStorage.setItem("ShowRedirectGenerate", this.ShowRedirectGenerate);
       }, 1000);
     },
 
@@ -359,7 +358,6 @@ export default {
         this.username = "";
       }
     },
-
     openModal(optionId) {
       setTimeout(() => {
         this.viewModal = this.Options.find((option) => option.id === optionId);
@@ -372,14 +370,13 @@ export default {
     closeModal() {
       navigator.vibrate([50]);
       this.msgValidation = false;
+      document.getElementById("BarBottom").style.display = "block";
 
       this.ShowQrCodeGenerated = false;
       this.showModalGenerated = true;
 
       this.viewModal = false;
       window.history.pushState(null, null, "/generate-qr");
-
-      document.getElementById("BarBottom").style.display = "block";
     },
   },
 };
