@@ -1,13 +1,13 @@
 <template>
   <div class="animate__animated animate__fadeIn">
-    <HistoryQrCodeGenerated />
+    <HistoryQrCodes />
   </div>
 </template>
 
 <script>
-import HistoryQrCodeGenerated from "@/components/history/HistoryQrCodeGenerated.vue";
+import HistoryQrCodes from "@/components/history/HistoryQrCodes.vue";
 export default {
-  components: { HistoryQrCodeGenerated },
+  components: { HistoryQrCodes },
 };
 </script>
 

@@ -157,6 +157,8 @@ export default {
       showBtnDeleteGenerated: false,
       alert: false,
 
+      empty: false,
+
       //
       ShowRedirectHistory: true,
       fadeOut: false,
@@ -208,17 +210,35 @@ export default {
     openHistoryGenerated() {
       this.showBtnDeleteGenerated = true;
       this.showBtnDeleteRead = false;
-      const qrCodes = localStorage.getItem("qrCodeHistoryGenerate");
-      if (qrCodes) {
-        this.qrCodes = JSON.parse(qrCodes);
+
+      const qrCodesGenerate = localStorage.getItem("qrCodeHistoryGenerate");
+      if (qrCodesGenerate) {
+        this.qrCodes = JSON.parse(qrCodesGenerate);
+        console.log("existe generate");
+      } else {
+        this.qrCodes = [];
+        console.log("não existe generate");
       }
+
+      // const generate = localStorage.getItem("qrCodeHistoryGenerate");
+      // if (generate & (generate.length > 0)) {
+      //   console.log("maior");
+      //   this.qrCodes = JSON.parse(generate);
+      // } else {
+      //   console.log("menor");
+      // }
     },
+
     openHistoryScan() {
       this.showBtnDeleteGenerated = false;
       this.showBtnDeleteRead = true;
       const qrCodes = localStorage.getItem("qrCodeHistoryRead");
       if (qrCodes) {
+        console.log("existe read");
         this.qrCodes = JSON.parse(qrCodes);
+      } else {
+        console.log("não existe read");
+        this.qrCodes = [];
       }
     },
 
