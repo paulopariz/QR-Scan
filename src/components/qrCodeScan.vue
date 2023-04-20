@@ -93,7 +93,6 @@ export default {
     }
 
     const localStorageContent = localStorage.getItem("ShowRedirectBtnScan");
-    console.log(localStorageContent);
     if (localStorageContent === "false") {
       document.getElementById("button").style.boxShadow =
         "8px 8px 16px #2a2a2a, -8px -8px 16px #383838";

@@ -11,10 +11,12 @@
     </div>
 
     <header id="header" class="fixed bg-[#333333] w-screen z-10 px-10 pt-6 pb-2 m-auto">
-      <nav class="flex items gap-6">
+      <nav class="flex items-center justify-between">
         <h1 class="text-xl text-white-2 font-semibold tracking-wider select-none">
           Histórico
         </h1>
+
+        <BtnConfigs />
 
         <AlertQR id="alertHistory" v-show="alert" msg="Excluído com sucesso!" />
       </nav>
@@ -153,6 +155,7 @@
 </template>
 
 <script>
+import BtnConfigs from "../BtnConfigs.vue";
 import DirectionGenerateHistory from "../direction/DirectionGenerate&History.vue";
 import AlertQR from "./AlertQR.vue";
 import ModalHistoryQrcode from "./ModalHistoryQrcode.vue";
@@ -333,7 +336,7 @@ export default {
       }, 2000);
     },
   },
-  components: { ModalHistoryQrcode, DirectionGenerateHistory, AlertQR },
+  components: { ModalHistoryQrcode, DirectionGenerateHistory, AlertQR, BtnConfigs },
 };
 </script>
 

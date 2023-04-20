@@ -4,7 +4,7 @@
       @click="openConfigs"
       class="flex items-center justify-center transition-all focus:rotate-45 active:rotate-45"
     >
-      <img src="@/assets/img/iconSettings.svg" class="w-7" alt="configs" />
+      <img src="@/assets/img/iconSettings.svg" class="w-6" alt="configs" />
     </button>
   </div>
 </template>
