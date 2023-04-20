@@ -1,11 +1,11 @@
 <template>
   <div class="animate__animated animate__fadeIn">
-    <div class="px-10 pb-6">
-      <nav class="flex items-center gap-6 mt-12">
+    <div class="px-10">
+      <nav class="flex items-center gap-6">
         <button
           id="btnBack"
           @click="back"
-          class="px-4 py-3 rounded-lg border border-white-2/5 transition-all hover:scale-95"
+          class="px-4 py-3 mt-12 rounded-lg border border-white-2/5 transition-all hover:scale-95"
         >
           <img
             src="@/assets/img/iconBack.svg"
@@ -46,6 +46,30 @@
             ></span>
           </label>
         </div>
+
+        <div class="mt-10">
+          <h1 class="text-light text-xl tracking-wide">Autor</h1>
+
+          <section class="mt-5 flex flex-col gap-0.5">
+            <a
+              v-for="redes in socias"
+              :key="redes.id"
+              target="_blank"
+              :href="redes.link"
+              class="w-full bg-dark flex items-center px-5 py-3 transition-all"
+              id="redes"
+              :class="{ radius }"
+            >
+              <div class="flex items-center gap-4">
+                <img :src="redes.img" alt="IconVibrate" class="w-5 transition-all" />
+                <div class="flex flex-col">
+                  <h2 class="text-white-2 transition-all">{{ redes.title }}</h2>
+                  <p class="text-white-2/50 text-sm transition-all">{{ redes.rede }}.</p>
+                </div>
+              </div>
+            </a>
+          </section>
+        </div>
       </div>
     </div>
   </div>
@@ -56,6 +80,29 @@ export default {
   data() {
     return {
       active: true,
+      radius: false,
+
+      socias: [
+        {
+          img: require("@/assets/img/iconPortfolio.svg"),
+          title: "Portfólio",
+          rede: "Acesse meu Porfólio",
+          link: "https://paulopariz.vercel.app/",
+        },
+        {
+          img: require("@/assets/img/iconGithub.svg"),
+          title: "Github",
+          rede: "Siga-me no Github",
+          link: "https://github.com/paulopariz",
+          radius: true,
+        },
+        {
+          img: require("@/assets/img/iconLinkedIn.svg"),
+          title: "LinkedIn",
+          rede: "Siga-me no LinkedIn",
+          link: "https://www.linkedin.com/in/paulopariz/",
+        },
+      ],
     };
   },
 
@@ -72,6 +119,15 @@ export default {
   methods: {
     back() {
       this.$router.go(-1);
+      document.getElementById("BarBottom").style.bottom = "0";
+
+      const localStorageVibrate = localStorage.getItem("Vibrate");
+
+      if (localStorageVibrate === "true") {
+        navigator.vibrate([50]);
+      } else {
+        navigator.vibrate([0]);
+      }
     },
 
     vibrate() {
@@ -80,15 +136,50 @@ export default {
       localStorage.setItem("Vibrate", this.active);
 
       const localStorageVibrate = localStorage.getItem("Vibrate");
-      console.log(localStorageVibrate);
+
+      if (localStorageVibrate === "true") {
+        navigator.vibrate([50]);
+      } else {
+        navigator.vibrate([0]);
+      }
     },
   },
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 button {
   background: #303030;
   box-shadow: 8px 8px 16px #2a2a2a, -8px -8px 16px #383838;
+}
+
+.radius {
+  border-radius: 0;
+  background: red;
+}
+
+#redes {
+  &:nth-child(2) {
+    border-radius: 0;
+  }
+  &:nth-child(1) {
+    border-radius: 8px 8px 0px 0px;
+  }
+  &:nth-child(3) {
+    border-radius: 0px 0px 8px 8px;
+  }
+
+  &:hover {
+    background-color: #fdb623;
+    img {
+      filter: invert(100%);
+    }
+    h2 {
+      filter: invert(100%);
+    }
+    p {
+      filter: invert(100%);
+    }
+  }
 }
 </style>

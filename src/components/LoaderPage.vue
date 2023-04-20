@@ -39,7 +39,13 @@ export default {
       this.loadingBtn = true;
       this.contentBtn = false;
 
-      navigator.vibrate([50]);
+      const localStorageVibrate = localStorage.getItem("Vibrate");
+
+      if (localStorageVibrate === "true") {
+        navigator.vibrate([50]);
+      } else {
+        navigator.vibrate([0]);
+      }
 
       setTimeout(() => {
         this.$router.push("/");

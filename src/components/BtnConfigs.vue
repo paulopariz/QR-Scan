@@ -2,9 +2,13 @@
   <div class="z-30">
     <button
       @click="openConfigs"
-      class="flex items-center justify-center transition-all focus:rotate-45 active:rotate-45"
+      class="p-2.5 rounded-lg border border-white-2/5 flex items-center justify-center"
     >
-      <img src="@/assets/img/iconSettings.svg" class="w-6" alt="configs" />
+      <img
+        src="@/assets/img/iconSettings.svg"
+        class="hover:rotate-180 focus:rotate-180 active:rotate-180"
+        alt="configs"
+      />
     </button>
   </div>
 </template>
@@ -15,6 +19,8 @@ export default {
 
   methods: {
     openConfigs() {
+      document.getElementById("BarBottom").style.bottom = "-150px";
+
       const localStorageVibrate = localStorage.getItem("Vibrate");
 
       if (localStorageVibrate === "true") {
@@ -25,10 +31,15 @@ export default {
 
       setTimeout(() => {
         this.$router.push("/configs");
-      }, 350);
+      }, 150);
     },
   },
 };
 </script>
 
-<style></style>
+<style scoped>
+button {
+  background: #303030;
+  box-shadow: 8px 8px 16px #2a2a2a, -8px -8px 16px #383838;
+}
+</style>
