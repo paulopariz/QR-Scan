@@ -201,7 +201,7 @@ export default {
 
   methods: {
     handleScroll() {
-      if (window.scrollY > 500) {
+      if (window.scrollY > 350) {
         this.selectHistory = false;
         document.getElementById("header").style.paddingBottom = "24px";
       } else {
@@ -376,19 +376,6 @@ export default {
   100% {
     height: 100vh;
     width: 100vh;
-  }
-}
-
-.attention {
-  animation: attention 1s alternate-reverse infinite;
-}
-
-@keyframes attention {
-  0% {
-    border-color: transparent;
-  }
-  100% {
-    border-color: #fdb623;
   }
 }
 </style>

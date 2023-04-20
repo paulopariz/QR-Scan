@@ -1,5 +1,8 @@
 <template>
   <section>
+    <div class="px-10 py-6 m-auto" v-if="this.ShowScan === false">
+      <BtnConfigs class="float-right" />
+    </div>
     <div class="fixed top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2">
       <!--BOTÃO DE ATIVAR SCAN!-->
 
@@ -52,6 +55,7 @@ import QrCodeRead from "./read-qr/QrCodeRead.vue";
 
 import qrcode from "qrcode";
 import DirectionBtnScan from "./direction/DirectionBtnScan.vue";
+import BtnConfigs from "./BtnConfigs.vue";
 
 export default {
   components: {
@@ -59,6 +63,7 @@ export default {
     BackgroundForModals,
     QrCodeRead,
     DirectionBtnScan,
+    BtnConfigs,
   },
 
   data() {

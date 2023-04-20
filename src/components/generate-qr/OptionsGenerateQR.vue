@@ -11,13 +11,15 @@
       />
     </div>
 
-    <nav>
+    <nav class="flex justify-between items-center">
       <h1
         id="titleGenerate"
         class="text-xl text-white-2 font-semibold tracking-wider select-none"
       >
         Gerar QR
       </h1>
+
+      <btn-configs />
     </nav>
 
     <div class="px-10 pt-16 pb-28 grid grid-cols-3 place-items-center gap-x-28 gap-y-8">
@@ -130,6 +132,7 @@ import DirectionGenerateHistory from "../direction/DirectionGenerate&History.vue
 import AlertQR from "../history/AlertQR.vue";
 
 import moment from "moment";
+import BtnConfigs from "../BtnConfigs.vue";
 
 export default {
   components: {
@@ -138,6 +141,7 @@ export default {
     IconLoadingBtn,
     DirectionGenerateHistory,
     AlertQR,
+    BtnConfigs,
   },
   data() {
     return {
@@ -298,6 +302,7 @@ export default {
         this.msgValidation = true;
         document.getElementById("input").style.borderColor = "#FF0000";
       } else {
+        document.getElementById("input").style.borderColor = "#D9D9D9";
         this.currentDateTime = moment().locale("pt-br").format("D MMM YYYY, h:mm a");
 
         this.loadingBtn = true;
