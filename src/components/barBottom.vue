@@ -24,7 +24,7 @@
         </li>
 
         <li
-          @click="configs('/history')"
+          @click="history('/history')"
           :class="{ active: $route.path === '/history' }"
           class="flex items-center flex-col gap-1 transition-all"
         >
@@ -50,18 +50,28 @@ export default {
   },
 
   methods: {
+    vibrate() {
+      const localStorageVibrate = localStorage.getItem("Vibrate");
+
+      if (localStorageVibrate === "true") {
+        navigator.vibrate([50]);
+      } else {
+        navigator.vibrate([0]);
+      }
+    },
+
     generateQr() {
-      navigator.vibrate([50]);
+      this.vibrate();
       this.$router.push("/generate-qr");
     },
 
     openScan() {
-      navigator.vibrate([50]);
+      this.vibrate();
       this.$router.push("/");
     },
 
-    configs() {
-      navigator.vibrate([50]);
+    history() {
+      this.vibrate();
       this.$router.push("/history");
     },
   },

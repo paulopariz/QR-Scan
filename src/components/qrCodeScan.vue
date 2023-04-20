@@ -118,7 +118,14 @@ export default {
     async onDecode(contentQrCode) {
       document.getElementById("BarBottom").style.display = "none";
 
-      navigator.vibrate([200]);
+      const localStorageVibrate = localStorage.getItem("Vibrate");
+
+      if (localStorageVibrate === "true") {
+        navigator.vibrate([200]);
+      } else {
+        navigator.vibrate([0]);
+      }
+
       this.ShowScan = false;
       this.ShowQrCodeRead = true;
       this.textToCopy = contentQrCode;

@@ -373,7 +373,14 @@ export default {
     },
 
     closeModal() {
-      navigator.vibrate([50]);
+      const localStorageVibrate = localStorage.getItem("Vibrate");
+
+      if (localStorageVibrate === "true") {
+        navigator.vibrate([50]);
+      } else {
+        navigator.vibrate([0]);
+      }
+
       this.msgValidation = false;
       document.getElementById("BarBottom").style.display = "block";
 
