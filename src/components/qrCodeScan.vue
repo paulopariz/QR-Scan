@@ -162,6 +162,14 @@ export default {
 
       this.ShowScan = true;
       this.ShowQrCodeRead = false;
+
+      const localStorageVibrate = localStorage.getItem("Vibrate");
+
+      if (localStorageVibrate === "true") {
+        navigator.vibrate([50]);
+      } else {
+        navigator.vibrate([0]);
+      }
     },
 
     async copy() {
