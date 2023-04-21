@@ -5,7 +5,7 @@
   >
     <section
       id="modal"
-      class="bg-[#333333] h-96 w-11/12 z-40 rounded-lg drop-shadow-2xl shadow-lg max-mn:w-5/6"
+      class="bg-[#333333] h-96 w-11/12 z-40 rounded-lg drop-shadow-2xl shadow-lg max-mn:w-5/6 md:w-3/4 md:h-[520px]"
     >
       <button
         id="buttonClose"
@@ -20,14 +20,14 @@
           :src="imgQrCode"
           id="imgQrCode"
           alt="Qr-Code"
-          class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 border-4 rounded-md border-light bg-white"
+          class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 border-4 rounded-md border-light bg-white md:w-48 md:h-48"
         />
       </div>
       <div
         class="w-11/12 m-auto rounded-lg border-2 border-transparent px-5 py-2 absolute top-[70%] left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center gap-5"
       >
         <p
-          class="w-full text-lg text-center text-white-2/80 tracking-wide select-none whitespace-nowrap overflow-auto py-0.5 transition-all"
+          class="w-full text-lg text-center text-white-2/80 tracking-wide select-none whitespace-nowrap overflow-auto py-0.5 transition-all md:text-xl"
         >
           {{ contentQrcode }}
         </p>
