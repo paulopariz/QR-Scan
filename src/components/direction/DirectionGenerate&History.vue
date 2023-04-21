@@ -5,11 +5,11 @@
     <div
       class="px-3 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full flex flex-col justify-center items-center gap-6"
     >
-      <h1 class="text-center text-2xl text-white tracking-wide">
+      <h1 class="text-center text-2xl text-white tracking-wide sm:text-3xl">
         {{ title }}
       </h1>
 
-      <p class="text-white-2 text-center text-sm tracking-wide">
+      <p class="text-white-2 text-center text-sm tracking-wide sm:text-lg md:w-3/4">
         {{ desc }}
       </p>
 

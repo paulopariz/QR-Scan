@@ -48,7 +48,7 @@
         </div>
 
         <div class="mt-10">
-          <h1 class="text-light text-xl tracking-wide lg:text-2xl">Autor</h1>
+          <h1 class="text-light text-xl tracking-wide md:text-2xl">Autor</h1>
 
           <section class="mt-5 flex flex-col gap-0.5">
             <a
