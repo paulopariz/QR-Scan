@@ -16,17 +16,17 @@
       </nav>
 
       <div class="mt-14">
-        <h1 class="text-light text-xl tracking-wide">Configurações</h1>
+        <h1 class="text-light text-xl tracking-wide md:text-2xl">Configurações</h1>
 
         <div
-          class="mt-5 w-full bg-dark flex justify-between items-center px-5 py-3 drop-shadow-2xl shadow-lg rounded-lg"
+          class="mt-5 m-auto w-full bg-dark flex justify-between items-center px-5 py-3 drop-shadow-2xl shadow-lg rounded-lg lg:w-1/2 md:px-14 md:py-8"
         >
-          <div class="flex items-center gap-4">
-            <img src="@/assets/img/iconVibrate.svg" alt="IconVibrate" />
+          <div class="flex items-center gap-4 md:gap-9">
+            <img src="@/assets/img/iconVibrate.svg" alt="IconVibrate" class="md:w-10" />
 
             <div class="flex flex-col">
-              <h2 class="text-white-2">Vibração</h2>
-              <p class="text-white-2/50 text-sm">Desativar vibrações.</p>
+              <h2 class="text-white-2 md:text-xl">Vibração</h2>
+              <p class="text-white-2/50 text-sm md:text-lg">Desativar vibrações.</p>
             </div>
           </div>
 
@@ -48,7 +48,7 @@
         </div>
 
         <div class="mt-10">
-          <h1 class="text-light text-xl tracking-wide">Autor</h1>
+          <h1 class="text-light text-xl tracking-wide lg:text-2xl">Autor</h1>
 
           <section class="mt-5 flex flex-col gap-0.5">
             <a
@@ -56,15 +56,23 @@
               :key="redes.id"
               target="_blank"
               :href="redes.link"
-              class="w-full bg-dark flex items-center px-5 py-3 transition-all"
+              class="w-full m-auto bg-dark flex items-center px-5 py-3 transition-all lg:w-1/2 md:px-14 md:py-8"
               id="redes"
               :class="{ radius }"
             >
-              <div class="flex items-center gap-4">
-                <img :src="redes.img" alt="IconVibrate" class="w-5 transition-all" />
+              <div class="flex items-center gap-4 md:gap-9">
+                <img
+                  :src="redes.img"
+                  alt="IconVibrate"
+                  class="w-5 transition-all md:w-10"
+                />
                 <div class="flex flex-col">
-                  <h2 class="text-white-2 transition-all">{{ redes.title }}</h2>
-                  <p class="text-white-2/50 text-sm transition-all">{{ redes.rede }}.</p>
+                  <h2 class="text-white-2 transition-all md:text-xl">
+                    {{ redes.title }}
+                  </h2>
+                  <p class="text-white-2/50 text-sm transition-all md:text-lg">
+                    {{ redes.rede }}.
+                  </p>
                 </div>
               </div>
             </a>
