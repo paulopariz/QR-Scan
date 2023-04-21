@@ -55,12 +55,12 @@
 
         <div v-show="showModalGenerated">
           <div
-            class="w-5/6 gap-9 drop-shadow-2xl shadow-lg absolute z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-dark/50 rounded-lg border-2 border-x-0 border-light flex flex-col justify-between items-center px-5 py-8 animate__animated animate__fadeIn"
+            class="w-5/6 gap-9 drop-shadow-2xl shadow-lg fixed z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-dark/50 rounded-lg border-2 border-x-0 border-light flex flex-col justify-between items-center px-5 py-8 animate__animated animate__fadeIn md:w-2/3 md:py-20"
           >
-            <img :src="viewModal.icon" class="w-16 select-none" />
+            <img :src="viewModal.icon" class="w-16 select-none md:w-36" />
 
-            <div class="flex flex-col gap-3 w-full">
-              <label for="Username" class="text-white-2 tracking-wide">
+            <div class="flex flex-col gap-3 w-full md:w-2/3">
+              <label for="Username" class="text-white-2 tracking-wide md:text-lg">
                 {{ viewModal.label }}
               </label>
 

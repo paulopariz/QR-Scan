@@ -1,9 +1,9 @@
 <template>
   <div
-    class="px-10 pb-6 m-auto h-screen w-screen bg-[#333333] overflow-hidden absolute z-30 top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 max-mn:px-3"
+    class="px-10 pb-6 m-auto h-screen w-screen bg-[#333333] overflow-hidden fixed z-30 top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 max-mn:px-3"
   >
-    <EclipseBackground class="-right-[45%] -top-[15%]" />
-    <EclipseBackground class="bottom-0 -left-2/3 -scale-95" />
+    <EclipseBackground class="-right-[40%] -top-[15%] lg:-right-[17%] sm:-right-[20%]" />
+    <EclipseBackground class="bottom-0 -left-[48%] -scale-95 lg:-left-1/3 sm:-left-1/3" />
 
     <nav class="flex items-center gap-6 mt-12">
       <button
