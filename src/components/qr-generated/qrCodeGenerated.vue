@@ -1,26 +1,26 @@
 <template>
   <div>
     <div
-      class="w-5/6 drop-shadow-2xl shadow-lg absolute z-50 top-[17%] left-1/2 -translate-x-1/2 bg-dark rounded-lg border-2 border-transparent px-5 py-3 flex flex-col"
+      class="w-5/6 drop-shadow-2xl shadow-lg fixed z-50 top-[17%] left-1/2 -translate-x-1/2 bg-dark rounded-lg border-2 border-transparent px-5 py-3 flex flex-col md:w-1/2 sm:py-6 sm:w-3/4"
     >
       <p
-        class="w-full text-base text-white-2 tracking-wide select-none whitespace-nowrap overflow-auto py-0.5 transition-all"
+        class="w-full text-base text-white-2 tracking-wide select-none whitespace-nowrap overflow-auto py-0.5 transition-all sm:text-xl"
         id="textCopy"
       >
         {{ qrCodeGeneratedContet }}
       </p>
-      <span class="text-white-2/50 text-sm">{{ date }}</span>
+      <span class="text-white-2/50 text-sm sm:text-base">{{ date }}</span>
     </div>
 
     <img
       :src="qrCodeGenerated"
       alt="QR Code"
-      class="w-44 h-44 absolute z-[100] left-1/2 -translate-x-1/2 -translate-y-1/2 top-1/2 border-4 rounded-md border-light p-1 bg-white"
+      class="w-44 h-44 fixed z-[100] left-1/2 -translate-x-1/2 -translate-y-1/2 top-1/2 border-4 rounded-md border-light p-1 bg-white sm:w-56 sm:h-56"
       id="imgQrCode"
     />
 
     <div
-      class="absolute z-50 top-2/3 left-1/2 -translate-x-1/2 flex items-center justify-center gap-10"
+      class="fixed z-50 top-2/3 left-1/2 -translate-x-1/2 flex items-center justify-center gap-10"
     >
       <div class="flex items-center gap-6">
         <div class="flex flex-col gap-2 items-center">
