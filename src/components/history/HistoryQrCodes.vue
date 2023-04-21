@@ -24,14 +24,17 @@
         <AlertQR id="alertHistory" v-show="alert" msg="Excluído com sucesso!" />
       </nav>
 
-      <div v-show="selectHistory" class="animate__animated animate__fadeIn">
+      <div
+        v-show="selectHistory"
+        class="animate__animated animate__fadeIn m-auto md:w-3/4 lg:w-1/2"
+      >
         <div class="grid grid-cols-2 mt-6 p-2 rounded-lg" id="selectHistory">
           <div class="w-full">
             <input type="radio" name="option" id="1" class="peer hidden" checked />
             <label
               @click="openHistoryScan"
               for="1"
-              class="block cursor-pointer rounded-lg select-none p-2 text-center text-white-2 peer-checked:bg-light peer-checked:font-bold peer-checked:text-dark"
+              class="block cursor-pointer rounded-lg select-none p-2 text-center text-white-2 peer-checked:bg-light peer-checked:font-bold peer-checked:text-dark md:py-5"
               >Scan</label
             >
           </div>
@@ -41,15 +44,15 @@
             <label
               @click="openHistoryGenerated"
               for="2"
-              class="block cursor-pointer rounded-lg select-none p-2 text-center text-white-2 peer-checked:bg-light peer-checked:font-bold peer-checked:text-dark"
+              class="block cursor-pointer rounded-lg select-none p-2 text-center text-white-2 peer-checked:bg-light peer-checked:font-bold peer-checked:text-dark md:py-5"
               >Gerados</label
             >
           </div>
         </div>
-        <div class="float-right px-1 mt-3" v-if="qrCodes.length > 0">
+        <div class="float-right px-1 mt-3 md:mt-5" v-if="qrCodes.length > 0">
           <div v-show="clearHistoryRead">
             <button
-              class="text-light tracking-wide text-sm underline decoration-2"
+              class="text-light tracking-wide text-sm underline decoration-2 md:text-base"
               @click="deleteHistoryRead()"
             >
               Limpar Histórico
@@ -58,7 +61,7 @@
 
           <div v-show="clearHistoryGenerate">
             <button
-              class="text-light tracking-wide text-sm underline decoration-2"
+              class="text-light tracking-wide text-sm underline decoration-2 md:text-base"
               @click="deleteHistoryGenerate()"
             >
               Limpar Histórico
@@ -69,7 +72,7 @@
     </header>
 
     <div class="px-10 py-6 pb-36 m-auto max-mn:px-3">
-      <div class="mt-44">
+      <div class="mt-44 md:mt-60">
         <div
           id="historyClear"
           class="hidden fixed z-40 -mt-5 left-1/2 -translate-x-1/2 h-[1px] w-full bg-[#333333] border border-light border-x-0 border-t-0 transition-all"
@@ -88,29 +91,29 @@
         <div v-if="qrCodes.length" class="flex flex-col justify-center gap-5">
           <section v-for="(HistoryQrCode, index) in qrCodes" :key="HistoryQrCode.id">
             <div
-              class="rounded-lg border-2 border-transparent border-x-0 border-t-0 border-r-0 flex justify-between items-center cursor-pointer transition-all"
+              class="rounded-lg m-auto border-2 border-transparent border-x-0 border-t-0 border-r-0 flex justify-between items-center cursor-pointer transition-all md:w-3/4 lg:w-1/2"
               id="setionHistory"
             >
               <div
-                class="flex items-center gap-3 overflow-hidden w-full py-3 pl-5"
+                class="flex items-center gap-3 overflow-hidden w-full py-3 pl-5 md:py-5"
                 @click="OpenHistoryQrCodeModal(HistoryQrCode)"
               >
                 <div>
                   <div
                     id="logo"
-                    class="w-9 h-9 bg-[url('@/assets/img/logoDark.svg')] bg-cover bg-center bg-no-repeat transition-all"
+                    class="w-9 h-9 bg-[url('@/assets/img/logoDark.svg')] bg-cover bg-center bg-no-repeat transition-all md:w-12 md:h-12"
                   ></div>
                 </div>
 
                 <div class="flex flex-col w-full">
                   <p
-                    class="w-2/3 text-base text-white-2 tracking-wide whitespace-nowrap overflow-auto select-none py-0.5 transition-all"
+                    class="w-2/3 text-base text-white-2 tracking-wide whitespace-nowrap overflow-auto select-none py-0.5 transition-all md:text-lg"
                     id="contentQrCode"
                   >
                     {{ HistoryQrCode.qrCodeGeneratedContent }}
                   </p>
 
-                  <span class="text-white-2/50 text-xs transition-all">
+                  <span class="text-white-2/50 text-xs transition-all md:text-sm">
                     {{ HistoryQrCode.date }}
                   </span>
                 </div>
@@ -124,7 +127,7 @@
                 >
                   <div
                     id="btnDelete"
-                    class="bg-[url('@/assets/img/iconBin.svg')] bg-cover bg-no-repeat bg-center h-[18px] w-[14px] m-auto transition-all"
+                    class="bg-[url('@/assets/img/iconBin.svg')] bg-cover bg-no-repeat bg-center h-[18px] w-[14px] m-auto transition-all md:h-5 md:w-4"
                   ></div>
                 </button>
               </div>
@@ -137,7 +140,7 @@
                 >
                   <div
                     id="btnDelete"
-                    class="bg-[url('@/assets/img/iconBin.svg')] bg-cover bg-no-repeat bg-center h-[18px] w-[14px] m-auto transition-all"
+                    class="bg-[url('@/assets/img/iconBin.svg')] bg-cover bg-no-repeat bg-center h-[18px] w-[14px] m-auto transition-all md:h-5 md:w-4"
                   ></div>
                 </button>
               </div>

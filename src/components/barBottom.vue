@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-screen h-20 fixed z-40 left-1/2 -translate-x-1/2 py-4 px-14 bottom-0 bg-dark border-2 border-transparent border-x-0 border-b-0 transition-all md:bottom-5 max-mn:px-3 lg:w-1/2 sm:bottom-0 sm:px-20 md:w-2/3 md:rounded-full"
+    class="w-screen h-20 fixed z-40 left-1/2 -translate-x-1/2 py-4 px-14 bottom-0 bg-dark border-2 border-transparent border-x-0 border-b-0 transition-all md:bottom-5 max-mn:px-3 lg:w-1/2 sm:px-20 md:w-2/3 md:rounded-full"
     :class="{ routeScan: $route.path === '/' }"
   >
     <ul class="flex justify-between items-center">
