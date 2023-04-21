@@ -1,7 +1,7 @@
 <template>
   <div class="fixed z-40 bottom-20 w-screen">
     <div class="flex justify-center flex-col items-center gap-11 w-screen">
-      <h1 class="font-normal tracking-wide w-11/12 text-center">
+      <h1 class="font-normal tracking-wide w-11/12 text-center max-mn:text-sm">
         Vá e aproveite nossos recursos gratuitamente e facilite sua vida conosco.
       </h1>
       <button

@@ -10,7 +10,10 @@
       />
     </div>
 
-    <header id="header" class="fixed bg-[#333333] w-screen z-10 px-10 pt-6 pb-2 m-auto">
+    <header
+      id="header"
+      class="fixed bg-[#333333] w-screen z-10 px-10 pt-6 pb-2 m-auto max-mn:px-3"
+    >
       <nav class="flex items-center justify-between">
         <h1 class="text-xl text-white-2 font-semibold tracking-wider select-none">
           Histórico
@@ -65,7 +68,7 @@
       </div>
     </header>
 
-    <div class="px-10 py-6 pb-36 m-auto">
+    <div class="px-10 py-6 pb-36 m-auto max-mn:px-3">
       <div class="mt-44">
         <div
           id="historyClear"
@@ -74,9 +77,11 @@
 
         <div
           v-if="(qrCodes.length < 1) & (this.ShowRedirectHistory === false)"
-          class="flex items-center justify-center gap-2 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate__animated animate__fadeIn"
+          class="flex items-center justify-center gap-2 w-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate__animated animate__fadeIn"
         >
-          <h1 class="text-white-2 text-lg tracking-wide">Histórico vazio</h1>
+          <h1 class="text-white-2 text-lg tracking-wide">
+            {{ textHistoryEmpty }}
+          </h1>
           <img src="@/assets/img/iconHistory.svg" alt="history" class="w-5" />
         </div>
 
@@ -177,6 +182,8 @@ export default {
       //
       ShowRedirectHistory: true,
       fadeOut: false,
+
+      textHistoryEmpty: "Histórico Scan vazio",
     };
   },
 
@@ -223,6 +230,8 @@ export default {
     },
 
     openHistoryGenerated() {
+      this.textHistoryEmpty = "Histórico Gerados vazio";
+
       this.showBtnDeleteGenerated = true;
       this.showBtnDeleteRead = false;
 
@@ -240,6 +249,8 @@ export default {
     openHistoryScan() {
       this.showBtnDeleteGenerated = false;
       this.showBtnDeleteRead = true;
+
+      this.textHistoryEmpty = "Histórico Scan vazio";
 
       this.clearHistoryRead = true;
       this.clearHistoryGenerate = false;

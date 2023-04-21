@@ -1,5 +1,5 @@
 <template>
-  <div class="px-10 py-6 m-auto">
+  <div class="px-10 py-6 m-auto max-mn:px-3">
     <div v-show="ShowRedirectGenerate">
       <DirectionGenerateHistory
         :redirectGenerateHistory="redirectGenerateHistory"
@@ -22,16 +22,24 @@
       <btn-configs />
     </nav>
 
-    <div class="px-10 pt-16 pb-28 grid grid-cols-3 place-items-center gap-x-28 gap-y-8">
+    <div
+      class="px-10 pt-16 pb-28 grid grid-cols-3 place-items-center gap-x-28 gap-y-8 max-mn:gap-x-24"
+    >
       <div v-for="option in Options" :key="option.id">
         <div
           @click="openModal(option.id)"
-          class="rounded-lg w-24 h-24 flex items-center justify-center transition-all border border-white-2/5 cursor-pointer select-none"
+          class="rounded-lg w-24 h-24 flex items-center justify-center transition-all border border-white-2/5 cursor-pointer select-none max-mn:w-20 max-mn:h-20"
           id="modal"
         >
           <div class="flex items-center flex-col gap-3">
-            <img :src="option.icon" :alt="option.name" class="transition-all" />
-            <h2 class="text-white-2 text-xs transition-all font-semibold tracking-wide">
+            <img
+              :src="option.icon"
+              :alt="option.name"
+              class="transition-all max-mn:w-7 max-mn:h-7"
+            />
+            <h2
+              class="text-white-2 text-xs transition-all font-semibold tracking-wide max-mn:text-[10px]"
+            >
               {{ option.name }}
             </h2>
           </div>
@@ -81,7 +89,7 @@
             <button
               id="generateBtn"
               @click="generate"
-              class="mt-4 px-6 py-2 bg-light text-dark tracking-wide rounded-lg drop-shadow-2xl shadow-lg transition-all active:scale-95 hover:scale-95 w-2/3 h-10 flex items-center justify-center"
+              class="mt-4 px-6 py-2 bg-light text-dark tracking-wide rounded-lg drop-shadow-2xl shadow-lg transition-all active:scale-95 hover:scale-95 w-2/3 h-10 flex items-center justify-center max-mn:px-2"
             >
               <span :class="{ hidden: this.loadingBtn === true }">Gerar QR Code</span>
               <IconLoadingBtn

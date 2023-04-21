@@ -3,7 +3,7 @@
     class="w-screen h-screen fixed z-[2000] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black/50 backdrop-blur-md"
   >
     <div
-      class="px-4 fixed top-[30%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full flex flex-col justify-center items-center gap-6"
+      class="px-3 fixed top-[30%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-full flex flex-col justify-center items-center gap-6"
     >
       <h1 class="text-center text-2xl text-white tracking-wide">Escaneie o QR-Code</h1>
 

@@ -5,7 +5,7 @@
   >
     <section
       id="modal"
-      class="bg-[#333333] h-3/5 w-11/12 z-40 rounded-lg drop-shadow-2xl shadow-lg"
+      class="bg-[#333333] h-96 w-11/12 z-40 rounded-lg drop-shadow-2xl shadow-lg max-mn:w-5/6"
     >
       <button
         id="buttonClose"

@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div class="px-10 py-6 m-auto" v-if="this.ShowScan === false">
+    <div class="px-10 py-6 m-auto max-mn:px-3" v-if="this.ShowScan === false">
       <BtnConfigs class="float-right" />
     </div>
     <div class="fixed top-1/2 -translate-x-1/2 left-1/2 -translate-y-1/2">

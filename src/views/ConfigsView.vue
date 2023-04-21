@@ -1,6 +1,6 @@
 <template>
   <div class="animate__animated animate__fadeIn">
-    <div class="px-10">
+    <div class="px-10 max-mn:px-3">
       <nav class="flex items-center gap-6">
         <button
           id="btnBack"
@@ -178,7 +178,7 @@ button {
       filter: invert(100%);
     }
     p {
-      filter: invert(100%);
+      color: #262626d1;
     }
   }
 }

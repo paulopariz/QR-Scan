@@ -1,20 +1,18 @@
 <template>
-  <div>
-    <div v-show="Loader">
-      <div
-        class="h-screen w-screen bg-light fixed z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-      >
-        <div class="fixed top-[30%] left-1/2 -translate-x-1/2 -translate-y-1/2">
-          <img src="../assets/img/logoLight.svg" class="select-none" alt="Logo" />
-        </div>
-
-        <SectionStart
-          :startClick="start"
-          startText="Iniciar"
-          :contentBtn="contentBtn"
-          :loadingBtn="loadingBtn"
-        />
+  <div v-show="Loader">
+    <div
+      class="h-screen w-screen bg-light fixed z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+    >
+      <div class="fixed top-[30%] left-1/2 -translate-x-1/2 -translate-y-1/2">
+        <img src="../assets/img/logoLight.svg" class="select-none" alt="Logo" />
       </div>
+
+      <SectionStart
+        :startClick="start"
+        startText="Iniciar"
+        :contentBtn="contentBtn"
+        :loadingBtn="loadingBtn"
+      />
     </div>
   </div>
 </template>

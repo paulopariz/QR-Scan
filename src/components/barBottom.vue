@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-screen h-20 fixed z-40 left-1/2 -translate-x-1/2 py-4 px-14 bottom-0 bg-dark border-2 border-transparent border-x-0 border-b-0 transition-all"
+    class="w-screen h-20 fixed z-40 left-1/2 -translate-x-1/2 py-4 px-14 bottom-0 bg-dark border-2 border-transparent border-x-0 border-b-0 transition-all max-mn:px-3"
     :class="{ routeScan: $route.path === '/' }"
   >
     <div>

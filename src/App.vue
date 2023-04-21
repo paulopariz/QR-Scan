@@ -32,6 +32,7 @@ export default {
 
   methods: {
     redirect() {
+      localStorage.setItem("Vibrate", true);
       this.fadeOut = true;
       setTimeout(() => {
         this.ShowRedirectInitial = false;
