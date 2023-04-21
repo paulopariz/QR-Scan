@@ -1,43 +1,39 @@
 <template>
   <div
-    class="w-screen h-20 fixed z-40 left-1/2 -translate-x-1/2 py-4 px-14 bottom-0 bg-dark border-2 border-transparent border-x-0 border-b-0 transition-all max-mn:px-3"
+    class="w-screen h-20 fixed z-40 left-1/2 -translate-x-1/2 py-4 px-14 bottom-0 bg-dark border-2 border-transparent border-x-0 border-b-0 transition-all md:bottom-5 max-mn:px-3 lg:w-1/2 sm:bottom-0 sm:px-20 md:w-2/3 md:rounded-full"
     :class="{ routeScan: $route.path === '/' }"
   >
-    <div>
-      <ul class="flex items-center justify-between">
-        <li
-          @click="generateQr('/generate-qr')"
-          :class="{ active: $route.path === '/generate-qr' }"
-          class="flex items-center flex-col gap-1 transition-all"
+    <ul class="flex justify-between items-center">
+      <li
+        @click="generateQr('/generate-qr')"
+        :class="{ active: $route.path === '/generate-qr' }"
+        class="flex items-center flex-col gap-1 transition-all"
+      >
+        <div
+          class="transition-all bg-[url('@/assets/img/iconGenerate.svg')] bg-no-repeat bg-cover bg-center w-[30px] h-[30px]"
+        />
+        <span class="transition-all text-white-2 text-[13px] tracking-wide font-semibold"
+          >Gerar</span
         >
-          <div
-            class="transition-all bg-[url('@/assets/img/iconGenerate.svg')] bg-no-repeat bg-cover bg-center w-[30px] h-[30px]"
-          />
-          <span
-            class="transition-all text-white-2 text-[13px] tracking-wide font-semibold"
-            >Gerar</span
-          >
-        </li>
+      </li>
 
-        <li class="p-4 bg-light rounded-full -mt-20 scan" @click="openScan">
-          <img src="@/assets/img/logoLight.svg" class="w-[30px]" alt="icon" />
-        </li>
+      <li class="p-4 bg-light rounded-full -mt-20 scan" @click="openScan">
+        <img src="@/assets/img/logoLight.svg" class="w-[30px]" alt="icon" />
+      </li>
 
-        <li
-          @click="history('/history')"
-          :class="{ active: $route.path === '/history' }"
-          class="flex items-center flex-col gap-1 transition-all"
+      <li
+        @click="history('/history')"
+        :class="{ active: $route.path === '/history' }"
+        class="flex items-center flex-col gap-1 transition-all"
+      >
+        <div
+          class="transition-all bg-[url('@/assets/img/iconHistory.svg')] bg-no-repeat bg-cover bg-center w-[30px] h-[30px]"
+        />
+        <span class="transition-all text-white-2 text-[13px] tracking-wide font-semibold"
+          >Histórico</span
         >
-          <div
-            class="transition-all bg-[url('@/assets/img/iconHistory.svg')] bg-no-repeat bg-cover bg-center w-[30px] h-[30px]"
-          />
-          <span
-            class="transition-all text-white-2 text-[13px] tracking-wide font-semibold"
-            >Histórico</span
-          >
-        </li>
-      </ul>
-    </div>
+      </li>
+    </ul>
   </div>
 </template>
 

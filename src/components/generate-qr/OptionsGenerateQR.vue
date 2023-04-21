@@ -23,22 +23,22 @@
     </nav>
 
     <div
-      class="px-10 pt-16 pb-28 grid grid-cols-3 place-items-center gap-x-28 gap-y-8 max-mn:gap-x-24"
+      class="px-10 pt-16 pb-28 grid grid-cols-3 place-items-center gap-x-28 gap-y-8 max-mn:gap-x-24 xl:grid-cols-4 xl:gap-x-0 xl:gap-y-14"
     >
       <div v-for="option in Options" :key="option.id">
         <div
           @click="openModal(option.id)"
-          class="rounded-lg w-24 h-24 flex items-center justify-center transition-all border border-white-2/5 cursor-pointer select-none max-mn:w-20 max-mn:h-20"
+          class="rounded-lg w-24 h-24 flex items-center justify-center transition-all border border-white-2/5 cursor-pointer select-none max-mn:w-20 max-mn:h-20 md:h-64 md:w-64 sm:w-48 sm:h-48"
           id="modal"
         >
           <div class="flex items-center flex-col gap-3">
             <img
               :src="option.icon"
               :alt="option.name"
-              class="transition-all max-mn:w-7 max-mn:h-7"
+              class="transition-all max-mn:w-7 max-mn:h-7 sm:w-16 sm:h-16"
             />
             <h2
-              class="text-white-2 text-xs transition-all font-semibold tracking-wide max-mn:text-[10px]"
+              class="text-white-2 text-xs transition-all font-semibold tracking-wide max-mn:text-[10px] md:text-xl md:tracking-wider sm:text-lg"
             >
               {{ option.name }}
             </h2>

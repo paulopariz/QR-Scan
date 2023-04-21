@@ -14,9 +14,9 @@
 
       <div class="h-20 w-20 flex items-center justify-center">
         <img
-          src="@/assets/img/iconArrow.svg"
+          src="@/assets/img/arrow.svg"
           alt="Arrow"
-          class="invert rotate-180 h-8 transition-all"
+          class="rotate-90 w-7 transition-all"
           id="arrow"
         />
       </div>

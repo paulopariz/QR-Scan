@@ -1,7 +1,7 @@
 <template>
   <section>
     <div
-      class="w-5/6 drop-shadow-2xl shadow-lg absolute z-50 top-[17%] left-1/2 -translate-x-1/2 bg-dark rounded-lg border-2 border-transparent px-5 py-5"
+      class="w-5/6 drop-shadow-2xl shadow-lg absolute z-50 top-[17%] left-1/2 -translate-x-1/2 bg-dark rounded-lg border-2 border-transparent px-5 py-5 max-mn:w-11/12"
     >
       <section class="flex flex-col justify-between h-32">
         <div class="flex items-center gap-5">
