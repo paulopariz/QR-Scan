@@ -29,7 +29,7 @@
         v-if="ShowScan"
         @decode="onDecode"
         @loaded="onLoaded"
-        class="w-screen scale-150"
+        class="max-md:w-screen max-md:scale-150 scale-125"
       />
     </div>
 
