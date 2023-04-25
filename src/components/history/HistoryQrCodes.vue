@@ -49,7 +49,9 @@
             >
           </div>
         </div>
-        <div class="float-right px-1 mt-3 md:mt-5" v-if="qrCodes.length > 0">
+        <div class="flex justify-between px-1 mt-3 md:mt-5" v-if="qrCodes.length > 0">
+          <FilterQrCode />
+
           <div v-show="clearHistoryRead">
             <button
               class="text-light tracking-wide text-sm underline decoration-2 md:text-base"
@@ -88,7 +90,7 @@
           <img src="@/assets/img/iconHistory.svg" alt="history" class="w-5" />
         </div>
 
-        <div v-if="qrCodes.length" class="flex flex-col justify-center gap-5">
+        <div v-if="qrCodes.length" class="flex flex-col justify-center gap-5" id="order">
           <section v-for="(HistoryQrCode, index) in qrCodes" :key="HistoryQrCode.id">
             <div
               class="rounded-lg m-auto border-2 border-transparent border-x-0 border-t-0 border-r-0 flex justify-between items-center cursor-pointer transition-all md:w-3/4 lg:w-1/2"
@@ -166,6 +168,7 @@
 import BtnConfigs from "../BtnConfigs.vue";
 import DirectionGenerateHistory from "../direction/DirectionGenerate&History.vue";
 import AlertQR from "./AlertQR.vue";
+import FilterQrCode from "./FilterQrCode.vue";
 import ModalHistoryQrcode from "./ModalHistoryQrcode.vue";
 
 export default {
@@ -187,6 +190,8 @@ export default {
       fadeOut: false,
 
       textHistoryEmpty: "Histórico Scan vazio",
+
+      showFilter: false,
     };
   },
 
@@ -350,7 +355,13 @@ export default {
       }, 2000);
     },
   },
-  components: { ModalHistoryQrcode, DirectionGenerateHistory, AlertQR, BtnConfigs },
+  components: {
+    ModalHistoryQrcode,
+    DirectionGenerateHistory,
+    AlertQR,
+    BtnConfigs,
+    FilterQrCode,
+  },
 };
 </script>
 
