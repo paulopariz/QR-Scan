@@ -53,7 +53,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #sectionFilter {
   animation: sectionFilter 0.1s;
 }

@@ -10,7 +10,6 @@
   "dependencies": {
     "animate.css": "^4.1.1",
     "core-js": "^3.8.3",
-    "file-saver": "^2.0.5",
     "moment": "^2.29.4",
     "qrcode": "^1.5.1",
     "qrcode-reader-vue3": "^3.1.2",
