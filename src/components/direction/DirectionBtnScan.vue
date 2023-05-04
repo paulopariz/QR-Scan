@@ -18,7 +18,7 @@
         <img
           src="@/assets/img/arrow.svg"
           alt="Arrow"
-          class="rotate-90 w-7 transition-all"
+          class="rotate-90 w-7 h-7 transition-all"
           id="arrow"
         />
       </div>

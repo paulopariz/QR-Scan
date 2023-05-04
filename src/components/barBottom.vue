@@ -18,7 +18,7 @@
       </li>
 
       <li class="p-4 bg-light rounded-full -mt-20 scan" @click="openScan">
-        <img src="@/assets/img/logoLight.svg" class="w-[30px]" alt="icon" />
+        <img src="@/assets/img/logoLight.svg" class="w-7 h-7" alt="icon" />
       </li>
 
       <li

@@ -6,7 +6,7 @@
     >
       <img
         src="@/assets/img/iconSettings.svg"
-        class="hover:rotate-180 focus:rotate-180 active:rotate-180"
+        class="hover:rotate-180 focus:rotate-180 active:rotate-180 w-4 h-4"
         alt="configs"
       />
     </button>

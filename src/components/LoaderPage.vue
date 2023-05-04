@@ -4,7 +4,7 @@
       class="h-screen w-screen bg-light fixed z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
     >
       <div class="fixed top-[30%] left-1/2 -translate-x-1/2 -translate-y-1/2">
-        <img src="../assets/img/logoLight.svg" class="select-none" alt="Logo" />
+        <img src="../assets/img/logoLight.svg" class="select-none w-24 h-24" alt="Logo" />
       </div>
 
       <div class="fixed z-40 bottom-20 w-screen">
@@ -21,7 +21,7 @@
             <div v-show="contentBtn" class="flex items-center justify-between">
               <span class="text-transparent text-[0px]">.</span>
               <h1 class="text-white font-bold tracking-wide text-base">Iniciar</h1>
-              <img src="@/assets/img/arrow.svg" alt="Arrow" />
+              <img src="@/assets/img/arrow.svg" alt="Arrow" class="w-5 h-5" />
             </div>
 
             <IconLoadingBtn

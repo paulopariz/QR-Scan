@@ -5,7 +5,7 @@
     <div
       class="px-3 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full flex flex-col justify-center items-center gap-6"
     >
-      <img src="@/assets/img/Hi.gif" alt="Hi" class="w-14 sm:w-20" />
+      <img src="@/assets/img/Hi.gif" alt="Hi" class="w-14 h-14 sm:w-20" />
       <h1 class="text-center text-2xl text-white tracking-wide sm:text-3xl">
         Olá! Seja bem-vindo(a)!
       </h1>
