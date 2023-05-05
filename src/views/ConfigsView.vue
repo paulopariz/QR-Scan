@@ -18,7 +18,7 @@
           msg="O seu navegador não é compatível!"
           v-show="alert"
           id="alertConfigs"
-          class="mt-8"
+          class="mt-8 border-red-600"
         />
       </nav>
 
@@ -98,7 +98,7 @@ export default {
     return {
       active: true,
       radius: false,
-      alert: false,
+      alert: true,
 
       socias: [
         {
