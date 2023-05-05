@@ -98,7 +98,7 @@ export default {
     return {
       active: true,
       radius: false,
-      alert: true,
+      alert: false,
 
       socias: [
         {
