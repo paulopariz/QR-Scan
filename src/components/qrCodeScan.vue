@@ -120,10 +120,8 @@ export default {
 
       const localStorageVibrate = localStorage.getItem("Vibrate");
 
-      if (localStorageVibrate === "true") {
+      if (localStorageVibrate === "true" && "vibrate" in navigator) {
         navigator.vibrate([200]);
-      } else {
-        navigator.vibrate([0]);
       }
 
       this.ShowScan = false;
@@ -158,17 +156,14 @@ export default {
 
     closeModal() {
       document.getElementById("BarBottom").style.display = "block";
-      navigator.vibrate([50]);
 
       this.ShowScan = true;
       this.ShowQrCodeRead = false;
 
       const localStorageVibrate = localStorage.getItem("Vibrate");
 
-      if (localStorageVibrate === "true") {
+      if (localStorageVibrate === "true" && "vibrate" in navigator) {
         navigator.vibrate([50]);
-      } else {
-        navigator.vibrate([0]);
       }
     },
 
@@ -190,7 +185,6 @@ export default {
         }, 3000);
       } catch (err) {
         this.copyTextBtn = "Erro!";
-        navigator.vibrate([200]);
 
         document.getElementById("iconCheck").style.display = "none";
         document.getElementById("iconError").style.display = "block";

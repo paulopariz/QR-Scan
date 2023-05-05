@@ -131,10 +131,8 @@ export default {
 
       const localStorageVibrate = localStorage.getItem("Vibrate");
 
-      if (localStorageVibrate === "true") {
+      if (localStorageVibrate === "true" && "vibrate" in navigator) {
         navigator.vibrate([50]);
-      } else {
-        navigator.vibrate([0]);
       }
     },
 
@@ -145,10 +143,8 @@ export default {
 
       const localStorageVibrate = localStorage.getItem("Vibrate");
 
-      if (localStorageVibrate === "true") {
+      if (localStorageVibrate === "true" && "vibrate" in navigator) {
         navigator.vibrate([50]);
-      } else {
-        navigator.vibrate([0]);
       }
     },
   },
