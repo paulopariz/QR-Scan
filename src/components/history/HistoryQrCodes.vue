@@ -167,7 +167,7 @@
 <script>
 import BtnConfigs from "../BtnConfigs.vue";
 import DirectionGenerateHistory from "../direction/DirectionGenerate&History.vue";
-import AlertQR from "./AlertQR.vue";
+import AlertQR from "../AlertQR.vue";
 import FilterQrCode from "./FilterQrCode.vue";
 import ModalHistoryQrcode from "./ModalHistoryQrcode.vue";
 

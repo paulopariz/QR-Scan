@@ -137,7 +137,7 @@ import QrCodeGenerated from "../qr-generated/qrCodeGenerated.vue";
 import qrcode from "qrcode";
 import IconLoadingBtn from "../iconLoadingBtn.vue";
 import DirectionGenerateHistory from "../direction/DirectionGenerate&History.vue";
-import AlertQR from "../history/AlertQR.vue";
+import AlertQR from "../AlertQR.vue";
 
 import moment from "moment";
 import BtnConfigs from "../BtnConfigs.vue";

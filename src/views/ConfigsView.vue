@@ -1,7 +1,7 @@
 <template>
   <div class="animate__animated animate__fadeIn">
     <div class="px-10 max-mn:px-3">
-      <nav class="flex items-center gap-6">
+      <nav class="flex justify-between items-center gap-6">
         <button
           id="btnBack"
           @click="back"
@@ -13,6 +13,13 @@
             class="transition-all fill-white"
           />
         </button>
+
+        <AlertQR
+          msg="O seu navegador não é compatível!"
+          v-show="alert"
+          id="alertConfigs"
+          class="mt-8"
+        />
       </nav>
 
       <div class="mt-14">
@@ -84,11 +91,14 @@
 </template>
 
 <script>
+import AlertQR from "@/components/AlertQR.vue";
 export default {
+  components: { AlertQR },
   data() {
     return {
       active: true,
       radius: false,
+      alert: false,
 
       socias: [
         {
@@ -122,6 +132,12 @@ export default {
     } else {
       this.active = false;
     }
+
+    if ("vibrate" in navigator) {
+      console.log("");
+    } else {
+      this.active = false;
+    }
   },
 
   methods: {
@@ -145,6 +161,25 @@ export default {
 
       if (localStorageVibrate === "true" && "vibrate" in navigator) {
         navigator.vibrate([50]);
+      }
+
+      if ("vibrate" in navigator) {
+        console.log("");
+      } else {
+        this.active = false;
+
+        this.alert = true;
+        setTimeout(() => {
+          document.getElementById("alertConfigs").style.right = "4px";
+        }, 200);
+
+        setTimeout(() => {
+          document.getElementById("alertConfigs").style.right = "-75%";
+        }, 2000);
+
+        setTimeout(() => {
+          this.alert = false;
+        }, 2300);
       }
     },
   },
